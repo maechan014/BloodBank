@@ -36,11 +36,13 @@ strong{
 }
 
 a{
-	color: #2C383B;
+	color: #2C383B;	
 }
 
 a:hover{
 	text-decoration: none;
+	background: #E24E2A;
+	color: #E24E2A;
 }
 
 .container{
@@ -390,6 +392,8 @@ ul.contact li a.icon-rss:before{
 }
 
 #menu li:hover a, #menu li.active a, #menu li.active span{
+	background: #E24E2A;
+
 }
 
 #menu .current_page_item a{
@@ -522,6 +526,7 @@ ul.contact li a.icon-rss:before{
 	text-transform: uppercase;
 	font-size: 0.80em;
 	color: rgba(255,255,255,0.3);
+	
 }
 
 #copyright a{
