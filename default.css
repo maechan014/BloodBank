@@ -9,7 +9,7 @@ body{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 11pt;
 	font-weight: 300;
-	color: #6c6c6c
+	color: #6c6c6c;
 }
 
 h1, h2, h3{
@@ -41,8 +41,6 @@ a{
 
 a:hover{
 	text-decoration: none;
-	background: #E24E2A;
-	color: #E24E2A;
 }
 
 .container{
@@ -392,12 +390,13 @@ ul.contact li a.icon-rss:before{
 }
 
 #menu li:hover a, #menu li.active a, #menu li.active span{
-	background: #E24E2A;
+	background: #1B9772;
+	color: #FFF;
 
 }
 
 #menu .current_page_item a{
-	background: #E24E2A;
+	background: #1B9772;
 	color: #FFF;
 }
 
@@ -610,13 +609,12 @@ ul.contact li a.icon-rss:before{
 }
 
 #header-featured{
-
 		height: 30em;
-		/*background-image: url(images/banner.jpg);*/
+		background-image: url(images/pseudo.jpg);*/
 		background: black;
 		background-position: center;
 		background-size: cover;
-	}
+}
 
 
 #slider-wrapper{
