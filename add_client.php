@@ -45,5 +45,11 @@ $query = "INSERT INTO Client (IDNumber, FName, MName, LName, Bdate, Phone, Ethni
 				'$_POST[phone]', '$_POST[ethnicity]', '$_POST[height]', '$_POST[height]', '$_POST[bloodtype]',
 				'$_POST[bloodrh]', '$_POST[street]', '$_POST[brgy]', '$_POST[citymun]', '$_POST[province]',
 				'$_POST[zip]', '$_POST[type]')";
-$result = pg_query($query);   
+$result = pg_query($query);
+
+$query = "INSERT INTO Donor_Illness (IDNumber) VALUES ('$_POST[idnumber]')";
+$result = pg_query($query);
+
+$query = "INSERT INTO Blood (IDNumber) VALUES ('$_POST[idnumber]')";
+$result = pg_query($query);
 ?>
