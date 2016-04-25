@@ -1,53 +1,16 @@
-<?php
-
-$host = 'localhost';
-$port = '5432';
-$database = 'blooddb';
-$user = 'postgres';
-$password = 'admin';
-
-$connectString = 'host=' . $host . ' port=' . $port . ' dbname=' . $database . 
-	' user=' . $user . ' password=' . $password;
+<html>
+    <?php
+        $db = pg_connect("host=localhost port=5432 dbname=blooddb user=postgres password=admin");
 
 
-$link = pg_connect ($connectString);
-if (!$link)
-{
-	die('Error: Could not connect: ' . pg_last_error());
+        echo("<table border=2><tr><td>first_name</td><td>last_name</td><td>employee_id</td></tr>");
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    echo("<tr>");
+    foreach ($line as $col_value => $row_value) {
+        echo("<td>$row_value</td>");
+    }
+    echo("</tr>\n");
 }
-
-
-$query = "select * from Client";
-
-$result = pg_query($query);
-
-$i = 0;
-echo '<html><body><table><tr>';
-while ($i < pg_num_fields($result))
-{
-	$fieldName = pg_field_name($result, $i);
-	echo '<td>' . $fieldName . '</td>';
-	$i = $i + 1;
-}
-echo '</tr>';
-$i = 0;
-
-while ($row = pg_fetch_row($result)) 
-{
-	echo '<tr>';
-	$count = count($row);
-	$y = 0;
-	while ($y < $count)
-	{
-		$c_row = current($row);
-		echo '<td>' . $c_row . '</td>';
-		next($row);
-		$y = $y + 1;
-	}
-	echo '</tr>';
-	$i = $i + 1;
-}
-pg_free_result($result);
-
-echo '</table></body></html>';
-?>
+echo("</table>");
+    ?>
+</html> 
