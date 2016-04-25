@@ -1,0 +1,16 @@
+<html>
+    <?php
+        $db = pg_connect("host=localhost port=5432 dbname=blooddb user=postgres password=admin");
+
+
+        echo("<table border=2><tr><td>first_name</td><td>last_name</td><td>employee_id</td></tr>");
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    echo("<tr>");
+    foreach ($line as $col_value => $row_value) {
+        echo("<td>$row_value</td>");
+    }
+    echo("</tr>\n");
+}
+echo("</table>");
+    ?>
+</html> 
