@@ -5,7 +5,7 @@ html, body{
 body{
 	margin: 0px;
 	padding: 0px;
-	background: #1B9772;
+	background: #c72121;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 11pt;
 	font-weight: 300;
@@ -390,13 +390,13 @@ ul.contact li a.icon-rss:before{
 }
 
 #menu li:hover a, #menu li.active a, #menu li.active span{
-	background: #1B9772;
+	background: #c72121;
 	color: #FFF;
 
 }
 
 #menu .current_page_item a{
-	background: #1B9772;
+	background: #c72121;
 	color: #FFF;
 }
 
@@ -610,7 +610,7 @@ ul.contact li a.icon-rss:before{
 
 #header-featured{
 		height: 30em;
-		background-image: url(images/pseudo.jpg);*/
+		background-image: url(images/header1.jpg);*/
 		background: black;
 		background-position: center;
 		background-size: cover;
