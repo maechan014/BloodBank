@@ -61,7 +61,7 @@ if (isset($_POST['new'])){
 $result = pg_query($db, "UPDATE CLIENT SET IDNumber='$_POST[idnumber_updated]', FName='$_POST[fname_updated]', 'MName$_POST[mname_updated]', LName='$_POST[lname_updated]', Bdate='$_POST[bdate_updated]', Phone='$_POST[phone_updated]', 
 				Ethnicity='$_POST[ethnicity_updated]', Height='$_POST[height_updated]', Weight='$_POST[weight_updated]', Bloodtype='$_POST[bloodtype_updated]', 
 				BloodRH='$_POST[bloodrh_updated]', Street='$_POST[street_updated]', Brgy='$_POST[brgy_updated]', CityMun='$_POST[citymun_updated]', Province='$_POST[province_updated]', 
-				Zip='$_POST[zip_updated]', isDonor='$_POST[type_updated]')
+				Zip='$_POST[zip_updated]', isDonor='$_POST[type_updated]'")
 
 if (!$result){  
 echo "Update failed!!";  
