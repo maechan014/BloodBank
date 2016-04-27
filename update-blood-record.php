@@ -42,7 +42,7 @@ $result = pg_query($db, "UPDATE BLOOD SET IDNumber='$_POST[idnumber]',
 					date='$_POST[date]',
 					time='$_POST[time]',
 					amount='$_POST[amount]',
-					status='[status_updated]')
+					status='[status_updated]'")
 
 if (!$result){  
 echo "Update failed!!";  
