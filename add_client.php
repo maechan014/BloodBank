@@ -7,7 +7,7 @@ li {listt-style: none;}
 </style>  
 </head>  
 <body>  
-<h2>Enter Client Information</h2>  
+<h2>Enter Client Information011</h2>  
 <ul>  
 <form name="insert" action="add_client.php" method="POST" >  
 <li>ID Number:</li><li><input type="number" name="idnumber" /></li>
@@ -28,28 +28,22 @@ li {listt-style: none;}
 <li>Province:</li><li><input type="text" name="province" /></li>
 <li>ZIP Code:</li><li><input type="number" name="zip" /></li>
 <li>Type:</li><li><input type="boolean" name="type" /></li>
-<li><input type="submit" /></li>  
-</form>  
-</ul>  
+<li><input type="submit"/></li>
+</form>
+</ul>
 </body>  
 </html>
 
 <?php  
 $db = pg_connect("host=localhost port=5432 dbname=blooddb user=postgres password=qwerty123");
 
-echo $type ? 'true' : 'false'; // no conversion
+echo $type ? 'true' : 'false';
 
 $query = "INSERT INTO Client (IDNumber, FName, MName, LName, Bdate, Phone, Ethnicity, Height,
 								Weight, Bloodtype, BloodRH, Street, Brgy, CityMun, Province, Zip, isDonor)
 		VALUES ('$_POST[idnumber]', '$_POST[fname]', '$_POST[mname]', '$_POST[lname]', '$_POST[bdate]',
-				'$_POST[phone]', '$_POST[ethnicity]', '$_POST[height]', '$_POST[height]', '$_POST[bloodtype]',
+				'$_POST[phone]', '$_POST[ethnicity]', '$_POST[height]', '$_POST[weight]', '$_POST[bloodtype]',
 				'$_POST[bloodrh]', '$_POST[street]', '$_POST[brgy]', '$_POST[citymun]', '$_POST[province]',
 				'$_POST[zip]', '$_POST[type]')";
-$result = pg_query($query);
-
-$query = "INSERT INTO Donor_Illness (IDNumber) VALUES ('$_POST[idnumber]')";
-$result = pg_query($query);
-
-$query = "INSERT INTO Blood (IDNumber) VALUES ('$_POST[idnumber]')";
 $result = pg_query($query);
 ?>
