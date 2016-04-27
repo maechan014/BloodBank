@@ -367,6 +367,7 @@ ul.contact li a.icon-rss:before{
 
 #menu ul{
 	display: inline-block;
+
 }
 
 #menu li{
@@ -374,11 +375,18 @@ ul.contact li a.icon-rss:before{
 	float: left;
 	text-align: center;
 	line-height: 60px;
+	
+	list-style: none;
+	padding-left: none;
+}
+
+#menu li a{
+	text-decoration: none;
 }
 
 #menu li a, #menu li span{
 	display: inline-block;
-	margin-left: 1px;
+	margin-left: 0px;
 	padding: 0em 1.5em;
 	letter-spacing: 0.10em;
 	text-decoration: none;
@@ -389,11 +397,11 @@ ul.contact li a.icon-rss:before{
 	background: #ECECEC;
 }
 
-#menu li:hover a, #menu li.active a, #menu li.active span{
-	background: #c72121;
-	color: #FFF;
+/*#menu li:hover a, #menu li.active a, #menu li.active span{
+	background: #FFF;
+	color: #c72121;
 
-}
+}*/
 
 #menu .current_page_item a{
 	background: #c72121;
@@ -401,6 +409,39 @@ ul.contact li a.icon-rss:before{
 }
 
 #menu .icon{
+}
+
+/*
+*************************
+	* Dropdown
+*************************
+*/
+
+#menu .add-menu, #menu .view-menu{
+	background: #FFF;
+	list-style: none;
+	position: absolute;
+	top: -9999px;
+	display: block;
+	width: 120px;
+
+}
+
+#menu .add-menu a, #menu .view-menu a{
+	background: #FFF;
+}
+
+#menu li:hover .add-menu, #menu li:hover .view-menu{
+   position: absolute;
+   top: 60px;
+   display: block;
+   background: none;	
+   font-size: 10px;		
+}
+
+#menu .add-menu ul, #menu.view-menu ul{
+    padding-top:1px; 
+    float:none;
 }
 
 /*********************************************************************************/
@@ -818,3 +859,9 @@ ul.contact li a.icon-rss:before{
 #extra2 #ebox2{
 	float: right;
 }
+
+/*
+*************************
+	* Dropdown
+*************************
+*/
