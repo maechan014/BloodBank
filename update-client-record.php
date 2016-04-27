@@ -1,6 +1,6 @@
 <?php
 session_start();
-$db = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=qwerty123");  
+$db = pg_connect("host=localhost port=5432 dbname=blooddb user=postgres password=qwerty123");  
 $result = pg_query($db, "SELECT * FROM client where IDNumber = '$_POST[idnumber]'");  
 $row = pg_fetch_assoc($result);  
 if (isset($_POST['submit'])){  
@@ -10,48 +10,48 @@ echo "<ul><form name='update' action='update-client-record.php' method='POST' >
 <li><input type="text" name="idnumber_updated" value='$row[IDNumber]' /></li>
 
 <li>First Name:</li><li>
-<input type="text" name="fname_updated" value='$_POST[fname]' /></li>
+<input type="text" name="fname_updated" value='$_row[fname]' /></li>
 
 <li>Middle Name:</li><li>
-<input type="text" name="mname_updated" value='$_POST[mname]' /></li>  
+<input type="text" name="mname_updated" value='$_row[mname]' /></li>  
 
 <li>Last Name:</li><li>
-<input type="text" name="lname_updated" value='$_POST[lname]' /></li> 
+<input type="text" name="lname_updated" value='$_row[lname]' /></li> 
 
 <li>Birthday:</li><li>
-<input type="date" name="birthday_updated" value='$_POST[bdate]' /></li>
+<input type="date" name="birthday_updated" value='$row[bdate]' /></li>
 
 <li>Phone:</li><li>
-<input type="text" name="phone_updated" value='$_POST[phone]' /></li>
+<input type="text" name="phone_updated" value='$row[phone]' /></li>
 
 <li>Ethnicity:</li>
-<li><input type="text" name="ethnicity_updated" value='$_POST[ethnicity]'/></li>
+<li><input type="text" name="ethnicity_updated" value='$row[ethnicity]'/></li>
 
 <li>Height:</li>
-<li><input type="number" name="height_updated" value='$_POST[height]'/></li>
+<li><input type="number" name="height_updated" value='$row[height]'/></li>
 
 <li>Weight:</li>
-<li><input type="number" name="weight_updated" value='$_POST[weight]'/></li>
+<li><input type="number" name="weight_updated" value='$row[weight]'/></li>
 
 <li>Blood Type:</li>
-<li><input type="text" name="bloodtype_updated" value='$_POST[bloodtype]'/></li>
+<li><input type="text" name="bloodtype_updated" value='$row[bloodtype]'/></li>
 
 <li>Blood RH:</li>
-<li><input type="text" name="bloodrh_updated" value='$_POST[bloodrh]'/></li>
+<li><input type="text" name="bloodrh_updated" value='$row[bloodrh]'/></li>
 
 <li>Address:</li>
 <li>Street:</li><li>
-<input type="text" name="street_updated" value='$_POST[street]'/></li>
+<input type="text" name="street_updated" value='$row[street]'/></li>
 <li>Barangay:</li><li>
-<input type="text" name="brgy_updated" value='$_POST[brgy]'/></li>
+<input type="text" name="brgy_updated" value='$row[brgy]'/></li>
 <li>City/Municipality:</li>
-<li><input type="text" name="citymun_updated" value='$_POST[citymun]'/></li>
+<li><input type="text" name="citymun_updated" value='$row[citymun]'/></li>
 <li>Province:</li>
-<li><input type="text" name="province_updated" value='$_POST[province]'/></li>
+<li><input type="text" name="province_updated" value='$row[province]'/></li>
 <li>ZIP Code:</li>
-<li><input type="number" name="zip_updated" value='$_POST[zip]'/></li>
+<li><input type="number" name="zip_updated" value='$row[zip]'/></li>
 <li>Type:</li>
-<li><input type="boolean" name="type_updated" value='$_POST[type]' /></li>
+<li><input type="boolean" name="type_updated" value='$row[type]' /></li>
 
 <li><input type='submit' name='new' /></li>  
 </form>  
@@ -68,7 +68,7 @@ echo "Update failed!!";
 }  
 else  
 {  
-echo "Update successfull;";  
+echo "Update successful;";  
 }
 
 ?>
