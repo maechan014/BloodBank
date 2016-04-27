@@ -11,8 +11,12 @@ session_start();
 					'$_POST[bloodrh]', '$_POST[street]', '$_POST[brgy]', '$_POST[citymun]', '$_POST[province]',
 					'$_POST[zip]', '$_POST[type]')";
 	$result = pg_query($query);
+	$rh = '-';
+	if($_POST[bloodrh] == "+"){
+		$rh = '%2B';
+	}
 	if($result){
-		header("Location: http://localhost/add_donationform.php?id=$_POST[idnumber]&btype=$_POST[bloodtype]&brh=$_POST[bloodrh]");
+		header("Location: http://localhost/add_donationform.php?id=$_POST[idnumber]&btype=$_POST[bloodtype]&brh=$rh");
 		exit();
 	}
 	else{

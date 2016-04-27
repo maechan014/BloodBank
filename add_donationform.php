@@ -7,17 +7,21 @@ li {listt-style: none;}
 </style>  
 </head>  
 <body> 	
-<h2>Enter Donation Information4</h2>  
+<h2>Enter Donation Information111</h2>
+
 <ul>
-<form name="insert" action="add_donationform.php" method="POST" >
+<form name="insert" action="add_donation.php" method="POST" >
 
- <?php
- 	$idnumber = echo $_GET['id'];
- 	$bloodtype = echo $_GET['btype'];
- 	$bloodrh =  echo $_GET['brh'];
- ?>
+<input type="hidden" name="idnumber"
+ value= "<?php echo htmlspecialchars($_GET['id']); ?>" />
 
-<li>Tracking Number2:</li><li><input type="number" name="trackingnum" /></li>  
+ <input type="hidden" name="bloodtype"
+ value= "<?php echo htmlspecialchars($_GET['btype']); ?>" />
+
+ <input type="hidden" name="bloodrh"
+ value= "<?php echo htmlspecialchars($_GET['brh']); ?>" />
+
+<li>Tracking Number:</li><li><input type="number" name="trackingnum" /></li>  
 <li>Date of donation:</li><li><input type="date" name="date" /></li>
 <li>Time of Donation:</li><li><input type="time" name="time" /></li>  
 <li>Amount (in cc):</li><li><input type="number" step="1"  name="amount" /></li>  

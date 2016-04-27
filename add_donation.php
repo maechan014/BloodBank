@@ -3,14 +3,16 @@ $db = pg_connect("host=localhost port=5432 dbname=blooddb user=postgres password
 
 $status = 'false';
 
-$query = "INSERT INTO Blood ()
-			VALUES ('$_POST[date]',
-					'$_POST[amount]',
-					'$_POST[time]',
-					$bloodtype,
+$query = "INSERT INTO Blood VALUES ('$_POST[idnumber]',
+					'$_POST[bloodtype]',
+					'$_POST[bloodrh]',
 					'$_POST[trackingnum]',
-					$idnumber,
-					'$_POST[status]')";  
+					'$_POST[date]',
+					'$_POST[time]',
+					'$_POST[amount]',
+					'false')";
+
+
 $result = pg_query($query);
 
 	if(!$result){
