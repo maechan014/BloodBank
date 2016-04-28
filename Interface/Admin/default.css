@@ -397,10 +397,9 @@ ul.contact li a.icon-rss:before{
 	background: #ECECEC;
 }
 
-/*#menu li:hover a, #menu li.active a, #menu li.active span{
-	background: #FFF;
-	color: #c72121;
-
+/*#menu li:hover a{
+	background: #c72121;
+	color: #FFF;
 }*/
 
 #menu .current_page_item a{
