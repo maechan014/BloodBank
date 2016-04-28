@@ -418,7 +418,7 @@ ul.contact li a.icon-rss:before{
 */
 
 #menu .add-menu, #menu .view-menu{
-	background: #FFF;
+	/*background: #FFF;*/
 	list-style: none;
 	position: absolute;
 	top: -9999px;
@@ -427,22 +427,21 @@ ul.contact li a.icon-rss:before{
 
 }
 
-#menu .add-menu a, #menu .view-menu a{
+/*#menu .add-menu a, #menu .view-menu a{
 	background: #FFF;
-}
+}*/
 
 #menu li:hover .add-menu, #menu li:hover .view-menu{
    position: absolute;
    top: 60px;
    display: block;
-   background: none;	
    font-size: 10px;		
 }
 
-#menu .add-menu ul, #menu.view-menu ul{
+/*#menu .add-menu ul, #menu.view-menu ul{
     padding-top:1px; 
     float:none;
-}
+}*/
 
 /*********************************************************************************/
 /* Banner                                                                        */
