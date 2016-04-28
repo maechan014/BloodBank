@@ -367,7 +367,6 @@ ul.contact li a.icon-rss:before{
 
 #menu ul{
 	display: inline-block;
-
 }
 
 #menu li{
@@ -375,18 +374,24 @@ ul.contact li a.icon-rss:before{
 	float: left;
 	text-align: center;
 	line-height: 60px;
-	
 	list-style: none;
-	padding-left: none;
 }
 
 #menu li a{
-	text-decoration: none;
+	width: 79px;
+}
+#menu li a:active{
+	background: #c72121;
+	color: #FFF;
+}
+#menu li a:hover{
+	background: #c72121;
+	color: #FFF;
 }
 
 #menu li a, #menu li span{
 	display: inline-block;
-	margin-left: 0px;
+	margin-left: 1px;
 	padding: 0em 1.5em;
 	letter-spacing: 0.10em;
 	text-decoration: none;
@@ -397,19 +402,10 @@ ul.contact li a.icon-rss:before{
 	background: #ECECEC;
 }
 
-/*#menu li:hover a{
-	background: #c72121;
-	color: #FFF;
-}*/
-
 #menu .current_page_item a{
 	background: #c72121;
 	color: #FFF;
 }
-
-#menu .icon{
-}
-
 /*
 *************************
 	* DROPDOWN
@@ -417,31 +413,36 @@ ul.contact li a.icon-rss:before{
 */
 
 
-#menu .add-menu, #menu .view-menu{
+#menu .add-menu, #menu .view-menu, #menu .update-menu{
 	background: #FFF;
 	list-style: none;
 	position: absolute;
 	top: -9999px;
 	display: block;
-	width: 120px;
+	font-size: 10px;
+	width: 124px;
+}
+#menu .add-menu li, #menu .view-menu li, #menu .update-menu li{
+	
 }
 
-#menu li:hover .add-menu, #menu li:hover .view-menu{
+#menu li:hover .add-menu , #menu li:hover .view-menu , #menu li:hover .update-menu {
+   background: #c72121;	
    position: absolute;
    top: 60px;
    display: block;
-   font-size: 11px;		
+   text-decoration: line-through;
 }
 
-#menu .add-menu ul, #menu .view-menu ul{
+#menu .add-menu ul, #menu .view-menu ul, #menu .update-menu ul{
 	background: #ECECEC;
-}
-
-#menu .add-menu ul, #menu.view-menu ul{
-    padding-top:1px; 
+	padding-top:1px; 
     float:none;
 }
 
+#menu .add-menu li:hover, #menu .view-menu li:hover, #menu .update-menu li:hover{
+	background: #c72121;
+}
 /*********************************************************************************/
 /* Banner                                                                        */
 /*********************************************************************************/
