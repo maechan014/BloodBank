@@ -418,18 +418,13 @@ ul.contact li a.icon-rss:before{
 */
 
 #menu .add-menu, #menu .view-menu{
-	/*background: #FFF;*/
+	background: #FFF;
 	list-style: none;
 	position: absolute;
 	top: -9999px;
 	display: block;
 	width: 120px;
-
 }
-
-/*#menu .add-menu a, #menu .view-menu a{
-	background: #FFF;
-}*/
 
 #menu li:hover .add-menu, #menu li:hover .view-menu{
    position: absolute;
@@ -438,10 +433,14 @@ ul.contact li a.icon-rss:before{
    font-size: 10px;		
 }
 
-/*#menu .add-menu ul, #menu.view-menu ul{
+#menu .add-menu ul, #menu .view-menu ul{
+	background: #ECECEC;
+}
+
+#menu .add-menu ul, #menu.view-menu ul{
     padding-top:1px; 
     float:none;
-}*/
+}
 
 /*********************************************************************************/
 /* Banner                                                                        */
