@@ -412,9 +412,10 @@ ul.contact li a.icon-rss:before{
 
 /*
 *************************
-	* Dropdown
+	* DROPDOWN
 *************************
 */
+
 
 #menu .add-menu, #menu .view-menu{
 	background: #FFF;
@@ -429,7 +430,7 @@ ul.contact li a.icon-rss:before{
    position: absolute;
    top: 60px;
    display: block;
-   font-size: 10px;		
+   font-size: 11px;		
 }
 
 #menu .add-menu ul, #menu .view-menu ul{
