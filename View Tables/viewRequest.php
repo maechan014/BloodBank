@@ -23,16 +23,12 @@ EOF;
       <tr>
          <th>Status</th>
          <th>Request No</th>
-         <th>Illness</th>
-         <th>First Name</th>
-         <th>Middle Name</th>
-         <th>Last Name</th>
+         <th>ID Number</th>
          <th>Date</th>
          <th>Time</th>
          <th>Date Needed</th>
-         <th>Amount</th>
-         <th>Tracking Number</th>
-         <th>ID Number</th>
+         <th>Recipient Name</th>
+         
       </tr>
    
 
@@ -45,16 +41,11 @@ EOF;
       echo "<tr>";
       echo "<td>" . $records['status'] . "</td>";
       echo "<td>" . $records['request no'] . "</td>";
-      echo "<td>" . $records['illness'] . "</td>";
-      echo "<td>" . $records['fname'] . "</td>";
-      echo "<td>" . $records['mname'] . "</td>";
-      echo "<td>" . $records['lname'] . "</td>";
+      echo "<td>" . $records['id number'] . "</td>";
       echo "<td>" . $records['date'] . "</td>";
       echo "<td>" . $records['time'] . "</td>";
       echo "<td>" . $records['date needed'] . "</td>";
-      echo "<td>" . $records['amount'] . "</td>";
-      echo "<td>" . $records['tracking number'] . "</td>";
-      echo "<td>" . $records['id number'] . "</td>";
+      echo "<td>" . $records['recipient name'] . "</td>";
       echo "</tr>";
       echo "<br>";
    }

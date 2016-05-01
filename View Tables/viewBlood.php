@@ -21,10 +21,10 @@ EOF;
    <body>  
    <table width="600" border="2" cellspacing="1" cellpadding="1">
       <tr>
+         <th>Tracking Number</th>
          <th>ID Number</th>
          <th>Blood Type</th>
          <th>Blood RH</th>
-         <th>Tracking Number</th>
          <th>Date</th>
          <th>Time</th>
          <th>Amount</th>
@@ -39,10 +39,10 @@ EOF;
    } 
    while($records = pg_fetch_assoc($clients)){
       echo "<tr>";
-      echo "<td>" . $records['idnumber'] . "</td>";
-      echo "<td>" . $records['blood type'] . "</td>";
-      echo "<td>" . $records['blood rh'] . "</td>";
       echo "<td>" . $records['tracking number'] . "</td>";
+      echo "<td>" . $records['id number'] . "</td>";
+      echo "<td>" . $records['blood type'] . "</td>";
+      echo "<td>" . $records['tblood rh'] . "</td>";
       echo "<td>" . $records['date'] . "</td>";
       echo "<td>" . $records['time'] . "</td>";
       echo "<td>" . $records['amount'] . "</td>";
