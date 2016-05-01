@@ -447,7 +447,7 @@ ul.contact li a.icon-rss:before{
 /* Banner                                                                        */
 /*********************************************************************************/
 	
-#banner-wrapper{
+/*#banner-wrapper{
 	overflow: hidden;
 	padding: 3em 0em;
 	background: #E24E2A;
@@ -487,7 +487,7 @@ ul.contact li a.icon-rss:before{
 	text-transform: uppercase;
 	font-size: 1.2em;
 	color: #A2A2A2;
-}
+}*/
 
 /*********************************************************************************/
 /* Page                                                                          */
@@ -520,7 +520,7 @@ ul.contact li a.icon-rss:before{
 /* Sidebar                                                                       */
 /*********************************************************************************/
 
-#sidebar{
+/*#sidebar{
 	float: right;
 	width: 450px;
 }
@@ -547,7 +547,7 @@ ul.contact li a.icon-rss:before{
 #stwo-col .sbox2{
 	float: right;
 	width: 210px;
-}
+}*/
 
 /*********************************************************************************/
 /* Copyright                                                                     */
@@ -631,7 +631,7 @@ ul.contact li a.icon-rss:before{
 	color: #FFF;
 }
 
-.column1,  .column2,  .column3,  .column4{
+/*.column1,  .column2,  .column3,  .column4{
 	width: 282px;
 }
 
@@ -647,7 +647,7 @@ ul.contact li a.icon-rss:before{
 .column4{
 	float: right;
 }
-
+*/
 #header-featured{
 		height: 30em;
 		background-image: url(images/header1.jpg);*/
@@ -657,7 +657,7 @@ ul.contact li a.icon-rss:before{
 }
 
 
-#slider-wrapper{
+/*#slider-wrapper{
 	padding: 6em 0em;
 	background: #DB3256;
 }
@@ -765,13 +765,13 @@ ul.contact li a.icon-rss:before{
 #slider .indicator ul li.active{
 	background: #505050;
 	border-top: solid 1px #505050;
-}
+}*/
 
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
 
-
+/*
 #footer-wrapper{
 	overflow: hidden;
 	padding: 6em 0em;
@@ -857,10 +857,4 @@ ul.contact li a.icon-rss:before{
 
 #extra2 #ebox2{
 	float: right;
-}
-
-/*
-*************************
-	* Dropdown
-*************************
-*/
+}*/

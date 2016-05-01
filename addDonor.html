@@ -1,23 +1,30 @@
 <!DOCTYPE html>  
 <head> 
-<title>Add Donor</title>  
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-<style>  
-li {listt-style: none;}  
-</style>  
+	<title>Add Donor</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
 </head>  
-<body>  
-<h2>Add Donor</h2>  
-<ul>  
-<form name="add_donor" action="add_donor.php" method="POST" >  
-<li>ID Number:</li><li><input type="number" name="idnumber" /></li>
-<li>First Name:</li><li><input type="text" name="fname" /></li>  
-<li>Middle Name:</li><li><input type="text" name="mname" /></li>  
-<li>Last Name:</li><li><input type="text" name="lname" /></li>  
-<li>Phone:</li><li><input type="number" name="phone" /></li>
-<li>Type:</li><li><input type="boolean" name="type" /></li>
-<li><input type="submit" /></li>  
-</form>  
-</ul>  
+<body> 
+	<h2>Enter Donor Information</h2>  
+	<form name="add" action="addDonor.php" method="POST">
+		First name: <input type = "text" name= "fname"><br>
+		Middle name: <input type = "text" name= "mname"><br>
+		Last name: <input type = "text" name= "lname"><br>
+		Birthday: <input type = "date" name= "birthday"><br>
+		Height: <input type= "number" name= "height"><br>
+		Weight: <input type= "number" name= "weight"><br>
+		Address: <br>
+		House No.: <input type= "number" name = "houseno"><br>
+		Street: <input type ="text" name= "street"><br>
+		Barangay: <input type ="text" name= "barangay"><br>
+		City/Municipality: <input type ="text" name= "citymun"><br>
+		Province: <input type ="text" name= "province"><br>
+		Zip code <input type ="number" name= "zipcode"><br>
+		Ethnicity: <input type ="text" name= "ethnicity"><br>
+		Blood type: <input type ="text" name= "bloodtype"><br>
+		Blood RH: <input type ="text" name= "bloodrh"><br>
+		Amount donated (in galloons): <input type= "number" name= "galloons"><br>
+		Total amount donated: <input type= "number" name= "totalamountdonated"><br>
+		<input type= "submit">
+	</form>
 </body>  
 </html>

@@ -1,0 +1,17 @@
+DATA CHECKING
+*kulang pa ni, edit lang if naa pay dapat i check
+
+CLIENT
+->first and last name should not be null
+->client type should not be null
+
+DONOR
+->barangay, city/municipality, province, zipcode, blood rh, bloodtype, birthday, weight, height, galloons
+
+-> donor's age should be legal
+-> BloodType - A, B, AB, O
+-> RH - +,-
+-> galloons
+
+
+

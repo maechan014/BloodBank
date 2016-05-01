@@ -7,7 +7,7 @@ li {listt-style: none;}
 </style>  
 </head>  
 <body> 	
-<h2>Enter Donation Information111</h2>
+<h2>Enter Donation Information</h2>
 
 <ul>
 <form name="insert" action="add_donation.php" method="POST" >
