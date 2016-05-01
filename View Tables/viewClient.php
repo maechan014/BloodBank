@@ -21,7 +21,7 @@ EOF;
    <body>  
    <table width="600" border="2" cellspacing="1" cellpadding="1">
       <tr>
-         <th>Status</th>
+         <!-- <th>Status</th>
          <th>Request No</th>
          <th>Illness</th>
          <th>First Name</th>
@@ -40,7 +40,13 @@ EOF;
          <th>Zip Code</th>
          <th>Total Blood Donated</th>
          <th>Blood in Galloons</th>
-         <th>Donor or Not?</th>
+         <th>Donor or Not?</th> -->
+
+         <th>ID Number</th>
+         <th>First Name</th>
+         <th>Middle Name</th>
+         <th>Last Name</th>
+         <th>Client Type</th>
       </tr>
    
 
@@ -55,22 +61,7 @@ EOF;
       echo "<td>" . $records['fname'] . "</td>";
       echo "<td>" . $records['mname'] . "</td>";
       echo "<td>" . $records['lname'] . "</td>";
-      echo "<td>" . $records['age'] . "</td>";
-      echo "<td>" . $records['bdate'] . "</td>";
-      echo "<td>" . $records['phone'] . "</td>";
-      echo "<td>" . $records['ethnicity'] . "</td>";
-      echo "<td>" . $records['height'] . "</td>";
-      echo "<td>" . $records['weight'] . "</td>";
-      echo "<td>" . $records['bloodtype'] . "</td>";
-      echo "<td>" . $records['bloodrh'] . "</td>";
-      echo "<td>" . $records['street'] . "</td>";
-      echo "<td>" . $records['brgy'] . "</td>";
-      echo "<td>" . $records['citymun'] . "</td>";
-      echo "<td>" . $records['province'] . "</td>";
-      echo "<td>" . $records['zip'] . "</td>";
-      echo "<td>" . $records['total blood donated'] . "</td>";
-      echo "<td>" . $records['blood in galloons'] . "</td>";
-      echo "<td>" . $records['isdonor'] . "</td>";
+      echo "<td>" . $records['client_type'] . "</td>";
       echo "</tr>";
       echo "<br>";
    }

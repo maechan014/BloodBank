@@ -4,11 +4,11 @@ DATA CHECKING
 *kulang pa ni, edit lang if naa pay dapat i check sa mga data inputs. if okay na, butangi lang ug 'DONE' or something 
 
 CLIENT
-->first and last name should not be null
-->client type should not be null
+->first and last name should not be null (done)
+->client type should not be null (done)
 
 DONOR
-->barangay, city/municipality, province, zipcode, blood rh, bloodtype, birthday, weight, height, galloons
+->barangay, city/municipality, province, zipcode, blood rh, bloodtype, birthday, weight, height, gallons (done)
 -> donor's age should be legal
 -> BloodType - A, B, AB, O (done)
 -> RH - +,- (done)
