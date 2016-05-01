@@ -1,0 +1,49 @@
+
+------------------------------------------------------------------------------------------------------
+DATA CHECKING
+*kulang pa ni, edit lang if naa pay dapat i check sa mga data inputs. if okay na, butangi lang ug 'DONE' or something 
+
+CLIENT
+->first and last name should not be null
+->client type should not be null
+
+DONOR
+->barangay, city/municipality, province, zipcode, blood rh, bloodtype, birthday, weight, height, galloons
+-> donor's age should be legal
+-> BloodType - A, B, AB, O (done)
+-> RH - +,- (done)
+-> gallons
+
+BLOOD
+not null: dapat not null tanan?
+
+DONOR_ILLNESS
+not null: tanan ? wa bitaw ko kahibaw
+
+REQUEST
+not null: tanan except recipient name or basin required na ?
+
+
+--------------------------------------------------------------------------------------------------------
+ADD STUFF
+->add client (done)
+->add donor (almost there)
+-> add donation
+
+UPDATE
+->Client
+->Donor
+->Blood
+->Donor Illness
+->Request
+
+DELETE
+
+
+VIEW
+-> search
+
+
+
+
+
