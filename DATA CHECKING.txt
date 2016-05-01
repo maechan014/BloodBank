@@ -1,5 +1,5 @@
 DATA CHECKING
-*kulang pa ni, edit lang if naa pay dapat i check
+*kulang pa ni, edit lang if naa pay dapat i check. if okay na, butangi lang ug 'DONE' or something 
 
 CLIENT
 ->first and last name should not be null

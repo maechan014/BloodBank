@@ -20,8 +20,20 @@
 		Province: <input type ="text" name= "province"><br>
 		Zip code <input type ="number" name= "zipcode"><br>
 		Ethnicity: <input type ="text" name= "ethnicity"><br>
-		Blood type: <input type ="text" name= "bloodtype"><br>
-		Blood RH: <input type ="text" name= "bloodrh"><br>
+		Blood type: 
+			<select name="bloodtype">
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="AB">AB</option>
+				<option value="O">O</option>
+			</select>
+		<br>
+		Blood RH: 
+			<select name="bloodrh">
+				<option value="+">+</option>
+				<option value="-">-</option>
+			</select>
+		<br>
 		Amount donated (in galloons): <input type= "number" name= "galloons"><br>
 		Total amount donated: <input type= "number" name= "totalamountdonated"><br>
 		<input type= "submit">
