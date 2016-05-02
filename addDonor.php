@@ -9,14 +9,8 @@
 
 
 	//add donor
-	$maxID = "SELECT max(idno) from Client";
-	$id = intval(pg_query($maxID));
-
-	$row = pg_fetch_row($id);
-	$max = "$row[0]";
-
-	// $intmax = int($max);
-	$intmax = 6;
+	$idnumber = pg_fetch_result(pg_query("SELECT max (idno) from client"), 0);
+	echo($idnumber);
 
 	$rh = '-';
 	if($_POST[bloodrh] == "+"){
@@ -24,7 +18,7 @@
 	}
 
 	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, weight, height) 
-					VALUES ('$id',
+					VALUES ('$idnumber',
 							'$_POST[houseno]', 
 							'$_POST[street]', 
 							'$_POST[barangay]', 
