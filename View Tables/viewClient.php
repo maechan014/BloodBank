@@ -21,27 +21,6 @@ EOF;
    <body>  
    <table width="600" border="2" cellspacing="1" cellpadding="1">
       <tr>
-         <!-- <th>Status</th>
-         <th>Request No</th>
-         <th>Illness</th>
-         <th>First Name</th>
-         <th>Middle Name</th>
-         <th>Last Name</th>
-         <th>Date</th>
-         <th>Time</th>
-         <th>Date Needed</th>
-         <th>Amount</th>
-         <th>Tracking Number</th>
-         <th>ID</th>
-         <th>Street</th>
-         <th>Barangay</th>
-         <th>City/Municipality</th>
-         <th>Province</th>
-         <th>Zip Code</th>
-         <th>Total Blood Donated</th>
-         <th>Blood in Galloons</th>
-         <th>Donor or Not?</th> -->
-
          <th>ID Number</th>
          <th>First Name</th>
          <th>Middle Name</th>
@@ -57,7 +36,7 @@ EOF;
    } 
    while($records = pg_fetch_assoc($clients)){
       echo "<tr>";
-      echo "<td>" . $records['idnumber'] . "</td>";
+      echo "<td>" . $records['idno'] . "</td>";
       echo "<td>" . $records['fname'] . "</td>";
       echo "<td>" . $records['mname'] . "</td>";
       echo "<td>" . $records['lname'] . "</td>";

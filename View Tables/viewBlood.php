@@ -40,7 +40,7 @@ EOF;
    while($records = pg_fetch_assoc($clients)){
       echo "<tr>";
       echo "<td>" . $records['tracking number'] . "</td>";
-      echo "<td>" . $records['id number'] . "</td>";
+      echo "<td>" . $records['idno'] . "</td>";
       echo "<td>" . $records['blood type'] . "</td>";
       echo "<td>" . $records['tblood rh'] . "</td>";
       echo "<td>" . $records['date'] . "</td>";

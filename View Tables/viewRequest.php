@@ -41,7 +41,7 @@ EOF;
       echo "<tr>";
       echo "<td>" . $records['status'] . "</td>";
       echo "<td>" . $records['request no'] . "</td>";
-      echo "<td>" . $records['id number'] . "</td>";
+      echo "<td>" . $records['idno'] . "</td>";
       echo "<td>" . $records['date'] . "</td>";
       echo "<td>" . $records['time'] . "</td>";
       echo "<td>" . $records['date needed'] . "</td>";

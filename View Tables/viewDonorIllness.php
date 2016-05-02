@@ -33,7 +33,7 @@ EOF;
    } 
    while($records = pg_fetch_assoc($clients)){
       echo "<tr>";
-      echo "<td>" . $records['idnumber'] . "</td>";
+      echo "<td>" . $records['idno'] . "</td>";
       echo "<td>" . $records['illness'] . "</td>";
       echo "</tr>";
       echo "<br>";

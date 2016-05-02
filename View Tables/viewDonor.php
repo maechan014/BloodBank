@@ -10,7 +10,7 @@ EOF;
 
 <!DOCTYPE html>  
    <head> 
-   <title>View All Clients</title>  
+   <title>View All Donors</title>  
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
    <style>  
       li {
@@ -48,7 +48,7 @@ EOF;
    } 
    while($records = pg_fetch_assoc($clients)){
       echo "<tr>";
-      echo "<td>" . $records['idnumber'] . "</td>";
+      echo "<td>" . $records['idno'] . "</td>";
       echo "<td>" . $records['birthday'] . "</td>";
       echo "<td>" . $records['age'] . "</td>";
       echo "<td>" . $records['weight'] . "</td>";
