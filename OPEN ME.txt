@@ -41,9 +41,22 @@ DELETE
 
 
 VIEW
--> search
+-> search bloodtype
+-> search donor
 
 
+--------------------------------------------------------------------------------------------------------
+VIEWS THAT MUST BE CREATED (please create this on your db para mu work ang search)
 
+CREATE VIEW DONOR_VIEW AS
+select idno, fname, mname, lname, birthday, age, weight,
+height, ethnicity, houseno, street, barangay, citymun,
+province, zipcode, bloodtype, bloodrh, gallons, amountdonated
+FROM Client NATURAL JOIN DONOR
+
+CREATE VIEW BLOODTYPE_VIEW AS
+select trackingno, idno, fname, mname, lname, bloodtype,
+time, date, withdrawalstatus
+FROM BLOOD natural join Client
 
 
