@@ -4,15 +4,22 @@ session_start();
 
 	echo $type ? 'true' : 'false';
 
+	//add to client relation
+	$addclient = "INSERT INTO client (fname, mname, lname, client_type)
+			VALUES ('$_POST[fname]', '$_POST[mname]', '$_POST[lname]', 'false')";
+	$result = pg_query($addclient);
+
+	$idnumber = pg_fetch_result(pg_query("SELECT max (idno) from client"), 0);
+
 	$date = pg_fetch_result(pg_query("SELECT now()::timestamp"), 0);
 
-	$query = "INSERT INTO Request (idno, dateneeded, recipientname, status, date)
-			VALUES ('$_POST[idno]', '$_POST[dateneeded]', '$_POST[recipientname]', 'false', '$date')";
+	$query = "INSERT INTO Request (idno, dateneeded, recipientname, status, date, bloodtype, bloodrh)
+			VALUES ('$idnumber', '$_POST[dateneeded]', '$_POST[recipientname]', 'false', '$date', '$_POST[bloodtype]', '$_POST[bloodrh]')";
 	$result = pg_query($query);
 
 	
 	if($result){
-		header("Location: add_donationform.php");
+		header("Location: Interface/Admin/admin-homepage.html");
 		exit();
 	}
 	else{
