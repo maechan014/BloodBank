@@ -60,3 +60,4 @@ time, date, withdrawalstatus
 FROM BLOOD natural join Client
 
 
+SELECT LPAD (idno::text, 10, '0'), * FROM CLIENT

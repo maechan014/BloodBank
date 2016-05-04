@@ -41,7 +41,7 @@
 
 	
 	if($donorResult){
-		header("Location: addDonation.php");
+		header("Location: add_donationform.php?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
 		exit();
 	}
 	else{
