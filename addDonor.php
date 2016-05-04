@@ -11,13 +11,15 @@
 	//add donor
 	$idnumber = pg_fetch_result(pg_query("SELECT max (idno) from client"), 0);
 	echo($idnumber);
+	$age = 19;
+	//$age = pg_fetch_result(pg_query("SELECT age (birthday) from Client where (idno = (SELECT max (idno) from Client))"), 0);
 
 	$rh = '-';
 	if($_POST[bloodrh] == "+"){
 		$rh = '%2B';
 	}
 
-	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, weight, height) 
+	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height) 
 					VALUES ('$idnumber',
 							'$_POST[houseno]', 
 							'$_POST[street]', 
@@ -28,7 +30,8 @@
 							'$_POST[ethnicity]', 
 							'$rh', 
 							'$_POST[bloodtype]', 
-							'$_POST[birthday]', 
+							'$_POST[birthday]',
+							'$age', 
 							'$_POST[weight]', 
 							'$_POST[height]')";
 	$donorResult = pg_query($donorQuery);
