@@ -1,5 +1,5 @@
 <?php
-	$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
+	$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=123");
 
 	// //add client
 	$clienttype = 'true';
@@ -41,9 +41,8 @@
 		exit();
 	}
 	else{
-		echo intval($id);
 		echo pg_last_error($db);
-		// header("Location: addDonor.html");
+		//header("Location: addDonor.html");
 		exit();
 	}	
 

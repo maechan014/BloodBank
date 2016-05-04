@@ -22,6 +22,9 @@ EOF;
    <table width="600" border="2" cellspacing="1" cellpadding="1">
       <tr>
          <th>ID Number</th>
+         <th>First Name</th>
+         <th>Middle Name</th>
+         <th>Last Name</th>
          <th>Birthday</th>
          <th>Age</th>
          <th>Weight</th>
@@ -49,6 +52,9 @@ EOF;
    while($records = pg_fetch_assoc($clients)){
       echo "<tr>";
       echo "<td>" . $records['idno'] . "</td>";
+      echo "<td>" . $records['fname'] . "</td>";
+      echo "<td>" . $records['mname'] . "</td>";
+      echo "<td>" . $records['lname'] . "</td>";
       echo "<td>" . $records['birthday'] . "</td>";
       echo "<td>" . $records['age'] . "</td>";
       echo "<td>" . $records['weight'] . "</td>";
