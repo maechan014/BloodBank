@@ -1,0 +1,68 @@
+<!DOCTYPE html>  
+<head> 
+	<title>Add Donor</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
+	<link href="addDonor.css" rel="stylesheet" type="text/css" media="all" />
+</head>  
+<body> 
+	
+	
+	<form name="add" action="addDonor.php" method="POST">
+		<div id="form-style">
+			<h2>Donor Information</h2>  
+			<li><label>Full Name</label>
+				<ul>
+					<div id="fullname">
+						<li><input type = "text" name= "fname" placeholder="First Name"></li> <span class="required">*</span>
+						<li><input type = "text" name= "mname" placeholder="Middle Name"></li>
+						<li><input type = "text" name= "lname" placeholder="Last Name"></li> <span class="required">*</span>
+					</div>
+				</ul>
+				<li><label>Birthday</label>
+				<li><input type = "date" name= "birthday"></li>
+				<li><input type ="text" name= "ethnicity" placeholder="Ethnicity"></li>
+
+			<li><label>Address</label></li>
+				<ul>
+					<div id="address-not">
+						<li><input type= "number" name = "houseno" placeholder="House No."></li>
+						<li><input type ="text" name= "street" placeholder="Street"></li>
+					</div>
+
+					<div id="address-req">
+						<li><input type ="text" name= "barangay" placeholder="Barangay"></li> <span class="required">*</span>
+						<li><input type ="text" name= "citymun" placeholder="City/Municipality"></li> <span class="required">*</span>
+						<li><input type ="text" name= "province" placeholder="Province"></li> <span class="required">*</span>
+						<li><input type ="number" name= "zipcode" placeholder="Zip Code"></li> <span class="required">*</span>
+					</div>
+				</ul>
+			
+			<li><label>Body Metrics</label></li>
+				
+				<div id="physique">	
+					<li><input type= "number" name= "height" placeholder="Height"></li> 
+					<li><input type= "number" name= "weight" placeholder="Weight"></li>
+				</div>
+				
+			<li><label>Blood</label></li>	
+				<div id="blood">
+					<li>Blood type: 
+						<select name="bloodtype">
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="AB">AB</option>
+							<option value="O">O</option>
+						</select>
+					</li>
+					<li>Blood RH: 
+						<select name="bloodrh">
+							<option value="+">+</option>
+							<option value="-">-</option>
+						</select>
+					</li>
+				</div>
+			<li><input type="submit" name="submit" value="Submit"></li>
+		</div>
+	</form>
+</body>  
+</html>

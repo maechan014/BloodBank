@@ -1,0 +1,161 @@
+/*
+*************************
+	* BODY
+*************************
+*/
+
+
+html, body{
+	height: 100%;
+}
+
+body{
+	margin: 0px;
+	padding: 0px;
+	background: orange;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 11pt;
+	font-weight: 100;
+	color: #6c6c6c;
+}
+
+/*
+*************************
+	* HEADER
+*************************
+*/
+
+
+/*
+*************************
+	* MAIN
+*************************
+*/
+
+#main{
+	height: 1200px;
+}
+
+/*
+*************************
+	* FOOTER
+*************************
+*/
+
+#footer{
+	background: ;
+
+}
+
+/*
+*************************
+	* LOGO
+*************************
+*/
+
+#logo{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #FFF;
+}
+
+#logo h1{
+	display: inline-block;
+	font-size: 2.5em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #2C383B;
+	padding-right: .50em;
+	border-right: 1px solid rgba(0,0,0,.3);
+	padding-left: 1.5em;
+}
+
+#logo span{
+	position: absolute;
+	top: 3.6em;
+	display: inline-block;
+	padding-left: .5em;
+	letter-spacing: 0.10em;
+	text-transform: uppercase;
+	font-size: 0.90em;
+}
+
+#logo a{
+	text-decoration: none;
+	color: #2C383B;
+}
+
+/*
+*************************
+	* MENU
+*************************
+*/
+
+#menu{
+	position: absolute;
+	right: 0px;
+	top: 1em;
+}
+
+#menu li{
+	display: inline;
+	float: left;
+	text-align: center;
+	line-height: 60px;
+	margin-right: 1px;
+	display: inline-block;
+	margin-left: 0px;
+	padding: 0em 1.5em;
+	letter-spacing: 0.10em;
+	text-decoration: none;
+	font-size: 1em;
+	text-transform: uppercase;
+	outline: 0;
+	color: black;
+	background: #ECECEC;
+	width: 79px;
+}
+
+#menu li a{
+	text-decoration: none;
+	color: black;
+}
+
+/*
+*************************
+	* DROPDOWN
+*************************
+*/
+
+#menu .add-menu, #menu .view-menu, #menu .update-menu{
+	background: #FFF;
+	list-style: none;
+	position: absolute;
+	top: -9999px;
+	font-size: 10px;
+	width: 124px;
+}
+
+/*
+#menu .add-menu li, #menu .view-menu li, #menu .update-menu li{
+	position: absolute;
+	
+}*/
+
+#menu li:hover .add-menu , #menu li:hover .view-menu , #menu li:hover .update-menu {
+   position: absolute;
+   top: 40px;
+   display: block;
+}
+#menu li:hover .add-menu , #menu li:hover .view-menu , #menu li:hover .update-menu{
+	top: 60px;
+	display: block;
+}
+
+#menu .add-menu li:hover a, #menu .view-menu li:hover a, #menu .update-menu li:hover a{
+		
+}
+
+
