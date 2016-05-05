@@ -24,7 +24,7 @@ body{
     margin: 10px 0 0 0;
 }
 
-#fullname li, #physique li , #address-not li, #address-req li, #blood li{
+#fullname li, #blood li{
 	display: inline-block;
 
 }
@@ -57,9 +57,4 @@ body{
     -moz-box-shadow:none;
     -webkit-box-shadow:none;
     cursor: pointer;
-}
-
-.required{
-	color: red;
-	padding-left: 2px;
 }

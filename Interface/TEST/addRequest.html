@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>  
+<head> 
+	<title>Add Request</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+	<link href="addRequest.css" rel="stylesheet" type="text/css" media="all" />
+</head>  
+<body>  
+	   
+	<form name="insert" action="addRequest.php" method="POST" >  
+		<div id="form-style">	
+			<h2>Enter Client Information</h2>
+			<ul>
+				<li><label>Full Name</label></li>
+					<div id="fullname">
+							<li><input type="text" name="fname" placeholder="First"></li>
+							<li><input type="text" name="mname" placeholder="Middle"></li>
+							<li><input type="text" name="lname" placeholder="Last"></li>
+					</div>
+				<li><label>Blood</label></li>	
+				<div id="blood">
+					<li>Blood type: 
+						<select name="bloodtype">
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="AB">AB</option>
+							<option value="O">O</option>
+						</select>
+					</li>
+					<li>Blood RH: 
+						<select name="bloodrh">
+							<option value="+">+</option>
+							<option value="-">-</option>
+						</select>
+					</li>
+				</div>
+				<li><label>Date Needed</label></li>
+				<li><input type="date" name = "dateneeded"></li>
+				<li><label>Recipient Name</label></li>
+				<li><input type= "text" name = "recipientname" placeholder="Recipient Name"></li>
+				
+				<li><input type="submit" name="submit" value="Submit"></li>
+			</ul>
+		</div>
+	</form>
+</body>  
+</html>
