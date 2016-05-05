@@ -12,7 +12,6 @@
 	$idnumber = pg_fetch_result(pg_query("SELECT max (idno) from client"), 0);
 	echo($idnumber);
 	$age = 19;
-	//$age = pg_fetch_result(pg_query("SELECT age (birthday) from Client where (idno = (SELECT max (idno) from Client))"), 0);
 	$age = pg_fetch_result(pg_query("SELECT EXTRACT (year from age('$_POST[birthday]'::date))"), 0);
 
 	$rh = '-';
@@ -37,8 +36,16 @@
 							'$_POST[height]')";
 	$donorResult = pg_query($donorQuery);
 
-	// $age = "SELECT age (birthday) from Client where (idno = (SELECT max (idno) from Client))";
+	$illness = $_POST[illness];
+	$data = preg_split("/[\r\n,]+/", $illness, -1, PREG_SPLIT_NO_EMPTY);
 
+	foreach ($data as $value) {
+		$illnessQuery = "INSERT INTO donor_illness (idno, illness) VALUES ('$idnumber', '$value')";
+		$illnessResult = pg_query($illnessQuery);
+		if(!illnessResult){
+			echo pg_last_error($db);
+		}
+	}
 	
 	if($donorResult){
 		header("Location: add_donationform.php?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
