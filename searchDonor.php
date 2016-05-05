@@ -1,5 +1,5 @@
 <?php
-$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=123");
+$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=9718");
 $idno = (int)$_POST['idnumber'];
    $sql =<<<EOF
       SELECT * FROM DONOR_VIEW where idno='$idno';
@@ -27,6 +27,7 @@ EOF;
          <th>First Name</th>
          <th>Middle Name</th>
          <th>Last Name</th>
+         <th>Phone</th>
          <th>Birthday</th>
          <th>Age</th>
          <th>Weight</th>
@@ -57,6 +58,7 @@ EOF;
       echo "<td>" . $records['fname'] . "</td>";
       echo "<td>" . $records['mname'] . "</td>";
       echo "<td>" . $records['lname'] . "</td>";
+      echo "<td>" . $records['phone'] . "</td>";
       echo "<td>" . $records['birthday'] . "</td>";
       echo "<td>" . $records['age'] . "</td>";
       echo "<td>" . $records['weight'] . "</td>";
@@ -76,7 +78,6 @@ EOF;
       echo "<br>";
    }
    pg_close($db);
-$result = pg_query($query);   
 ?>
 
 </table>

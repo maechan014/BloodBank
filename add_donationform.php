@@ -20,8 +20,7 @@ li {listt-style: none;}
 
  <input type="hidden" name="bloodrh"
  value= "<?php echo htmlspecialchars($_GET['brh']); ?>" />
-
-<li>Tracking Number:</li><li><input type="number" name="trackingnum" /></li>  
+  
 <li>Date of donation:</li><li><input type="date" name="date" /></li>
 <li>Time of Donation:</li><li><input type="time" name="time" /></li>  
 <li>Amount (in cc):</li><li><input type="number" step="1"  name="amount" /></li>  
