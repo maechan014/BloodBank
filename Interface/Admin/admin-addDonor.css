@@ -350,7 +350,7 @@ a:hover{
 	bottom: 0;
 	margin: 10px auto;
 	max-width: 1000px;
-    height: 500px;
+    min-height: 600px;
     padding: 10px 10px 10px 20px;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     border: 5px solid #9c9c9c;
