@@ -329,9 +329,10 @@ a:hover{
 *************************
 */
 
+
 #content{
     background: #c72121;
-    min-height: 700px;
+    min-height: 800px;
 }
 
 /*
@@ -339,21 +340,29 @@ a:hover{
     * CONTENT STYLE
 *************************
 */
-
 #form-style{
-	position: absolute;
-	top: 150px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 10px auto;
-	max-width: 1000px;
-    height: 500px;
+    position: relative;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 50%;
     padding: 10px 10px 10px 20px;
-    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    border: 5px solid #9c9c9c;
+    font: 12px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    border: 1px solid #c72121;
+    color: black;
     background: #FFF;
 
+}
+
+#form-style h1{
+    text-align: center;
+}
+
+#form-style h1, h2{
+     color: black;
 }
 
 #form-style li {
@@ -363,37 +372,38 @@ a:hover{
     margin: 10px 0 0 0;
 }
 
-#fullname li, #blood li{
-	display: inline-block;
-
-}
-
 #form-style label{
-	margin:0 0 3px 0;
-    padding:0px;
-    display:block;
-    font-weight: bold;
-    text-decoration: underline;
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
 }
+
+#form-style input {
+    width:200px; 
+}
+
+#form-style button{
+    margin-right: 156px;
+}
+
 #form-style input[type=text]:focus, 
 #form-style input[type=date]:focus, 
 #form-style input[type=number]:focus{
-	-moz-box-shadow: 0 0 8px #9c9c9c;
-    -webkit-box-shadow: 0 0 8px #9c9c9c;
-    box-shadow: 0 0 8px #9c9c9c;
-    border: 1px solid #9c9c9c;
 }
 
 #form-style input[type=submit], #form-style input[type=button]{
-    background: #9c9c9c;
+    background: #c72121;
     padding: 8px 15px 8px 15px;
     border: none;
-    color: #fff;
+    color: #FFF;
 }
 #form-style input[type=submit]:hover, #form-style input[type=button]:hover{
-    background: #9c9c9c;
-    box-shadow:none;
-    -moz-box-shadow:none;
-    -webkit-box-shadow:none;
     cursor: pointer;
+}
+
+.required{
+    color: red;
+    padding-left: 2px;
 }
