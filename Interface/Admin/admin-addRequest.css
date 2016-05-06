@@ -160,6 +160,7 @@ a:hover{
     position: absolute;
     right: 0;
     top: 1em;
+    z-index: 999;
 }
 
 #menu ul{
@@ -218,6 +219,7 @@ a:hover{
     display: block;
     font-size: 10px;
     width: 124px;
+    z-index: 999;
 }
 #menu .add-menu li, #menu .view-menu li, #menu .update-menu li{
     
@@ -354,6 +356,7 @@ a:hover{
     border: 1px solid #c72121;
     color: black;
     background: #FFF;
+   /* z-index: -9999;*/
 
 }
 
