@@ -9,58 +9,50 @@
 	
 	<form name="add" action="addDonor.php" method="POST">
 		<div id="form-style">
-			<h2>Donor Information</h2>  
-			<li><label>Full Name</label>
-				<ul>
+			<h1>Donor Information</h2>  
+				<h2>Personal Information</h1>
+				<ul id="personalInfo">
 					<div id="fullname">
-						<li><input type = "text" name= "fname" placeholder="First Name"></li> <span class="required">*</span>
-						<li><input type = "text" name= "mname" placeholder="Middle Name"></li>
-						<li><input type = "text" name= "lname" placeholder="Last Name"></li> <span class="required">*</span>
-					</div>
-				</ul>
-				<li><label>Birthday</label>
-				<li><input type = "date" name= "birthday"></li>
-				<li><input type ="text" name= "ethnicity" placeholder="Ethnicity"></li>
-
-			<li><label>Address</label></li>
-				<ul>
-					<div id="address-not">
-						<li><input type= "number" name = "houseno" placeholder="House No."></li>
-						<li><input type ="text" name= "street" placeholder="Street"></li>
+						<li><label>First Name: </label> <input type = "text" name= "fname" required><span class="required">*</span></li> 
+						<li><label>Middle Name: </label><input type = "text" name= "mname"></li>
+						<li><label>Last Name: </label><input type = "text" name= "lname" required><span class="required">*</span></li> 
 					</div>
 
-					<div id="address-req">
-						<li><input type ="text" name= "barangay" placeholder="Barangay"></li> <span class="required">*</span>
-						<li><input type ="text" name= "citymun" placeholder="City/Municipality"></li> <span class="required">*</span>
-						<li><input type ="text" name= "province" placeholder="Province"></li> <span class="required">*</span>
-						<li><input type ="number" name= "zipcode" placeholder="Zip Code"></li> <span class="required">*</span>
-					</div>
+					<li><label>Birthday: </label><input type = "date" name= "birthday" required><span class="required">*</span></li>
+					<li><label>Ethinicity: </label><input type ="text" name= "ethnicity"><span class="required">*</span></li>
+
 				</ul>
-			
-			<li><label>Body Metrics</label></li>
 				
-				<div id="physique">	
-					<li><input type= "number" name= "height" placeholder="Height"></li> 
-					<li><input type= "number" name= "weight" placeholder="Weight"></li>
-				</div>
+			<h2>Address</h2>
+				<ul id="address">
+					<li><label>House No.: </label><input type= "number" name = "houseno"></li>
+					<li><label>Street: </label><input type ="text" name= "street"></li>
+					<li><label>Barangay: </label></label><input type ="text" name= "barangay" required><span class="required">*</span></li> 
+					<li><label>City/Municipality: </label><input type ="text" name= "citymun" required><span class="required">*</span></li>
+					<li><label>Province: </label><input type ="text" name= "province" required><span class="required">*</span></li>
+					<li><label>Zip Code: </label><input type ="number" name= "zipcode" required><span class="required">*</span></li>
+				</ul>
+
+			<h2>Body Metrics</h2>
 				
-			<li><label>Blood</label></li>	
-				<div id="blood">
-					<li>Blood type: 
+				<ul id="body-metrics">
+					<li><label>Height: </label><input type= "number" name= "height" required><span class="required">*</span></li> 
+					<li><label>Weight: </label><input type= "number" name= "weight" required><span class="required">*</span></li>
+					<li><label>Blood Type: </label>
 						<select name="bloodtype">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="AB">AB</option>
 							<option value="O">O</option>
 						</select>
-					</li>
-					<li>Blood RH: 
+					<span class="required">*</span></li>
+					<li><label>Blood RH: </label>
 						<select name="bloodrh">
 							<option value="+">+</option>
 							<option value="-">-</option>
 						</select>
-					</li>
-				</div>
+						<span class="required">*</span></li>
+				</ul>
 			<li><input type="submit" name="submit" value="Submit"></li>
 		</div>
 	</form>

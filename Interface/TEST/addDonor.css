@@ -7,14 +7,17 @@ body{
 	left: 0;
 	right: 0;
 	bottom: 0;
-	margin: 10px auto;
-	max-width: 1000px;
-    height: 500px;
+	margin: auto;
+	width: 500px;
+    height: 800px;
     padding: 10px 10px 10px 20px;
-    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    border: 5px solid #9c9c9c;
-    background: #FFF;
+    font: 11px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background: #e3e3e3;
 
+}
+
+#form-style h1{
+    text-align: center;
 }
 
 #form-style li {
@@ -24,25 +27,29 @@ body{
     margin: 10px 0 0 0;
 }
 
-#fullname li, #physique li , #address-not li, #address-req li, #blood li{
-	display: inline-block;
-
-}
-
 #form-style label{
-	margin:0 0 3px 0;
-    padding:0px;
-    display:block;
-    font-weight: bold;
-    text-decoration: underline;
+	width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
 }
+
+#form-style input {
+    width:200px; 
+}
+
+#form-style button{
+    margin-right: 156px;
+}
+
 #form-style input[type=text]:focus, 
 #form-style input[type=date]:focus, 
 #form-style input[type=number]:focus{
-	-moz-box-shadow: 0 0 8px #9c9c9c;
-    -webkit-box-shadow: 0 0 8px #9c9c9c;
-    box-shadow: 0 0 8px #9c9c9c;
-    border: 1px solid #9c9c9c;
+/*	-moz-box-shadow: 0 0 1px #c72121;
+    -webkit-box-shadow: 0 0 1px #c72121;*/
+   /* box-shadow: 0 0 1px #c72121;*/
+   /* border: 1px solid #c72121;*/
 }
 
 #form-style input[type=submit], #form-style input[type=button]{
@@ -63,3 +70,4 @@ body{
 	color: red;
 	padding-left: 2px;
 }
+
