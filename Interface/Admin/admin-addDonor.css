@@ -217,6 +217,7 @@ a:hover{
 	display: block;
 	font-size: 10px;
 	width: 124px;
+	z-index: 999;
 }
 #menu .add-menu li, #menu .view-menu li, #menu .update-menu li{
 	
