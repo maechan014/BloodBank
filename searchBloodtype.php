@@ -25,9 +25,7 @@ EOF;
 
          <th>Tracking Number</th>
          <th>Donor ID</th>
-         <th>Donor's First Name</th>
-         <th>Donor's Middle Name</th>
-         <th>Donor's Last Name</th>
+         <th>Donor's Name</th>
          <th>Blood Type</th>
          <th>Amount</th>
          <th>Time</th>
@@ -46,9 +44,7 @@ EOF;
       echo "<tr>";
       echo "<td>" . $records['trackingno'] . "</td>";
       echo "<td>" . $records['idno'] . "</td>";
-      echo "<td>" . $records['fname'] . "</td>";
-      echo "<td>" . $records['mname'] . "</td>";
-      echo "<td>" . $records['lname'] . "</td>";
+      echo "<td>" . $records['fname'] . " " . $records['mname'] . " " . $records['lname'] . "</td>";
       echo "<td>" . $records['bloodtype'] . "</td>";
       echo "<td>" . $records['amount'] . "</td>";
       echo "<td>" . $records['time'] . "</td>";
