@@ -120,7 +120,10 @@ EOF;
       echo "<td>" . $records['bloodrh'] . "</td>";
       echo "<td>" . $records['gallons'] . "</td>";
       echo "<td>" . $records['amountdonated'] . "</td>";
-      echo  "<td><a href='obrisi.php?id=$id'>Delete</a></td>";
+      echo  "<td>";
+         echo "<a href='delete-client.php?action=view&id=".$record['idno']."'> ".Delete." </a>";
+      echo "</td>";
+                     
       echo "</tr>";
       echo "<br>"; 
    }

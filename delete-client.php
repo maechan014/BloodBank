@@ -24,7 +24,7 @@
                 </td> 
             </tr> 
         <?php 
-        $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=9718'); 
+        $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=admin'); 
 		$id = (int)$_POST['id']; 
 		$query = "DELETE FROM client where idno='$id'"; 
 		$result = pg_query($query); 
