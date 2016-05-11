@@ -15,7 +15,7 @@ $name = (string)$_POST['name'];
    </style>  
    </head>  
    <body>
-      <h1>BClient Information</h1>
+      <h1>Client Information</h1>
    <table width="600" border="2" cellspacing="1" cellpadding="1">
       <tr>
          <td>Client ID</td> 
