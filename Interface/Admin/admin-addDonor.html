@@ -24,42 +24,9 @@
 		<div id="menu">
 			<ul>
 				<li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
-				<li><a href="#" accesskey="2" title="Add">Add</a>
-					<div class="add-menu">
-						<ul>
-							<li><a href="admin-addDonor.html">Add Donor</a></li>
-							<li><a href="#">Add Donation</a></li>
-							<li><a href="admin-addRequest.html">Add Request</a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a href="#" accesskey="3" title="Update">Update</a>
-					<div class="update-menu">
-						<ul>
-							<li><a href="../../update-client-record.html" title="Update Client Table">Clients</a></li>
-							<li><a href="../../update-blood-record.html" title="Update Blood Table">Blood</a></li>
-							<li><a href="#" title="Update Donor Illness Table">Donor Illness</a></li>
-							<li><a href="#" title="Update Requests Table">Requests</a></li>
-						</ul>
-					</div>
-				</li>
-
-				<li><a href="#" accesskey="6" title="View">View</a>
-					<div class="view-menu">
-						<ul>
-							<li><a href="../../View Tables/viewClient.php" title="View Client Table">Client </a></li>
-							<li><a href="../../View Tables/viewDonor.php" title="View Donors">Donor</a></li>
-							<li><a href="../../View Tables/viewBlood.php" title="View Blood Table">Blood</a></li>
-							<li><a href="../../View Tables/viewDonorIllness.php" title="View Donor Illness Table">Donor Illness</a></li>
-							<li><a href="#" title="View By Blood Type">By Blood Type</a></li>
-							<li><a href="../../View Tables/viewRequest.php" title="View Requests">Requests</a></li>
-						</ul>
-					</div>
-				</li>
-
-				<li><a href="#" accesskey="6" title="Delete">Delete</a></li>
-				
-				<li><a href="#" accesskey="6" title="Log Out">Log Out</a></li>
+				<li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
+				<li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
+				<li><a href="admin-search.html" accesskey="6" title="Search">Search</a><li>
 			</ul>
 			
 		</div>
@@ -116,6 +83,8 @@
 						</select>
 						<span class="required">*</span></li>
 				</ul>
+
+					<li><label>Donor Illness: </label><textarea rows="4" cols="50" name="donor_illness"></textarea></li>
 			<center><li><input type="submit" name="submit" value="Submit"></li></center>
 		</div>
 	</form>

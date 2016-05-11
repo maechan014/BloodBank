@@ -1,0 +1,43 @@
+/*
+*************************
+	* CONTENT
+*************************
+*/
+
+#content{
+	background: #c72121;
+	min-height: 450px;
+	padding: 0em 7em;
+}
+
+/*
+*************************
+	* CONTENT STYLE
+*************************
+*/
+
+#addPage-menu li{
+    padding-left: 10px;
+}
+
+
+#addPage-menu a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+#addPage-menu a:hover{
+    text-decoration: underline;
+}
+
+#addPage-menu{
+    color: #FFF;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    height: 500px;
+    font-size: 50px;
+}
