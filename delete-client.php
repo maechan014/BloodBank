@@ -1,6 +1,5 @@
 <html> 
-    <body> 
-        Deleted successfully
+    <body>
         <br><br>
         <h1>List of Clients</h1>
         <table border="2" cellspacing="3" cellpadding="4"> 
@@ -22,7 +21,7 @@
                 </td> 
             </tr> 
         <?php 
-        $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=123'); 
+        $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=admin'); 
 		$id = (int)$_POST['id']; 
 		$query = "DELETE FROM client where idno='$id'"; 
 		$result = pg_query($query); 
