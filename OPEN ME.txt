@@ -47,17 +47,45 @@ VIEW
 
 --------------------------------------------------------------------------------------------------------
 VIEWS THAT MUST BE CREATED (please create this on your db para mu work ang search)
+Constraints pud diay.
 
 CREATE VIEW DONOR_VIEW AS
-select idno, fname, mname, lname, birthday, age, weight,
-height, ethnicity, houseno, street, barangay, citymun,
-province, zipcode, bloodtype, bloodrh, gallons, amountdonated
-FROM Client NATURAL JOIN DONOR
+select idno, fname, mname, lname, phone, birthday, age, weight, height, ethnicity, houseno, street, barangay, citymun, province, zipcode, bloodtype, bloodrh, gallons, amountdonated
+FROM Client NATURAL JOIN DONOR;
 
 CREATE VIEW BLOODTYPE_VIEW AS
-select trackingno, idno, fname, mname, lname, bloodtype,
+select trackingno, idno, fname, mname, lname, bloodtype, bloodrh, amount,
 time, date, withdrawalstatus
 FROM BLOOD natural join Client
 
+CREATE VIEW REQUEST_VIEW AS
+SELECT requestno, idno, fname, mname, lname, bloodtype, bloodrh, date, time, dateneeded, recipientname, status from REQUEST natural join CLIENT;
+
+CREATE VIEW WITHDRAWAL_VIEW AS
+SELECT trackingno, idno, bloodtype, bloodrh, amount, date, time, fname, mname, lname from blood natural join client where withdrawalstatus='true';
+
+ALTER TABLE BLOOD
+drop column idno;
+
+ALTER TABLE BLOOD
+add column idno;
+
+ALTER TABLE BLOOD
+add constraint id_blood
+foreign key(idno)
+references donor(idno)
+on delete set null;
+
+ALTER TABLE REQUEST
+drop column idno;
+
+ALTER TABLE REQUEST
+add column idno;
+
+ALTER TABLE REQUEST
+add constraint idno_request
+foreign key(idno)
+references client(idno)
+on delete set null;
 
 SELECT LPAD (idno::text, 10, '0'), * FROM CLIENT
