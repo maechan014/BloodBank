@@ -1,8 +1,8 @@
 <?php
-$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=123");
-$type = (string)$_POST['bloodtype'];
+$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=9718");
+
    $sql =<<<EOF
-      SELECT * FROM BLOODTYPE_VIEW where bloodtype='$type';
+      SELECT * FROM WITHDRAWAL_VIEW;
 EOF;
 
    $clients = pg_query($db, $sql);
@@ -10,7 +10,7 @@ EOF;
 
 <!DOCTYPE html>  
    <head> 
-   <title>Donor Information</title>  
+   <title>View Withdrawals</title>  
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
    <style>  
       li {
@@ -18,20 +18,17 @@ EOF;
       }
    </style>  
    </head>  
-   <body>
-      <h1>Blood Type Information</h1>
+   <body>  
    <table width="600" border="2" cellspacing="1" cellpadding="1">
       <tr>
-
          <th>Tracking Number</th>
-         <th>Donor ID</th>
-         <th>Donor's Name</th>
+         <th>ID Number</th>
+         <th>Donor Name</th>
          <th>Blood Type</th>
-         <th>Amount</th>
-         <th>Time</th>
+         <th>Blood RH</th>
          <th>Date</th>
-         <th>Withdrawal Status</th>
-
+         <th>Time</th>
+         <th>Amount</th>
       </tr>
    
 
@@ -44,12 +41,12 @@ EOF;
       echo "<tr>";
       echo "<td>" . $records['trackingno'] . "</td>";
       echo "<td>" . $records['idno'] . "</td>";
-      echo "<td>" . $records['fname'] . " " . $records['mname'] . " " . $records['lname'] . "</td>";
+      echo "<td>" . $records['fname'] . " " . $records['lname'] . "</td>";
       echo "<td>" . $records['bloodtype'] . "</td>";
-      echo "<td>" . $records['amount'] . "</td>";
-      echo "<td>" . $records['time'] . "</td>";
+      echo "<td>" . $records['bloodrh'] . "</td>";
       echo "<td>" . $records['date'] . "</td>";
-      echo "<td>" . $records['withdrawalstatus'] . "</td>";
+      echo "<td>" . $records['time'] . "</td>";
+      echo "<td>" . $records['amount'] . "</td>";
       echo "</tr>";
       echo "<br>";
    }
