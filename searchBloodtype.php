@@ -62,6 +62,5 @@ $result = pg_query($query);
 ?>
 
 </table>
-
 </body>
 </html>
