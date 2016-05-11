@@ -1,5 +1,5 @@
 <?php
-$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=123");
+$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
 
    $sql =<<<EOF
       SELECT * FROM Client;

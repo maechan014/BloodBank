@@ -1,9 +1,9 @@
 <!DOCTYPE html>  
 <head> 
-<title>Add Client</title>  
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-<style>  
-li {listt-style: none;}  
+	<title>Add Client</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+	<style>  
+	li {listt-style: none;}  
 </style>  
 </head>  
 <body>  
@@ -14,10 +14,16 @@ li {listt-style: none;}
 <li>First Name:</li><li><input type="text" name="fname" /></li>  
 <li>Middle Name:</li><li><input type="text" name="mname" /></li>  
 <li>Last Name:</li><li><input type="text" name="lname" /></li>
-<li>Client Type:</li><li><input type="boolean" name="client_type" /></li>  
 
 <li><input type="submit"/></li>
 </form>
 </ul>
+	<h2>Enter Client Information</h2>    
+	<form name="insert" action="addClient.php" method="POST">  
+		First Name: <input type="text" name="fname"><br>
+		Middle Name: <input type="text" name="mname"><br>
+		Last Name: <input type="text" name="lname"><br>	
+		<input type="submit"/>
+	</form>
 </body>  
 </html>

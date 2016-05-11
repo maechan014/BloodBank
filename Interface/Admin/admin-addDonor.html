@@ -1,0 +1,137 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Blood Bank</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="admin-addDonor.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+<!-- MENU / HEADER-->
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
+			<span>Donate now!</span> 
+		</div>
+	
+
+
+		<div id="menu">
+			<ul>
+				<li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
+				<li><a href="#" accesskey="2" title="Add">Add</a>
+					<div class="add-menu">
+						<ul>
+							<li><a href="admin-addDonor.html">Add Donor</a></li>
+							<li><a href="#">Add Donation</a></li>
+							<li><a href="admin-addRequest.html">Add Request</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a href="#" accesskey="3" title="Update">Update</a>
+					<div class="update-menu">
+						<ul>
+							<li><a href="../../update-client-record.html" title="Update Client Table">Clients</a></li>
+							<li><a href="../../update-blood-record.html" title="Update Blood Table">Blood</a></li>
+							<li><a href="#" title="Update Donor Illness Table">Donor Illness</a></li>
+							<li><a href="#" title="Update Requests Table">Requests</a></li>
+						</ul>
+					</div>
+				</li>
+
+				<li><a href="#" accesskey="6" title="View">View</a>
+					<div class="view-menu">
+						<ul>
+							<li><a href="../../View Tables/viewClient.php" title="View Client Table">Client </a></li>
+							<li><a href="../../View Tables/viewDonor.php" title="View Donors">Donor</a></li>
+							<li><a href="../../View Tables/viewBlood.php" title="View Blood Table">Blood</a></li>
+							<li><a href="../../View Tables/viewDonorIllness.php" title="View Donor Illness Table">Donor Illness</a></li>
+							<li><a href="#" title="View By Blood Type">By Blood Type</a></li>
+							<li><a href="../../View Tables/viewRequest.php" title="View Requests">Requests</a></li>
+						</ul>
+					</div>
+				</li>
+
+				<li><a href="#" accesskey="6" title="Delete">Delete</a></li>
+				
+				<li><a href="#" accesskey="6" title="Log Out">Log Out</a></li>
+			</ul>
+			
+		</div>
+	</div>
+</div>
+
+<!-- MENU / HEADER-->
+
+<!-- BODY -->
+<div id="content"> 
+	<form name="add" action="addDonor.php" method="POST">
+		<div id="form-style">
+			<h1>Donor Information</h2>  
+				<h2>Personal Information</h1>
+				<ul id="personalInfo">
+					<div id="fullname">
+						<li><label>First Name: </label> <input type = "text" name= "fname" required><span class="required">*</span></li> 
+						<li><label>Middle Name: </label><input type = "text" name= "mname"></li>
+						<li><label>Last Name: </label><input type = "text" name= "lname" required><span class="required">*</span></li> 
+					</div>
+
+					<li><label>Birthday: </label><input type = "date" name= "birthday" required><span class="required">*</span></li>
+					<li><label>Ethinicity: </label><input type ="text" name= "ethnicity"><span class="required">*</span></li>
+
+				</ul>
+				
+			<h2>Address</h2>
+				<ul id="address">
+					<li><label>House No.: </label><input type= "number" name = "houseno"></li>
+					<li><label>Street: </label><input type ="text" name= "street"></li>
+					<li><label>Barangay: </label></label><input type ="text" name= "barangay" required><span class="required">*</span></li> 
+					<li><label>City/Municipality: </label><input type ="text" name= "citymun" required><span class="required">*</span></li>
+					<li><label>Province: </label><input type ="text" name= "province" required><span class="required">*</span></li>
+					<li><label>Zip Code: </label><input type ="number" name= "zipcode" required><span class="required">*</span></li>
+				</ul>
+
+			<h2>Body Metrics</h2>
+				
+				<ul id="body-metrics">
+					<li><label>Height: </label><input type= "number" name= "height" required><span class="required">*</span></li> 
+					<li><label>Weight: </label><input type= "number" name= "weight" required><span class="required">*</span></li>
+					<li><label>Blood Type: </label>
+						<select name="bloodtype">
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="AB">AB</option>
+							<option value="O">O</option>
+						</select>
+					<span class="required">*</span></li>
+					<li><label>Blood RH: </label>
+						<select name="bloodrh">
+							<option value="+">+</option>
+							<option value="-">-</option>
+						</select>
+						<span class="required">*</span></li>
+				</ul>
+			<center><li><input type="submit" name="submit" value="Submit"></li></center>
+		</div>
+	</form>
+</div>
+<!-- BODY -->
+
+<!-- FOOTER -->
+
+<div id="footer">
+	<div id="copyright" class="container">
+		<p>&copy; Blood Bank. All rights reserved.</p>
+	</div>
+</div>
+<!-- FOOTER -->
+
+
+
+</body>
+</html>
