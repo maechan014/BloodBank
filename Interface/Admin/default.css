@@ -155,10 +155,12 @@ a:hover{
 	list-style: none;
 	position: absolute;
 	top: -9999px;
+	left: 75px;
 	display: block;
 	font-size: 10px;
 	width: 124px;
 	z-index: 999;
+	width: 150px;
 }
 #menu .add-menu li, #menu .view-menu li, #menu .update-menu li{
 	
