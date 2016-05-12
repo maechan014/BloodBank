@@ -69,7 +69,9 @@ EOF;
                      echo "<td>" . $records['mname'] . "</td>";
                      echo "<td>" . $records['lname'] . "</td>";
                      echo "<td>" . $records['client_type'] . "</td>";
-                      echo  "<td><a href='obrisi.php?id=$id'>Delete</a></td>";
+                     echo  "<td>";
+                         echo "<a href='delete-client.php?action=view&id=".$record['idno']."'> "Delete" </a>";
+                     echo "</td>";
                      echo "</tr>";
                      echo "<br>";
                   }
