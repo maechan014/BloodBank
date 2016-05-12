@@ -120,8 +120,8 @@ EOF;
       echo "<td>" . $records['bloodrh'] . "</td>";
       echo "<td>" . $records['gallons'] . "</td>";
       echo "<td>" . $records['amountdonated'] . "</td>";
-      echo  "<td>";
-         echo "<a href='delete-client.php?action=view&id=".$record['idno']."'> ".Delete." </a>";
+     echo "<td>";
+            echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".delete." </a>";
       echo "</td>";
                      
       echo "</tr>";

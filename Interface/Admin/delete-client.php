@@ -1,5 +1,3 @@
-<html> 
-    <body>
         <?php 
         $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=admin'); 
 		$id = $_GET['id']; 
@@ -22,7 +20,5 @@
             exit(); 
         }
         else{
-            echo "SUCCESS DELETION";
+            header("Location: successpage.html");
         }
-    </body> 
-</html>
