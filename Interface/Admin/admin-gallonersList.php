@@ -48,7 +48,9 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 <!-- BODY -->
 <div id="content"> 
+      
 
+      <h2>Galloner's List</h2>
 		  <table width="600" border="2" cellspacing="5" cellpadding="3">
       <tr>
          <th>ID No</th>
