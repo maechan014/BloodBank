@@ -5,7 +5,10 @@ $idno = (int)$_POST['idnumber'];
       SELECT * FROM Client WHERE idno = '$idno';
 EOF;
 
-   $clients = pg_query($db, $sql);
+$clients = pg_query($db, $sql);
+ $query = "SELECT * FROM Client where fname='$name' or mname='$name' or lname='$name'"; 
+        $res = pg_query($db, $query);
+   
 ?>
 
 
@@ -68,6 +71,22 @@ EOF;
         }
 
         while($records = pg_fetch_assoc($clients)){
+          echo "<tr>";
+          echo "<td>" . $records['idno'] . "</td>";
+          echo "<td>" . $records['fname'] . "</td>";
+          echo "<td>" . $records['mname'] . "</td>";
+          echo "<td>" . $records['lname'] . "</td>";
+          echo "<td>" . $records['phone'] . "</td>";
+          echo "</tr>";
+          echo "<br>";
+       }
+
+       if(!$res){
+          echo pg_last_error($db);
+          exit;
+        }
+
+        while($records = pg_fetch_assoc($res)){
           echo "<tr>";
           echo "<td>" . $records['idno'] . "</td>";
           echo "<td>" . $records['fname'] . "</td>";
