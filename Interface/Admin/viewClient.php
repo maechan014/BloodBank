@@ -62,7 +62,9 @@ EOF;
                   } 
                   while($records = pg_fetch_assoc($clients)){
                      echo "<tr>";
-                     echo "<td>" . $records['idno'] . "</td>";
+                     echo "<td>";
+                        echo "<a href='viewClient.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
+                     echo "</td>";
                      echo "<td>" . $records['fname'] . "</td>";
                      echo "<td>" . $records['mname'] . "</td>";
                      echo "<td>" . $records['lname'] . "</td>";

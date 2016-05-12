@@ -48,12 +48,11 @@
 	}
 	
 	if($donorResult){
-		header("Location: Interface/Admin/admin-addDonation2.html?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
+		header("Location: admin-addDonation2.html?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
 		exit();
 	}
 	else{
 		echo pg_last_error($db);
-		//header("Location: addDonor.html");
 		exit();
 	}	
 
