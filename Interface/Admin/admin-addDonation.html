@@ -39,10 +39,10 @@
 			<input type="hidden" name="idnumber" value= "<?php echo htmlspecialchars($_GET['id']); ?>" />
 			<input type="hidden" name="bloodtype" value= "<?php echo htmlspecialchars($_GET['btype']); ?>" />
 			<input type="hidden" name="bloodrh" value= "<?php echo htmlspecialchars($_GET['brh']); ?>" />  
-			<li><label>ID Number: </label></li><li><input type="number" name="idno" /></li>
-			<li><label>Date of Donation: </label></li><li><input type="date" name="date" /></li>
-			<li><label>Time of Donation: </label></li><li><input type="time" name="time" /></li>  
-			<li><label>Amount (in cc): </label></li><li><input type="number" step="1"  name="amount" /></li>  
+			<li><label>ID Number: </label><input type="number" name="idno" required/></li>
+			<li><label>Date of Donation: </label><input type="date" name="date" required/></li>
+			<li><label>Time of Donation: </label><input type="time" name="time" required/></li>  
+			<li><label>Amount (in cc): </label><input type="number" step="1"  name="amount" required/></li>  
 			<center><li><input type="submit" /></li></center>
 		</div>
 </form>  
