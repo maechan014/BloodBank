@@ -12,85 +12,115 @@ EOF;
 ?>
 
 <!DOCTYPE html>  
-   <head> 
-   <title>Donor Information</title>  
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-   <style>  
-      li {
-         listt-style: none;
-      }
-   </style>  
-   </head>  
-   <body>
-      <h1>Blood Type Information</h1>
-   <table width="600" border="2" cellspacing="1" cellpadding="1">
-      <tr>
+    <head title="Blood Type Information">
 
-         <th>Tracking Number</th>
-         <th>Donor ID</th>
-         <th>Donor's First Name</th>
-         <th>Donor's Middle Name</th>
-         <th>Donor's Last Name</th>
-         <th>Blood Type</th>
-         <th>Blood RH</th>
-         <th>Amount</th>
-         <th>Time</th>
-         <th>Date</th>
-         <th>Withdrawal Status</th>
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Search</title>
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+      <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
-      </tr>
-   
+   </head>
+<body>
+    <!-- MENU / HEADER-->
+    <div id="header-wrapper">
+        <div id="header" class="container">
+            <div id="logo">
+                <h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
+                <span>Donate now!</span> 
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
+                    <li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
+                    <li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
+                    <li><a href="admin-search.html" accesskey="6" title="View">Search</a><li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
 
-<?php
+<!-- MENU / HEADER-->
 
-   $clients = pg_query($db, $sql);
-   $clients2 = pg_query($db, $sql2);
+<div id = "content">
+   <div id="form-style">
+      <ul id = "keywords">
+            <li><h1>Blood Type Information</h1></li>
+            <table width="600" border="2" cellspacing="1" cellpadding="1">
+               <tr>
 
-   if(!$clients){
-      echo pg_last_error($db);
-      exit;
-   } 
-   while($records = pg_fetch_assoc($clients)){
-      echo "<tr>";
-      echo "<td>" . $records['trackingno'] . "</td>";
-      echo "<td>" . $records['idno'] . " " . "</td>";
-      echo "<td>" . $records['fname'] . "</td>";
-      echo "<td>" . $records['mname'] . "</td>";
-      echo "<td>" . $records['lname'] . "</td>";
-      echo "<td>" . $records['bloodtype'] . "</td>";
-      echo "<td>" . $records['bloodrh'] . "</td>";
-      echo "<td>" . $records['amount'] . "</td>";
-      echo "<td>" . $records['time'] . "</td>";
-      echo "<td>" . $records['date'] . "</td>";
-      echo "<td>" . $records['withdrawalstatus'] . "</td>";
-      echo "</tr>";
-      echo "<br>";
-   }
+                  <th>Tracking Number</th>
+                  <th>Donor ID</th>
+                  <th>Donor's First Name</th>
+                  <th>Donor's Middle Name</th>
+                  <th>Donor's Last Name</th>
+                  <th>Blood Type</th>
+                  <th>Blood RH</th>
+                  <th>Amount</th>
+                  <th>Time</th>
+                  <th>Date</th>
+                  <th>Withdrawal Status</th>
 
-   if(!$clients2){
-      echo pg_last_error($db);
-      exit;
-   } 
-   while($records = pg_fetch_assoc($clients2)){
-      echo "<tr>";
-      echo "<td>" . $records['trackingno'] . "</td>";
-      echo "<td>" . $records['idno'] . " " . "</td>";
-      echo "<td>" . $records['fname'] . "</td>";
-      echo "<td>" . $records['mname'] . "</td>";
-      echo "<td>" . $records['lname'] . "</td>";
-      echo "<td>" . $records['bloodtype'] . "</td>";
-      echo "<td>" . $records['bloodrh'] . "</td>";
-      echo "<td>" . $records['amount'] . "</td>";
-      echo "<td>" . $records['time'] . "</td>";
-      echo "<td>" . $records['date'] . "</td>";
-      echo "<td>" . $records['withdrawalstatus'] . "</td>";
-      echo "</tr>";
-      echo "<br>";
-   }
-   pg_close($db);
-$result = pg_query($query);   
-?>
+               </tr>
+            
 
-</table>
+         <?php
+
+            $clients = pg_query($db, $sql);
+            $clients2 = pg_query($db, $sql2);
+
+            if(!$clients){
+               echo pg_last_error($db);
+               exit;
+            } 
+            while($records = pg_fetch_assoc($clients)){
+               echo "<tr>";
+               echo "<td>" . $records['trackingno'] . "</td>";
+               echo "<td>" . $records['idno'] . " " . "</td>";
+               echo "<td>" . $records['fname'] . "</td>";
+               echo "<td>" . $records['mname'] . "</td>";
+               echo "<td>" . $records['lname'] . "</td>";
+               echo "<td>" . $records['bloodtype'] . "</td>";
+               echo "<td>" . $records['bloodrh'] . "</td>";
+               echo "<td>" . $records['amount'] . "</td>";
+               echo "<td>" . $records['time'] . "</td>";
+               echo "<td>" . $records['date'] . "</td>";
+               echo "<td>" . $records['withdrawalstatus'] . "</td>";
+               echo "</tr>";
+               echo "<br>";
+            }
+
+            if(!$clients2){
+               echo pg_last_error($db);
+               exit;
+            } 
+            while($records = pg_fetch_assoc($clients2)){
+               echo "<tr>";
+               echo "<td>" . $records['trackingno'] . "</td>";
+               echo "<td>" . $records['idno'] . " " . "</td>";
+               echo "<td>" . $records['fname'] . "</td>";
+               echo "<td>" . $records['mname'] . "</td>";
+               echo "<td>" . $records['lname'] . "</td>";
+               echo "<td>" . $records['bloodtype'] . "</td>";
+               echo "<td>" . $records['bloodrh'] . "</td>";
+               echo "<td>" . $records['amount'] . "</td>";
+               echo "<td>" . $records['time'] . "</td>";
+               echo "<td>" . $records['date'] . "</td>";
+               echo "<td>" . $records['withdrawalstatus'] . "</td>";
+               echo "</tr>";
+               echo "<br>";
+            }
+            pg_close($db);
+         $result = pg_query($query);   
+         ?>
+
+         </table>
+      </ul>
+   </div>
+</div>
 </body>
 </html>

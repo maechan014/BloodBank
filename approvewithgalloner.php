@@ -1,5 +1,5 @@
 <?php
-$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
+	$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
 
    $sql ="SELECT * FROM Request where status = 'f'";
    $clients = pg_query($sql);

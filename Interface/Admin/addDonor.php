@@ -3,8 +3,8 @@
 
 	// //add client
 	$clienttype = 'true';
-	$clientQuery = "INSERT INTO Client (fname, mname, lname, client_type)
-					VALUES ('$_POST[fname]', '$_POST[mname]', '$_POST[lname]', '$clienttype')";
+	$clientQuery = "INSERT INTO Client (fname, mname, lname, client_type, phone)
+					VALUES ('$_POST[fname]', '$_POST[mname]', '$_POST[lname]', '$clienttype', '$_POST[phone]')";
 	$clientResult = pg_query($clientQuery);
 
 
@@ -19,7 +19,7 @@
 		$rh = '+';
 	}
 
-	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height) 
+	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height, amountdonated) 
 					VALUES ('$idnumber',
 							'$_POST[houseno]', 
 							'$_POST[street]', 
@@ -33,7 +33,8 @@
 							'$_POST[birthday]',
 							'$age', 
 							'$_POST[weight]', 
-							'$_POST[height]')";
+							'$_POST[height]',
+							'$_POST[amount]')";
 	$donorResult = pg_query($donorQuery);
 
 	$illness = $_POST[illness];

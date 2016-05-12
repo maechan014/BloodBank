@@ -1,32 +1,71 @@
 <html> 
     <head title="Search Blood Type">
+
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Search</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="admin-search.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+    <!-- MENU / HEADER-->
+    <div id="header-wrapper">
+        <div id="header" class="container">
+            <div id="logo">
+                <h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
+                <span>Donate now!</span> 
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
+                    <li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
+                    <li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
+                    <li><a href="admin-search.html" accesskey="6" title="View">Search</a><li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- MENU / HEADER-->
+
+<!-- BODY -->
+<div id= "content">
+    <form name = "add" action="searchBloodtype.php" method = "post">
+        <div id="form-style">
         <center>
-        <h1>Search</h1>
-        </center>
-    </head>
-    <center>
-    <body>
-    <form action="searchBloodtype.php" method="post"> 
-    <p>
+        <ul id = "keywords">
+            <li><h1>Search</h1></li>
+            </center>
+            <center>
+            <body>
+            <p>
 
-    <font color="red" face="Verdana" size=3>Blood Type:</font> 
-    <select name="bloodtype">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="AB">AB</option>
-                <option value="O">O</option>
-            </select>
-    <br>
-    <font color="red" face="Verdana" size=3>Blood RH:</font> 
-    <select name="bloodrh">
-                <option value="+">+</option>
-                <option value="-">-</option>
-            </select>
-    <br><br>
-    <input type="submit" name="submit" value="Search"><t><t>
+            <font color="red" face="Verdana" size=3>Blood Type:</font> 
+            <select name="bloodtype">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+            <br>
+            <font color="red" face="Verdana" size=3>Blood RH:</font> 
+            <select name="bloodrh">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                    </select>
+            <br><br>
+            <input type="submit" name="submit" value="Search"><t><t>
 
-    </p>
-    </form>
+            </p>
+        <ul>
+</div>
+</form>
+</div>
 </body> 
 </center>
 </html>
