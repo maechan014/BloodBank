@@ -60,6 +60,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 <!-- BODY -->
 <div id="content"> 
+	
 	<h2>Withrawal Summary</h2>
 	 <table width="600" border="2" cellspacing="3" cellpadding="3">
       <tr>
@@ -91,7 +92,6 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 
 	<h2>Remaining Blood</h2>
-
 		 <table width="600" border="2" cellspacing="3" cellpadding="3">
 		      <tr>
 		         <th>Tracking No</th>

@@ -37,8 +37,8 @@
 	<form name="insert" action="add_donation.php" method="POST" >
 		<div id="form-style">
 			<input type="hidden" name="idnumber" value= "<?php echo htmlspecialchars($_GET['id']); ?>" />
-			<input type="hidden" name="bloodtype" value= "<?php echo htmlspecialchars($_GET['bloodtype']); ?>" />
-			<input type="hidden" name="bloodrh" value= "<?php echo htmlspecialchars($_GET['bloodrh']); ?>" />  
+			<input type="hidden" name="bloodtype" value= "<?php echo htmlspecialchars($_GET['btype']); ?>" />
+			<input type="hidden" name="bloodrh" value= "<?php echo htmlspecialchars($_GET['brh']); ?>" />  
 			<li><label>Date of Donation: </label></li><li><input type="date" name="date" /></li>
 			<li><label>Time of Donation: </label></li><li><input type="time" name="time" /></li>  
 			<li><label>Amount (in cc): </label></li><li><input type="number" step="1"  name="amount" /></li>  

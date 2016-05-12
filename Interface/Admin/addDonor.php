@@ -48,7 +48,7 @@
 	}
 	
 	if($donorResult){
-		header("Location: admin-addDonation2.html?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
+		header("Location: admin-addDonation2.php?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
 		exit();
 	}
 	else{

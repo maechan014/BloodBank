@@ -3,22 +3,28 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 $status = 'false';
 
-$query = "INSERT INTO Blood VALUES ('$_POST[idno]',
-					'$_POST[bloodtype]',
+
+$query = "INSERT INTO Blood (bloodtype, 
+							bloodrh, 
+							date, 
+							time, 
+							amount, 
+							withdrawalstatus,
+							idno)
+			VALUES ('$_POST[bloodtype]',
 					'$_POST[bloodrh]',
 					'$_POST[date]',
 					'$_POST[time]',
 					'$_POST[amount]',
-					'false')";
-
-
+					'false',
+					'$_POST[idnumber]')";
 $result = pg_query($query);
 
 	if(!$result){
 		echo pg_last_error($db);
    	}
    	else {
-      echo "Records created successfully\n";
+   		header("Location: successpage.html");
    	}
 
    pg_close($db);
