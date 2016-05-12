@@ -19,7 +19,7 @@
 		$rh = '+';
 	}
 
-	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height, amountdonated) 
+	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height) 
 					VALUES ('$idnumber',
 							'$_POST[houseno]', 
 							'$_POST[street]', 
@@ -33,8 +33,7 @@
 							'$_POST[birthday]',
 							'$age', 
 							'$_POST[weight]', 
-							'$_POST[height]',
-							'$_POST[amount]')";
+							'$_POST[height]')";
 	$donorResult = pg_query($donorQuery);
 
 	$illness = $_POST[illness];
