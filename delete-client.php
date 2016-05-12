@@ -17,11 +17,14 @@
                     Last Name
                 </td> 
                 <td> 
+                    Phone
+                </td> 
+                <td> 
                     Client Type
                 </td> 
             </tr> 
         <?php 
-        $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=admin'); 
+        $db = pg_connect('host=localhost dbname=bloodbank user=postgres password=9718'); 
 		$id = (int)$_POST['id']; 
 		$query = "DELETE FROM client where idno='$id'"; 
 		$result = pg_query($query); 
@@ -33,7 +36,7 @@
 		} 
 		pg_close(); 
 
-        $query = "SELECT idno, fname, mname, lname, client_type FROM Client"; 
+        $query = "SELECT idno, fname, mname, lname, phone, client_type FROM Client"; 
 
         $result = pg_query($db, $query); 
         if (!$result) { 
@@ -42,14 +45,16 @@
             exit(); 
         } 
 
-        while($myrow = pg_fetch_assoc($result)) { 
-            printf ("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
-                $myrow['idno'], 
-                htmlspecialchars($myrow['fname']), 
-                htmlspecialchars($myrow['mname']), 
-                htmlspecialchars($myrow['lname']), 
-                htmlspecialchars($myrow['client_type']))
-            ; 
+        while($records = pg_fetch_assoc($result)) { 
+          echo "<tr>";
+          echo "<td>" . $records['idno'] . "</td>";
+          echo "<td>" . $records['fname'] . "</td>";
+          echo "<td>" . $records['mname'] . "</td>";
+          echo "<td>" . $records['lname'] . "</td>";
+          echo "<td>" . $records['phone'] . "</td>";
+          echo "<td>" . $records['client_type'] . "</td>";
+          echo "</tr>";
+          echo "<br>";
         } 
         ?> 
         </table> 
