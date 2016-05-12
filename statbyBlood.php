@@ -1,7 +1,7 @@
 <?php
 $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
 
-$sql ="SELECT bloodtype, bloodrh, count (bloodtype) from blood group by blood.bloodtype, blood.bloodrh order by blood.bloodtype";
+$sql ="SELECT bloodtype, bloodrh, count (bloodtype) from blood WHERE withdrawalstatus = 't' group by blood.bloodtype, blood.bloodrh order by blood.bloodtype ";
 $withdrawal = pg_query($sql);
 
 ?>
