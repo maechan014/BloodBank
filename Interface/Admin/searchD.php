@@ -1,6 +1,6 @@
 <?php
 $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
-$idno = $_GET['id'];
+$idno = $_POST['idnumber'];
    $sql =<<<EOF
       SELECT * FROM DONOR_VIEW where idno='$idno';
 EOF;

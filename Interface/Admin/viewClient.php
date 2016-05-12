@@ -11,7 +11,7 @@ EOF;
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <title>Blood Bank</title>
+   <title>View Client</title>
    <meta name="keywords" content="" />
    <meta name="description" content="" />
    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -69,6 +69,7 @@ EOF;
                      echo "<td>" . $records['mname'] . "</td>";
                      echo "<td>" . $records['lname'] . "</td>";
                      echo "<td>" . $records['client_type'] . "</td>";
+                      echo  "<td><a href='obrisi.php?id=$id'>Delete</a></td>";
                      echo "</tr>";
                      echo "<br>";
                   }

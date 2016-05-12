@@ -16,7 +16,7 @@
 
 	$rh = '-';
 	if($_POST[bloodrh] == "+"){
-		$rh = '%2B';
+		$rh = '+';
 	}
 
 	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height) 
