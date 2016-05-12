@@ -6,41 +6,73 @@
 ?>
 
 <!DOCTYPE html>  
-   <head> 
-   <title>Donor Illness Statistics</title>  
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-   <style>  
-      li {
-         listt-style: none;
-      }
-   </style>  
+   </head>
+   <head title="Illness Statistics">
+
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Search</title>
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+      <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
    </head>  
-   <body>  
-   <table width="600" border="2" cellspacing="3" cellpadding="3">
-      <tr>
-         <th>Illness</th>
-         <th>Count</th>
-      </tr>
-   
-<!-- Displays the query result-->
-<?php
-   if(!$withdrawal){
-      echo pg_last_error($db);
-      exit;
-   }
-   
-   while($records = pg_fetch_array($withdrawal)){
-      echo "<tr>";
-      echo "<td>" . $records['illness'] . "</td>";
-      echo "<td>" . $records['count'] . "</td>";
-      echo "<br>";
-   }
+   <body>
+       <!-- MENU / HEADER-->
+    <div id="header-wrapper">
+        <div id="header" class="container">
+            <div id="logo">
+                <h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
+                <span>Donate now!</span> 
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
+                    <li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
+                    <li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
+                    <li><a href="admin-search.html" accesskey="6" title="View">Search</a><li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
 
-   pg_close($db);
-?>
+<!-- MENU / HEADER-->
+   <div id = "content">
+      <div id="form-style">
+         <ul id = "keywords">
+         <li><h1>Illness Statistics</h1></li>
+
+         <table width="600" border="2" cellspacing="3" cellpadding="3">
+            <tr>
+               <th>Illness</th>
+               <th>Count</th>
+            </tr>
+         
+      <!-- Displays the query result-->
+      <?php
+         if(!$withdrawal){
+            echo pg_last_error($db);
+            exit;
+         }
+         
+         while($records = pg_fetch_array($withdrawal)){
+            echo "<tr>";
+            echo "<td>" . $records['illness'] . "</td>";
+            echo "<td>" . $records['count'] . "</td>";
+            echo "<br>";
+         }
+
+         pg_close($db);
+      ?>
 
 
-</table>
+      </table>
+   </ul>
+</div>
+</div>
 
 </body>
 </html>

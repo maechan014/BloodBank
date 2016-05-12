@@ -4,6 +4,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 $status = 'false';
 
 
+
 $query = "INSERT INTO Blood (bloodtype, 
 							bloodrh, 
 							date, 
