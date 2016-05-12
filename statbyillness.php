@@ -1,7 +1,7 @@
 <?php
    $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
 
-   $sql ="SELECT illness count (illness) from donor_illness group by donor_illness.illness order by donor_illness.illness";
+   $sql ="SELECT illness, count (illness) from donor_illness group by donor_illness.illness order by donor_illness.illness";
    $withdrawal = pg_query($sql);
 ?>
 
