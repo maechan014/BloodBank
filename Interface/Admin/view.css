@@ -1,0 +1,19 @@
+/*
+*************************
+	* CONTENT
+*************************
+*/
+
+#content{
+	position: relative;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #c72121;
+	min-height: 500px;
+	padding: 0em 7em;
+}
+table{
+	background: #FFF
+}

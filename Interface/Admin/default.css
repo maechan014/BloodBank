@@ -139,7 +139,12 @@ a:hover{
 	background: #ECECEC;
 }
 
-#menu .current_page_item a{
+#menu li a:active{
+	background: #c72121;
+	color: #FFF;
+}
+
+#menu li .currentpage{
 	background: #c72121;
 	color: #FFF;
 }
@@ -182,6 +187,10 @@ a:hover{
 }
 
 #menu .add-menu li:hover, #menu .view-menu li:hover, #menu .update-menu li:hover{
+	background: #c72121;
+}
+
+#menu li .currentpage a{
 	background: #c72121;
 }
 

@@ -23,7 +23,7 @@
 	bottom: 0;
 	margin: auto;
 	width: 500px;
-	height: 100%;
+	min-height: 100px;
     padding: 10px 10px 10px 20px;
     font: 12px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     border: 1px solid #c72121;
