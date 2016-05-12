@@ -63,7 +63,7 @@ EOF;
                   while($records = pg_fetch_assoc($clients)){
                      echo "<tr>";
                      echo "<td>";
-                        echo "<a href='viewClient.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
+                        echo "<a href='searchDonor.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
                      echo "</td>";
                      echo "<td>" . $records['fname'] . "</td>";
                      echo "<td>" . $records['mname'] . "</td>";
