@@ -8,6 +8,15 @@ EOF;
    $clients = pg_query($db, $sql);
 ?>
 
+<?php
+$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
+$name = (string)$_POST['name'];
+
+  $query = "SELECT * FROM Client where fname='$name' or mname='$name' or lname='$name'"; 
+        $clients = pg_query($db, $query);
+
+?>
+
 <!DOCTYPE html>  
    <head> 
    <title>Donor Information</title>  

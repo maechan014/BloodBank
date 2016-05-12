@@ -2,7 +2,7 @@
 $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
 $idno = (int)$_POST['idnumber'];
    $sql =<<<EOF
-      SELECT * FROM Client;
+      SELECT * FROM Client WHERE idno = '$idno';
 EOF;
 
    $clients = pg_query($db, $sql);
