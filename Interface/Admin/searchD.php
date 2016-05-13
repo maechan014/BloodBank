@@ -77,6 +77,9 @@ $clients = pg_query($db, $sql);
           echo "<td>" . $records['mname'] . "</td>";
           echo "<td>" . $records['lname'] . "</td>";
           echo "<td>" . $records['phone'] . "</td>";
+          echo "<td>";
+              echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".delete." </a>";
+          echo "</td>";
           echo "</tr>";
           echo "<br>";
        }

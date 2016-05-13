@@ -31,13 +31,13 @@
 }
 
 #viewPage-menu{
+    min-width: 300px;
     color: #FFF;
     position: relative;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    width: 500px;
     height: 500px;
     font-size: 50px;
 }
