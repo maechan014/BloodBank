@@ -69,7 +69,7 @@ EOF;
                      echo "<td>" . $records['mname'] . "</td>";
                      echo "<td>" . $records['lname'] . "</td>";
                      echo "<td>" . $records['client_type'] . "</td>";
-                      echo "<td>";
+                     echo "<td>";
                         echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".delete." </a>";
                      echo "</td>";
                      echo "</tr>";
