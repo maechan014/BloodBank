@@ -42,7 +42,7 @@
 
 #form-style li {
     padding: 0;
-    display: block;
+    display: inline-block;
     list-style: none;
     margin: 10px 0 0 0;
 }
@@ -59,8 +59,7 @@
     width:200px; 
 }
 
-#form-style button{
-    margin-right: 156px;
+#form-style button{  
 }
 
 #form-style input[type=text]:focus, 
@@ -70,9 +69,12 @@
 
 #form-style input[type=submit], #form-style input[type=button]{
     background: #c72121;
-    padding: 8px 15px 8px 15px;
+    padding: 8px 16px 8px 16px;
     border: none;
     color: #FFF;
+    position: relative;
+    left: 6px;
+    right: 0;
 }
 #form-style input[type=submit]:hover, #form-style input[type=button]:hover{
     cursor: pointer;

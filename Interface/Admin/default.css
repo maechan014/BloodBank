@@ -43,9 +43,12 @@ a:hover{
 	text-decoration: none;
 }
 
-/*********************************************************************************/
-/* Header                                                                        */
-/*********************************************************************************/
+/*
+*************************
+	* HEADER
+*************************
+*/
+
 	
 #header-wrapper{
 	background: #FFF;
@@ -56,9 +59,12 @@ a:hover{
 	height: 100px;
 }
 
-/*********************************************************************************/
-/* Logo                                                                          */
-/*********************************************************************************/
+/*
+*************************
+	* LOGO
+*************************
+*/
+
 
 #logo{
 	position: absolute;
@@ -92,9 +98,12 @@ a:hover{
 	color: #2C383B;
 }
 
-/*********************************************************************************/
-/* Menu                                                                          */
-/*********************************************************************************/
+/*
+*************************
+	* MENU
+*************************
+*/
+
 
 #menu{
 	position: absolute;
@@ -154,49 +163,35 @@ a:hover{
 *************************
 */
 
-
-#menu .add-menu, #menu .view-menu, #menu .update-menu{
-	background: #FFF;
-	list-style: none;
+ul#add-menu{
 	position: absolute;
 	top: -9999px;
-	left: 75px;
-	display: block;
-	font-size: 10px;
-	width: 124px;
-	z-index: 999;
-	width: 150px;
 }
-#menu .add-menu li, #menu .view-menu li, #menu .update-menu li{
+
+ul#add-menu li{
+	list-style: none;
+}
+
+ul#add-menu a{
+	font-size: 12px;
+}
+
+#menu li a:hover{
 	
 }
 
-#menu li:hover .add-menu , #menu li:hover .view-menu , #menu li:hover .update-menu {
-   background: #c72121;	
-   position: absolute;
-   top: 60px;
-   display: block;
-   text-decoration: line-through;
-}
-
-#menu .add-menu ul, #menu .view-menu ul, #menu .update-menu ul{
+ul#add-menu a:hover{
 	position: absolute;
-	/*right: 124px;*/
-	padding-top:1px; 
-    float:none;
+	top: 60px;
 }
 
-#menu .add-menu li:hover, #menu .view-menu li:hover, #menu .update-menu li:hover{
-	background: #c72121;
-}
 
-#menu li .currentpage a{
-	background: #c72121;
-}
+/*
+*************************
+	* CONTENT
+*************************
+*/
 
-/*********************************************************************************/
-/* Featured                                                                      */
-/*********************************************************************************/
 
 
 #header-featured{
@@ -207,9 +202,13 @@ a:hover{
 		background-size: cover;
 }
 
-/*********************************************************************************/
-/* Footer                                                                        */
-/*********************************************************************************/
+
+/*
+*************************
+	* FOOTER
+*************************
+*/
+
 
 
 #footer{
@@ -242,16 +241,4 @@ a:hover{
 .container{
 	margin: 0px auto;
 	width: 1200px;
-}
-
-
-/*********************************************************************************/
-/* Featured                                                                      */
-/*********************************************************************************/
-
-#header-featured{
-		height: 30em;
-		background-image: url(images/header1.jpg);
-		background-position: center;
-		background-size: cover;
 }

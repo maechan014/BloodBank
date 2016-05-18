@@ -12,7 +12,7 @@
 
 /*
 *************************
-	* CONTENT STYLE
+	* ADD PAGE CONTENT STYLE
 *************************
 */
 
@@ -41,3 +41,37 @@
     height: 500px;
     font-size: 50px;
 }
+
+/*
+*************************
+    * VIEW PAGE CONTENT STYLE
+*************************
+*/
+
+#viewPage-menu li{
+    padding-left: 10px;
+}
+
+
+#viewPage-menu a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+#viewPage-menu a:hover{
+    text-decoration: underline;
+}
+
+#viewPage-menu{
+    min-width: 300px;
+    color: #FFF;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 500px;
+    font-size: 50px;
+}
+
+

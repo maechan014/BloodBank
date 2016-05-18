@@ -44,41 +44,42 @@ EOF;
 
 <!-- BODY -->
       <div id="content"> 
-         
-            <table width="600" border="2" cellspacing="1" cellpadding="1">
-               
-               <tr>
-                  <th>ID Number</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
-                  <th>Last Name</th>
-                  <th>Client Type</th>
-               </tr>
+         <div id="form-style">
+                     <table width="600" border="2" cellspacing="1" cellpadding="1">
+                        
+                        <tr>
+                           <th>ID Number</th>
+                           <th>First Name</th>
+                           <th>Middle Name</th>
+                           <th>Last Name</th>
+                           <th>Client Type</th>
+                        </tr>
 
-              <?php
-                  if(!$clients){
-                     echo pg_last_error($db);
-                     exit;
-                  } 
-                  while($records = pg_fetch_assoc($clients)){
-                     echo "<tr>";
-                     echo "<td>";
-                        echo "<a href='searchDonor.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
-                     echo "</td>";
-                     echo "<td>" . $records['fname'] . "</td>";
-                     echo "<td>" . $records['mname'] . "</td>";
-                     echo "<td>" . $records['lname'] . "</td>";
-                     echo "<td>" . $records['client_type'] . "</td>";
-                     echo "<td>";
-                        echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".delete." </a>";
-                     echo "</td>";
-                     echo "</tr>";
-                     echo "<br>";
-                  }
-                  pg_close($db);
-               $result = pg_query($query);   
-            ?>
-         </table>
+                       <?php
+                           if(!$clients){
+                              echo pg_last_error($db);
+                              exit;
+                           } 
+                           while($records = pg_fetch_assoc($clients)){
+                              echo "<tr>";
+                              echo "<td>";
+                                 echo "<a href='searchDonor.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
+                              echo "</td>";
+                              echo "<td>" . $records['fname'] . "</td>";
+                              echo "<td>" . $records['mname'] . "</td>";
+                              echo "<td>" . $records['lname'] . "</td>";
+                              echo "<td>" . $records['client_type'] . "</td>";
+                              echo "<td>";
+                                 echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> <img src="delete.png" height="128" width="128"/> </a>";
+                              echo "</td>";
+                              echo "</tr>";
+                              echo "<br>";
+                           }
+                           pg_close($db);
+                        $result = pg_query($query);   
+               ?>
+            </table>
+         </div>
       </div>
 <!-- BODY -->
 

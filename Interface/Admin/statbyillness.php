@@ -67,8 +67,6 @@
 
          pg_close($db);
       ?>
-
-
       </table>
    </ul>
 </div>
