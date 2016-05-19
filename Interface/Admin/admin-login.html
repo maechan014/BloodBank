@@ -1,0 +1,86 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Blood Bank</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+	<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+	<style type="text/css">
+		#form-style{
+			position: relative;
+			top: 60px;
+			left: 0;
+			right: 0;
+			width: 300px;
+			min-height: 100px;
+			padding: 25px 25px 25px;
+		  	margin: auto;
+		  	background: #FFF;
+		}
+		
+		#form-style li{
+			padding: 0;
+		    display: inline-block;
+		    list-style: none;
+		    margin: 10px 0 0 0;
+		}
+
+		#form-style input{
+			 width:300px; 
+			 height: 40px;
+		}
+		#form-style input[type=submit]{
+			background: #c72121;
+			padding: 8px 16px 8px 16px;
+			border: none;
+			color: #FFF;
+		}
+		#form-style input[type=submit]{
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+<!-- MENU / HEADER-->
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="index.html" title="Blood Bank">Blood Bank</a></h1>
+			<span>Donate now!</span> 
+		</div>
+	
+
+
+		<div id="menu">
+			<ul>
+				<li><a href="admin-login.html">Admin</a></li>
+				<li><a href="staff-login.html">Staff</a></li>
+				<li><a href="client-login.html">Client</a></li>
+			</ul>
+			
+		</div>
+	</div>
+</div>
+
+<!-- MENU / HEADER-->
+
+<!-- BODY -->
+<div id="content"> 
+		<form name="add" action="admin-homepage.html" method="POST">
+		<div id="form-style">
+				<center><li><h1>ADMIN LOGIN</h1></li></center>
+				<li><label></label><input type = "text" name= "admin-username" placeholder="Username"></li>
+				<li><label></label><input type = "password" name= "admin-password" placeholder="Password"></li>
+				<li><input type="submit" name="submit" value="LOGIN"></li>
+		</div>
+	</form>
+</div>
+<!-- BODY -->
+
+
+
+
+</body>
+</html>
