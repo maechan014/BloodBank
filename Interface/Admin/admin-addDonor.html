@@ -30,6 +30,7 @@
 				<li><a href="index.html" title="Logout">Logout</a><li>
 			</ul>
 			
+
 		</div>
 	</div>
 </div>
@@ -86,7 +87,15 @@
 				</ul>
 
 					<li><label>Donor Illness: </label><textarea rows="3" cols="50" name ="illness"> </textarea></li>
-			<center><li><input type="submit" name="submit" value="Submit"></li></center>
+					<br>
+
+			<h2>Donate</h2>
+			<ul id="donation">
+			<li><label>Date of Donation: </label><input type="date" name="date" required/></li>
+			<li><label>Time of Donation: </label><input type="time" name="time" required/></li>  
+			<li><label>Amount (in cc): </label><input type="number" step="1"  name="amount" required/></li>
+
+			<center><li><input type="submit" name="submit" /></li></center>
 		</div>
 	</form>
 </div>
