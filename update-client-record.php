@@ -17,7 +17,7 @@
             </tr> 
 
         <?php  
-        $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=123");
+        $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
         $id = (int)$_POST['idno'];
         $query = "UPDATE CLIENT set fname='$_POST[fname_update]', lname='$_POST[lname_update]' where idno='$id'"; 
     

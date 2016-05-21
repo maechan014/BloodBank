@@ -16,7 +16,25 @@ EOF;
    <meta name="description" content="" />
    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-   <link href="view.css" rel="stylesheet" type="text/css" media="all" />
+   <style> 
+      #content{
+         background: #c72121;
+         padding: 0em 7em;
+      }
+      table{
+         position: absolute;
+         top: 150px;
+         background: #FFF;
+         margin: 0 auto;
+      }     
+      #content h1{
+         margin: 0 auto;
+         position: relative;
+         top: 10px;
+         color: #FFF;
+      }
+   </style>
+
 </head>
 
 <body>
@@ -30,10 +48,12 @@ EOF;
          
             <div id="menu">
                <ul>
-                  <li><a href="admin-homepage.html" title="Home">Home</a></li>
-                  <li><a href="admin-addPage.html" title="Add">Add</a>
-                  <li><a href="admin-viewPage.html" title="View">View</a></li>
-                  <li><a href="admin-search.html" title="Search">Search</a>
+                  <li><a href="admin-homepage.html"   title="Home">Home</a></li>
+                  <li><a href="admin-addDonor.html" title="Add">Add</a></li>
+                  <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
+                  <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
+                  <li><a href="admin-search.html" title="Search">Search</a></li>
+                  <li><a href="index.html" title="Logout">Logout</a><li>
                </ul>
                
             </div>
@@ -44,41 +64,40 @@ EOF;
 
 <!-- BODY -->
       <div id="content"> 
-         <div id="form-style">
-                     <table width="600" border="2" cellspacing="1" cellpadding="1">
+            <h1>CLIENT INFORMATION</h1>
+         <table width="600" border="2" cellspacing="1" cellpadding="1">
                         
-                        <tr>
-                           <th>ID Number</th>
-                           <th>First Name</th>
-                           <th>Middle Name</th>
-                           <th>Last Name</th>
-                           <th>Client Type</th>
-                        </tr>
+            <tr>
+               <th>ID Number</th>
+               <th>First Name</th>
+               <th>Middle Name</th>
+               <th>Last Name</th>
+               <th>Client Type</th>
+            </tr>                                 
 
-                       <?php
-                           if(!$clients){
-                              echo pg_last_error($db);
-                              exit;
-                           } 
-                           while($records = pg_fetch_assoc($clients)){
-                              echo "<tr>";
-                              echo "<td>";
-                                 echo "<a href='searchDonor.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
-                              echo "</td>";
-                              echo "<td>" . $records['fname'] . "</td>";
-                              echo "<td>" . $records['mname'] . "</td>";
-                              echo "<td>" . $records['lname'] . "</td>";
-                              echo "<td>" . $records['client_type'] . "</td>";
-                              echo "<td>";
-                                 echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> <img src="delete.png" height="128" width="128"/> </a>";
-                              echo "</td>";
-                              echo "</tr>";
-                              echo "<br>";
-                           }
-                           pg_close($db);
-                        $result = pg_query($query);   
-               ?>
-            </table>
+            <?php
+            if(!$clients){
+               echo pg_last_error($db);
+                  exit;
+            } 
+            while($records = pg_fetch_assoc($clients)){
+               echo "<tr>";
+               echo "<td>";
+                  echo "<a href='searchDonor.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
+               echo "</td>";
+               echo "<td>" . $records['fname'] . "</td>";
+               echo "<td>" . $records['mname'] . "</td>";
+               echo "<td>" . $records['lname'] . "</td>";
+               echo "<td>" . $records['client_type'] . "</td>";
+               echo "<td>";
+                  echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".Delete." </a>";
+               echo "</td>";
+               echo "</tr>";
+            }
+               pg_close($db);
+               $result = pg_query($query);                  
+             ?>
+         </table>
          </div>
       </div>
 <!-- BODY -->

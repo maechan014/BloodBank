@@ -46,14 +46,46 @@
 			echo pg_last_error($db);
 		}
 	}
+
+	$amount = "UPDATE Donor SET amountdonated = '$_POST[amount]' WHERE idno = $idnumber";
+	$amountresult = pg_query($amount);
+	if (!$amountresult) {
+		echo pg_last_error($db);
+	}
+
+
+	$query = "INSERT INTO Blood (bloodtype, 
+								bloodrh, 
+								date, 
+								time, 
+								amount, 
+								withdrawalstatus,
+								idno)
+				VALUES ('$_POST[bloodtype]',
+						'$rh',
+						'$_POST[date]',
+						'$_POST[time]',
+						'$_POST[amount]',
+						'false',
+						'$idnumber')";
+
+	$result = pg_query($query);
+	/*$psql = "INSERT into Donor (amountdonated) values('$_POST[amount]')";
+	$result2 = pg_query($psql);*/
+
+	/*if (!$result) {
+		echo pg_last_error($db);
+	}*/
 	
-	if($donorResult){
-		header("Location: admin-addDonation2.php?id=$idnumber&btype=$_POST[bloodtype]&brh=$rh");
+	if($result){
+		header("Location: successpage.html");
 		exit();
 	}
 	else{
 		echo pg_last_error($db);
 		exit();
 	}	
+
+	pg_close($db);
 
 ?>

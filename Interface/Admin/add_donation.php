@@ -28,6 +28,7 @@ $query = "INSERT INTO Blood (bloodtype,
 $result = pg_query($query);
 $sql = "INSERT into Donor (amountdonated) values('$_POST[amount]')";
 $result2 = pg_query($psql);
+
 	if(!$result){
 		echo pg_last_error($db);
    	}

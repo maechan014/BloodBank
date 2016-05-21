@@ -21,7 +21,7 @@
 		<div id="menu">
 			<ul>
 				<li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
-				<li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
+				<li><a href="admin-addDonor.html" accesskey="2" title="Add">Add</a></li>
 				<li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
 				<li><a href="admin-search.html" accesskey="6" title="Search">Search</a><li>
 			</ul>

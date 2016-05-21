@@ -15,15 +15,15 @@
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
+			<h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
 			<span>Donate now!</span> 
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
-				<li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
-				<li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
-				<li><a href="admin-search.html" accesskey="6" title="Search">Search</a><li>
+				<li><a href="admin-homepage.html" title="Home">Home</a></li>
+				<li><a href="admin-addDonor.html" title="Add">Add</a></li>
+				<li><a href="admin-viewPage.html" title="View">View</a></li>
+				<li><a href="admin-search.html" title="Search">Search</a><li>
 			</ul>
 			
 		</div>
@@ -39,7 +39,13 @@
 			<li><label>ID Number: </label><input type="number" name="idno" required/></li>
 			<li><label>Date of Donation: </label><input type="date" name="date" required/></li>
 			<li><label>Time of Donation: </label><input type="time" name="time" required/></li>  
-			<li><label>Amount (in cc): </label><input type="number" step="1"  name="amount" required/></li>  
+			<li><label>Amount (in cc): </label>
+				<select name="amount">
+						<option value="350">350 cc</option>
+						<option value="450">450 cc</option>
+				</select>
+				<span class="required">*</span></li>
+			</li>
 			<center><li><input type="submit" /></li></center>
 		</div>
 </form>  

@@ -20,24 +20,17 @@ EOF;
        <meta name="description" content="" />
        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
        <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-      <style> 
-      #content{
-         background: #c72121;
-         padding: 0em 7em;
-      }
-      table{
-         position: absolute;
-         top: 150px;
-         background: #FFF;
-         margin: 0 auto;
-      }     
-      #content h1{
-         margin: 0 auto;
-         position: relative;
-         top: 10px;
-         color: #FFF;
-      }
-   </style>
+       <style>
+          table{
+            position: absolute;
+            top: 150px;
+            background: #FFF;
+          }
+          #content h1{
+            margin: auto;
+            color: #FFF;
+          }
+       </style>
     </head>
     <body> 
         <!-- MENU/HEADER -->
@@ -50,10 +43,10 @@ EOF;
          
             <div id="menu">
               <ul>
-                <li><a href="admin-homepage.html" title="Home">Home</a></li>
+                <li><a href="admin-homepage.html"  class="currentpage" title="Home">Home</a></li>
                 <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                 <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
-                <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
+                <li><a href="admin-viewPage.html" title="View">View</a></li>
                 <li><a href="admin-search.html" title="Search">Search</a></li>
                 <li><a href="index.html" title="Logout">Logout</a><li>
               </ul>
@@ -65,8 +58,8 @@ EOF;
 
         <!-- CONTENT -->
             <div id="content">
-              <h1>Donation Log</h1>
-              <table border="1" cellspacing="1" cellpadding="1"> 
+              <center><h1>DONATION LOG</h2></center>
+              <table border="2" cellspacing="3" cellpadding="4"> 
                   <tr> 
                        <th>Tracking Number</th>
                        <th>Donor ID</th>
@@ -101,6 +94,7 @@ EOF;
                   echo "<td>" . $records['date'] . "</td>";
                   echo "<td>" . $records['withdrawalstatus'] . "</td>";
                   echo "</tr>";
+                  echo "<br>";
                }
 
                if(!$clients2){
