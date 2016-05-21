@@ -89,3 +89,41 @@ references client(idno)
 on delete set null;
 
 SELECT LPAD (idno::text, 10, '0'), * FROM CLIENT
+
+-----------------------------------------------------------
+New Changes to DB
+(May 21, 2016)
+
+ALTER TABLE DONOR 
+ALTER COLUMN gallons type numeric(5,2) using gallons::numeric;
+
+CREATE FUNCTION calc_gallon(val1 numeric, total numeric) RETURNS numeric AS $$
+BEGIN
+	total:= val1 / 3785.41;
+	RETURN total;
+END; $$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE FUNCTION update_amount()  
+RETURNS trigger AS  $$  
+BEGIN
+    UPDATE donor set amountdonated=addAmount(amountdonated, New.amount) where idno=New.idno;
+    UPDATE donor set gallons=calc_gallon(amountdonated, 0) where idno=New.idno;
+    RETURN NEW;  
+END;  
+$$
+LANGUAGE PLPGSQL;
+
+CREATE FUNCTION addAmount(val1 numeric, val2 numeric) RETURNS numeric AS $$
+BEGIN
+	RETURN val1 + val2;
+END; $$
+LANGUAGE PLPGSQL;
+
+CREATE TRIGGER update_amt_gallon
+  AFTER INSERT
+  ON Blood 
+  FOR EACH ROW  
+  EXECUTE PROCEDURE update_amount();
+
+
