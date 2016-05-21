@@ -53,6 +53,7 @@ EOF;
                            <th>Middle Name</th>
                            <th>Last Name</th>
                            <th>Client Type</th>
+                           <th>Phone</th>
                         </tr>
 
                        <?php
@@ -68,9 +69,10 @@ EOF;
                               echo "<td>" . $records['fname'] . "</td>";
                               echo "<td>" . $records['mname'] . "</td>";
                               echo "<td>" . $records['lname'] . "</td>";
+                              echo "<td>" . $records['phone'] . "</td>";
                               echo "<td>" . $records['client_type'] . "</td>";
                               echo "<td>";
-                                 echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> <img src="delete.png" height="128" width="128"/> </a>";
+                                 echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".DELETE." </a>";
                               echo "</td>";
                               echo "</tr>";
                               echo "<br>";

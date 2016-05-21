@@ -8,17 +8,6 @@ EOF;
    $donors = pg_query($db, $sql);
 ?>
 
-
-<?php
-$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
-
-   $sql =<<<EOF
-      SELECT * FROM Client;
-EOF;
-
-   $clients = pg_query($db, $sql);
-?>
-
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -73,6 +62,7 @@ EOF;
          <th>First Name</th>
          <th>Middle Name</th>
          <th>Last Name</th>
+         <th>Phone</th>
          <th>Birthday</th>
          <th>Age</th>
          <th>Weight</th>
@@ -105,6 +95,7 @@ EOF;
       echo "<td>" . $records['fname'] . "</td>";
       echo "<td>" . $records['mname'] . "</td>";
       echo "<td>" . $records['lname'] . "</td>";
+      echo "<td>" . $records['phone'] . "</td>";
       echo "<td>" . $records['birthday'] . "</td>";
       echo "<td>" . $records['age'] . "</td>";
       echo "<td>" . $records['weight'] . "</td>";
