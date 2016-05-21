@@ -19,7 +19,7 @@
 		$rh = '+';
 	}
 
-	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height) 
+	$donorQuery = "INSERT INTO Donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height, amountdonated) 
 					VALUES ('$idnumber',
 							'$_POST[houseno]', 
 							'$_POST[street]', 
@@ -33,7 +33,8 @@
 							'$_POST[birthday]',
 							'$age', 
 							'$_POST[weight]', 
-							'$_POST[height]')";
+							'$_POST[height]',
+							'0')";
 	$donorResult = pg_query($donorQuery);
 
 	$illness = $_POST[illness];
@@ -46,13 +47,6 @@
 			echo pg_last_error($db);
 		}
 	}
-
-	$amount = "UPDATE Donor SET amountdonated = '$_POST[amount]' WHERE idno = $idnumber";
-	$amountresult = pg_query($amount);
-	if (!$amountresult) {
-		echo pg_last_error($db);
-	}
-
 
 	$query = "INSERT INTO Blood (bloodtype, 
 								bloodrh, 
@@ -70,15 +64,9 @@
 						'$idnumber')";
 
 	$result = pg_query($query);
-	$psql = "INSERT into Donor (amountdonated) values('$_POST[amount]')";
-	$result2 = pg_query($psql);
-
-	if (!$result) {
-		echo pg_last_error($db);
-	}
 	
 	if($result){
-		header("Location: successpage.html");
+		header("Location: viewDonor.php");
 		exit();
 	}
 	else{

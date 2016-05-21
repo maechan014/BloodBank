@@ -3,13 +3,6 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 $status = 'false';
 
-$amount = "UPDATE Donor SET amountdonated = '$_POST[amount]' WHERE idno = $_POST[idnumber]";
-$amountresult = pg_query($amount);
-if (!$amountresult) {
-	echo pg_last_error($db);
-}
-
-
 $query = "INSERT INTO Blood (bloodtype, 
 							bloodrh, 
 							date, 
@@ -23,11 +16,10 @@ $query = "INSERT INTO Blood (bloodtype,
 					'$_POST[time]',
 					'$_POST[amount]',
 					'false',
-					'$_POST[idnumber]')";
+					'$_POST[idno]')";
 
 $result = pg_query($query);
-$psql = "INSERT into Donor (amountdonated) values('$_POST[amount]')";
-$result2 = pg_query($psql);
+
 	if(!$result){
 		echo pg_last_error($db);
    	}
