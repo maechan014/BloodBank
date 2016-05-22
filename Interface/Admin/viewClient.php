@@ -72,6 +72,7 @@ EOF;
                <th>First Name</th>
                <th>Middle Name</th>
                <th>Last Name</th>
+               <th>Phone</th>
                <th>Client Type</th>
             </tr>                                 
 
@@ -88,6 +89,7 @@ EOF;
                echo "<td>" . $records['fname'] . "</td>";
                echo "<td>" . $records['mname'] . "</td>";
                echo "<td>" . $records['lname'] . "</td>";
+               echo "<td>" . $records['phone'] . "</td>";
                echo "<td>" . $records['client_type'] . "</td>";
                echo "<td>";
                   echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".Delete." </a>";
@@ -98,40 +100,6 @@ EOF;
                $result = pg_query($query);                  
              ?>
          </table>
-                        <tr>
-                           <th>ID Number</th>
-                           <th>First Name</th>
-                           <th>Middle Name</th>
-                           <th>Last Name</th>
-                           <th>Client Type</th>
-                           <th>Phone</th>
-                        </tr>
-
-                       <?php
-                           if(!$clients){
-                              echo pg_last_error($db);
-                              exit;
-                           } 
-                           while($records = pg_fetch_assoc($clients)){
-                              echo "<tr>";
-                              echo "<td>";
-                                 echo "<a href='searchDonor.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
-                              echo "</td>";
-                              echo "<td>" . $records['fname'] . "</td>";
-                              echo "<td>" . $records['mname'] . "</td>";
-                              echo "<td>" . $records['lname'] . "</td>";
-                              echo "<td>" . $records['phone'] . "</td>";
-                              echo "<td>" . $records['client_type'] . "</td>";
-                              echo "<td>";
-                                 echo "<a href='delete-client.php?action=view&id=".$records['idno']."'> ".DELETE." </a>";
-                              echo "</td>";
-                              echo "</tr>";
-                              echo "<br>";
-                           }
-                           pg_close($db);
-                        $result = pg_query($query);   
-               ?>
-            </table>
          </div>
       </div>
 <!-- BODY -->
