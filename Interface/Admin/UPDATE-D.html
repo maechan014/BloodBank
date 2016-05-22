@@ -5,7 +5,6 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
       SELECT FROM donor where idno='$id';
 EOF;
 
-	
 	$query = "SELECT FROM donor where idno='$id'"; 
 	$result = pg_query($query); 
 ?>
@@ -19,18 +18,20 @@ EOF;
 
 <body>  
 	<h2>Edit Request</h2> 
-		<form name="insert" action="update-donor.php" method="POST" >  
+		
 		<?php
 			if(!$result){
 				echo pg_last_error($db);
-                    exit;
+                exit;
 			}
+			echo "<form name="insert" action="update-donor.php" method="POST" >";
+			
 			while ($records = pg_fetch_assoc($result)) {
 				
 					$idnum = $records['idno'];
 					echo "$idnum";
 					echo "<li> ID Number: <input type="number" name="idnumber" value= "$idnum" placeholder="$idnum" disabled></li>";
-					<li>First Name: <input type="text" name="fname" value= "$records['fname']"></li>
+					echo "<li>First Name: <input type="text" name="fname" value= "$records['fname']"></li>
 					<li>Middle Name: <input type="text" name="mname" value= "$records['mname']"></li>
 					<li>Last Name: <input type="text" name="lname" value= "$records['lname']"></li>
 					<li>Phone: <input type="text" name="phone_update" value= "$records['phone']"></li>
@@ -46,11 +47,12 @@ EOF;
 					<li>Birthday: <input type="date" name="birthday_update" value= "$records['birthday']"></li>
 					<li>Weight: <input type="text" name="weight_update" value= "$records['weight']"></li>
 					<li>Height: <input type="text" name="height_update" value= "$records['height']"></li>
-					<li><input type="submit"/></li>
+					<li><input type="submit"/></li>";
 				
 			}
+		echo "</form>";
 		?>
-		</form>
+		
 		
 </body>  
 </html>

@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Blood Bank</title>
+	<title>Admin</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -55,10 +55,7 @@
 
 		<div id="menu">
 			<ul>
-				<li><a href="admin-login.html" class="currentpage">Admin</a></li>
-				<li><a href="staff-login.html">Staff</a></li>
-				<li><a href="client-login.html">Client</a></li>
-				<li><a href="#">Request</a></li>
+				<li><a href="admin-login.html" class="currentpage">Admin</a>
 			</ul>
 			
 		</div>
@@ -72,8 +69,8 @@
 		<form name="add" action="admin-homepage.html" method="POST">
 		<div id="form-style">
 				<center><li><h1>ADMIN LOGIN</h1></li></center>
-				<li><label></label><input type = "text" name= "admin-username" placeholder="Username"></li>
-				<li><label></label><input type = "password" name= "admin-password" placeholder="Password"></li>
+				<li><label></label><input type = "text" name= "admin-username" placeholder="Username" required></li>
+				<li><label></label><input type = "password" name= "admin-password" placeholder="Password" required></li>
 				<li><input type="submit" name="submit" value="LOGIN"></li>
 		</div>
 	</form>
