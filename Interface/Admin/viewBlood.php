@@ -51,7 +51,6 @@ EOF;
       echo "<br>";
    }
    pg_close($db);
-$result = pg_query($query);   
 ?>
 
 </table>
