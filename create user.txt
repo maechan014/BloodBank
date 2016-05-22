@@ -1,0 +1,64 @@
+CREATE USER admin WITH PASSWORD 'admin';
+
+CREATE USER donor WITH PASSWORD 'donor';
+
+CREATE USER requester WITH PASSWORD 'requester';
+
+alter table blood enable row level security;
+
+alter table client enable row level security;
+
+alter table donor_illness enable row level security;
+
+alter table request enable row level security;
+
+alter table users enable row level security;
+
+create policy addClient on client for all to admin;
+
+create policy addDonor on donor for all to admin;
+
+create policy addBlood on blood for all to admin;
+
+create policy viewRequests on request for select to admin;
+
+create policy updateRequests on request for update to admin;
+
+create policy deleteRequests on request for delete to admin;
+
+create policy addDonorIllness on donor_illness for all to admin;
+
+create policy viewAll on users for select to requester;
+
+grant select on users to requester;
+
+grant select (username, usertype, password, idno) on users to requester;
+
+-- alter table users owner to requester;
+
+grant all on client to admin;
+
+grant all on donor to admin;
+
+grant select, update, delete on donor to admin;
+
+grant all on donor_illness to admin;
+
+alter role admin inherit;
+
+grant donor to admin;
+
+-- alter table client owner to requester;
+
+-- alter table request owner to requester;
+
+-- alter role donor inherit;
+
+grant requester to donor;
+
+alter table donor owner to donor;
+
+lter table donor_illness owner to donor;
+
+alter table blood owner to requester;
+
