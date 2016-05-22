@@ -81,7 +81,6 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 		      echo "<td>" . $records['bloodtype'] . "</td>";
 		      echo "<td>" . $records['bloodrh'] . "</td>";
 		      echo "<td>" . $records['count'] . "</td>";
-		      echo "<br>";
 		   }
 
 
@@ -90,7 +89,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 </table>
 
 
-
+	<hr>
 	<h2>Remaining Blood</h2>
 		 <table width="600" border="2" cellspacing="3" cellpadding="3">
 		      <tr>
@@ -117,14 +116,11 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 		      echo "<td>" . $records['bloodrh'] . "</td>";
 		      echo "<td>" . $records['amount'] . "</td>";
 		      echo "<td>" . $records['age'] . "</td>";
-		      echo "<br>";
 		      $i++;
 		   }
 
 		   pg_close($db);
 		?>
-
-
 		</table>
 
 

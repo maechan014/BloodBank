@@ -38,10 +38,10 @@ EOF;
             </div>
             <div id="menu">
                 <ul>
-                  <li><a href="admin-homepage.html"  class="currentpage" title="Home">Home</a></li>
+                  <li><a href="admin-homepage.html"   title="Home">Home</a></li>
                   <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                   <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
-                  <li><a href="admin-viewPage.html" title="View">View</a></li>
+                  <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
                   <li><a href="admin-search.html" title="Search">Search</a></li>
                   <li><a href="index.html" title="Logout">Logout</a><li>
                 </ul>
