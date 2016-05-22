@@ -5,7 +5,7 @@
 	$password = $_POST['password'];
 
 	$sql = <<<EOF
-      SELECT * FROM users where username = '$username' and password = '$password';
+      SELECT * FROM users where username = '$username' and password = '$password' and usertype = 'a';
 EOF;
 //	$query = "SELECT * FROM users where username = '$username' and password = '$password'"; 
 	$res = pg_query($db, $sql);

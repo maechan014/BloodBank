@@ -1,3 +1,5 @@
+// buhata ni sa sulod sa bloodbank
+
 CREATE USER admin WITH PASSWORD 'admin';
 
 CREATE USER donor WITH PASSWORD 'donor';
@@ -34,7 +36,7 @@ grant select on users to requester;
 
 grant select (username, usertype, password, idno) on users to requester;
 
--- alter table users owner to requester;
+alter table users owner to requester;
 
 grant all on client to admin;
 
@@ -48,17 +50,17 @@ alter role admin inherit;
 
 grant donor to admin;
 
--- alter table client owner to requester;
+alter table client owner to requester;
 
--- alter table request owner to requester;
+alter table request owner to requester;
 
--- alter role donor inherit;
+alter role donor inherit;
 
 grant requester to donor;
 
 alter table donor owner to donor;
 
-lter table donor_illness owner to donor;
+alter table donor_illness owner to donor;
 
 alter table blood owner to requester;
 
