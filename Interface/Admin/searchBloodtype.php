@@ -50,6 +50,7 @@ EOF;
    <div id="form-style">
       <ul id = "keywords">
             <li><h1>Blood Type Information</h1></li>
+            <hr>
             <table width="600" border="2" cellspacing="1" cellpadding="1">
                <tr>
 

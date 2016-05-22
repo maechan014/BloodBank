@@ -1,12 +1,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search</title>
+<title>Add Donation</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="admin-search.css" rel="stylesheet" type="text/css" media="all" />
+<link href="admin-addDonation.css" rel="stylesheet" type="text/css" media="all" />
 <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
 </head>
@@ -15,16 +15,16 @@
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
+			<h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
 			<span>Donate now!</span> 
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="admin-homepage.html"   title="Home">Home</a></li>
+				<li><a href="admin-homepage.html"  class="currentpage" title="Home">Home</a></li>
 				<li><a href="admin-addDonor.html" title="Add">Add</a></li>
 				<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
 				<li><a href="admin-viewPage.html" title="View">View</a></li>
-				<li><a href="admin-search.html" class="currentpage" title="Search">Search</a></li>
+				<li><a href="admin-search.html" title="Search">Search</a></li>
 				<li><a href="index.html" title="Logout">Logout</a><li>
 			</ul>
 			
@@ -36,23 +36,19 @@
 
 <!-- BODY -->
 <div id="content"> 
-	<form name="add" action="searchD.php" method="POST">
+	<form name="insert" action="add_donation.php" method="POST" >
 		<div id="form-style">
-			<ul id="keywords">
-				<h1>Search by ID Number</h1>
-				<li><label>ID Number</label><input type = "number" name= "idnumber"></li>
-				<center><li><input type="submit" name="submit" value="Search"></li></center>
-				<hr>
-				<h1>Search by name</h1>
-				<li><label>First Name: </label><input type = "name" name= "fname"></li>
-				<li><label>Middle Name: </label><input type = "name" name= "mname"></li>
-				<li><label>Last Name: </label><input type = "name" name= "lname"></li>
-				<center><li><input type="submit" name="submit" value="Search"></li></center>
-			</ul>
+			<li><label>ID Number: </label><input type="number" name="idno" required/></li>
+			<li><label>Date of Donation: </label><input type="date" name="date" required/></li>
+			<li><label>Time of Donation: </label><input type="time" name="time" required/></li>  
+			<li><label>Amount (in cc): </label><input type="number" step="1"  name="amount" required/></li>  
+			<center><li><input type="submit" /></li></center>
 		</div>
-	</form>
-
+</form>  
 </div>
+<!-- BODY -->
+
+
 
 </body>
 </html>

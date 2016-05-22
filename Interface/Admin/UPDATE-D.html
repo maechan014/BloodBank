@@ -1,0 +1,56 @@
+<?php
+$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
+	$id = $_GET['id']; 
+	$sql =<<<EOF
+      SELECT FROM donor where idno='$id';
+EOF;
+
+	
+	$query = "SELECT FROM donor where idno='$id'"; 
+	$result = pg_query($query); 
+?>
+
+<!DOCTYPE html>
+<html>  
+<head> 
+	<title>Edit Request</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+</head>  
+
+<body>  
+	<h2>Edit Request</h2> 
+		<form name="insert" action="update-donor.php" method="POST" >  
+		<?php
+			if(!$result){
+				echo pg_last_error($db);
+                    exit;
+			}
+			while ($records = pg_fetch_assoc($result)) {
+				
+					$idnum = $records['idno'];
+					echo "$idnum";
+					echo "<li> ID Number: <input type="number" name="idnumber" value= "$idnum" placeholder="$idnum" disabled></li>";
+					<li>First Name: <input type="text" name="fname" value= "$records['fname']"></li>
+					<li>Middle Name: <input type="text" name="mname" value= "$records['mname']"></li>
+					<li>Last Name: <input type="text" name="lname" value= "$records['lname']"></li>
+					<li>Phone: <input type="text" name="phone_update" value= "$records['phone']"></li>
+					<li>House No: <input type="text" name="houseno_update" value= "$records['houseno']"></li>
+					<li>Street: <input type="text" name="street_update" value= "$records['street']"></li>
+					<li>Barangay: <input type="text" name="barangay_update" value= "$records['barangay']"></li>
+					<li>City/Municipality: <input type="text" name="citymun_update" value= "$records['citymun']"></li>
+					<li>Province: <input type="text" name="province_update" value= "$records['province']"></li>
+					<li>ZIP Code: <input type="text" name="zipcode_update" value= "$records['zipcode']"></li>
+					<li>Ethnicity: <input type="text" name="ethnicity_update" value= "$records['ethnicity']"></li>
+					<li>Blood Type: <input type="text" name="bloodtype_update" value= "$records['bloodtype']" disabled></li>
+					<li>Blood RH: <input type="text" name="bloodrh_update" value= "$records['bloodrh']" disabled></li>
+					<li>Birthday: <input type="date" name="birthday_update" value= "$records['birthday']"></li>
+					<li>Weight: <input type="text" name="weight_update" value= "$records['weight']"></li>
+					<li>Height: <input type="text" name="height_update" value= "$records['height']"></li>
+					<li><input type="submit"/></li>
+				
+			}
+		?>
+		</form>
+		
+</body>  
+</html>

@@ -6,22 +6,6 @@
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<style>
-	#content{
-		min-height: 400px;
-		background: #FFF;
-	}
-
-	p{
-		position: relative;
-		top: 150px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-</style>
-
-
 </head>
 
 <body>
@@ -38,8 +22,13 @@
 		<div id="menu">
 			<ul>
 				<li><a href="admin-homepage.html"  class="currentpage" title="Home">Home</a></li>
+				<!-- <li><a href="admin-addPage.html" title="Add">Add</a>
+					<ul id="add-menu">
+						<li><a href="#" title="Add Donor">Add Donor</a></li>
+						<li><a href="#" title="Add Donation">Add Donation</a></li>
+					</ul>
+				</li> -->
 				<li><a href="admin-addDonor.html" title="Add">Add</a></li>
-				<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
 				<li><a href="admin-viewPage.html" title="View">View</a></li>
 				<li><a href="admin-search.html" title="Search">Search</a></li>
 				<li><a href="index.html" title="Logout">Logout</a><li>
@@ -52,29 +41,13 @@
 <!-- MENU / HEADER-->
 
 <!-- BODY -->
-<div id="content"> 
-
-	<center><p> Operation successful. Click <a href="admin-viewPage.html">here</a> to go back to check.</p></center>
+<div id="header-featured"> 
 
 </div>
 <!-- BODY -->
+
+
+
+
 </body>
 </html>
-
-<?php
-	$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
-		$psql = "INSERT into Donor (amountdonated) values('$amount')";
-		$result2 = pg_query($psql);
-
-		$amount = "UPDATE Donor SET amountdonated = '$_POST[amount]' WHERE idno = $idnumber";
-		$amountresult = pg_query($amount);
-		
-		if($result2){
-			exit();
-		}
-		else{
-			echo pg_last_error($db);
-			exit();
-		}	
-
-?>

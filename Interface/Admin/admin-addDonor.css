@@ -52,11 +52,11 @@
     margin-top: 3px;
     display:inline-block;
     float:left;
-    padding:3px;
+    padding-left:3px;
 }
 
 #form-style input {
-    width:200px; 
+    width: 230px; 
 }
 
 #form-style button{
@@ -69,6 +69,7 @@
 }
 
 #form-style input[type=submit], #form-style input[type=button]{
+    margin-left: 10px;
     background: #c72121;
     padding: 8px 15px 8px 15px;
     border: none;
