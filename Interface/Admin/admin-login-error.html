@@ -39,6 +39,27 @@
 		#form-style input[type=submit]{
 			cursor: pointer;
 		}
+
+		.alert {
+		    padding: 10px;
+		    background-color: #f44336;
+		    color: white;
+		    font-size: 16px;
+		}
+
+		.closebtn {
+		    margin-left: 15px;
+		    color: white;
+		    font-weight: bold;
+		    float: right;
+		    font-size: 22px;
+		    line-height: 20px;
+		    cursor: pointer;
+		    transition: 0.3s;
+		}
+		.closebtn:hover {
+		    color: black;
+		}
 	</style>
 </head>
 
@@ -67,6 +88,10 @@
 <!-- BODY -->
 <div id="content"> 
 		<form name="add" action="login.php" method="POST">
+		<div class="alert">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+  				Password or username error.
+		</div>
 		<div id="form-style">
 				<center><li><h1>ADMIN LOGIN</h1></li></center>
 				<li><label></label><input type = "text" name= "username" placeholder="Username" required></li>
