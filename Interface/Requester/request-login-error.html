@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>  
+<head> 
+	<title>Add Request</title>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+	<link href="default.css" rel="stylesheet" type="text/css" media="all" /> 
+	<style>
+				/*
+	*************************
+		* CONTENT
+	*************************
+	*/
+
+	#content{
+		background: #c72121;
+		min-height: 800px;
+		padding: 0em 7em;
+	}
+
+	/*
+	*************************
+		* CONTENT STYLE
+	*************************
+	*/
+	#form-style{
+		position: relative;
+		top: 50px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		width: 250px;
+		min-height: 150px;
+	    padding: 10px 10px 10px 20px;
+	    font: 12px "Roboto", "Lucida Grande", sans-serif;
+	    font-weight: 3px;
+	    border: 1px solid #c72121;
+
+	    color: black;
+	    background: #FFF;
+
+	}
+
+	#form-style h1{
+	    text-align: center;
+	}
+
+	#form-style h1, h2{
+		 color: black;
+	}
+
+	#form-style li {
+	    padding: 0;
+	    display: block;
+	    list-style: none;
+	    margin: 10px 0 0 0;
+	}
+
+	#form-style label{
+		width:150px;
+	    margin-top: 3px;
+	    display:inline-block;
+	    float:left;
+	    padding-left:3px;
+	}
+
+	#form-style input {
+	    width: 230px; 
+	}
+
+	#form-style input[type=text]:focus, 
+	#form-style input[type=date]:focus, 
+	#form-style input[type=number]:focus{
+	}
+
+	#form-style input[type=submit], #form-style input[type=button]{
+		/*margin-left: 153px;*/
+	    background: #c72121;
+	    padding: 8px 15px 8px 15px;
+	    border: none;
+	    color: #FFF;
+	}
+	#form-style input[type=submit]:hover, #form-style input[type=button]:hover{
+	    cursor: pointer;
+	}
+
+	.required{
+		color: red;
+		padding-left: 2px;
+	}
+	.hr-1{
+		border-top: 3px double black;
+	}
+
+	.alert {
+	    padding: 10px;
+	    background-color: #f44336;
+	    color: white;
+	    font-size: 16px;
+	}
+
+	.closebtn {
+	    margin-left: 15px;
+	    color: white;
+	    font-weight: bold;
+	    float: right;
+	    font-size: 22px;
+	    line-height: 20px;
+	    cursor: pointer;
+	    transition: 0.3s;
+	}
+	.closebtn:hover {
+	    color: black;
+	}
+</style>
+</head>  
+<body>  
+	<!-- MENU / HEADER-->
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="index.html" title="Blood Bank">Blood Bank</a></h1>
+				<span>Donate now!</span> 
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="#" title="View">View</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- MENU / <HEADER--></HEADER-->
+	<div class="alert">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+			Donor ID or password error.
+	</div>
+
+	<div id="form-style">
+		<h2>Donor Verification</h2>   
+	<form name="insert" action="request-login.php" method="POST" >  
+		<li><input type="text" name="donor-id" placeholder="Donor ID" required></li>
+		<li><input type="password" name="donor-password" placeholder="Password" required></li>
+		<li><input type="submit" name="submit" value="Log In"/></li>
+	</form>
+	</div>
+</body>  
+</html>
