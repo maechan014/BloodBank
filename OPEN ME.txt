@@ -126,4 +126,9 @@ CREATE TRIGGER update_amt_gallon
   FOR EACH ROW  
   EXECUTE PROCEDURE update_amount();
 
+alter table donor ADD constraint age_check CHECK (birthday < now() and age>=18);
 
+alter table blood ADD constraint
+date_check CHECK (date < now());
+
+alter table donor ADD constraint height_weight_check CHECK (height > 0 and weight > 0);
