@@ -21,7 +21,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
       }
       table{
          position: relative;
-         top: 10px;
+         top: 20px;
          background: #FFF;
       }     
       #content h1{
@@ -37,6 +37,10 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
          padding: 8px 15px 8px 15px;
          position: relative;
          right: 0;
+         top: 20px
+      }
+      #style1 {
+         margin: 0 auto;
       }
    </style>
 </head>
@@ -49,9 +53,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
             			<h1><a href="#" title="Blood Bank">Blood Bank</a></h1>
             			<span>Donate now!</span> 
             		</div>
-            	
-
-
+            
             		<div id="menu">
             			<ul>
                         <li><a href="admin-homepage.html" title="Home">Home</a></li>
@@ -70,8 +72,8 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
             <!-- BODY -->
             <div id="content"> 
-               <div id="style1">  
-                     <h1>APPROVE REQUESTS</h1>
+               <div id="style1"> 
+                  <h1>APPROVE REQUESTS</h1>
                	  <table width="600" border="2" cellspacing="3" cellpadding="3">
                      <tr>
                         <th>Request No</th>
@@ -103,7 +105,6 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
                         echo "<td>" . $records['dateneeded'] . "</td>";
                         echo "<td>" . $records['recipientname'] . "</td>";
                         echo "<td><input type='checkbox' name='check[$i]' value = '".$records['requestno']."'></td>";
-                        echo "<br>";
                         $i++;
                      }
                      echo "<input type='submit' name='approve' value = 'Approve'></td>";

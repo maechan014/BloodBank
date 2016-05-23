@@ -19,7 +19,7 @@ session_start();
 
 	
 	if($result){
-		header("Location: Interface/Admin/admin-homepage.html");
+		header("Location: addRequest-success.html");
 		exit();
 	}
 	else{
