@@ -91,7 +91,28 @@
 	.hr-1{
 		border-top: 3px double black;
 	}
-	</style>
+
+	.alert {
+	    padding: 10px;
+	    background-color: #f44336;
+	    color: white;
+	    font-size: 16px;
+	}
+
+	.closebtn {
+	    margin-left: 15px;
+	    color: white;
+	    font-weight: bold;
+	    float: right;
+	    font-size: 22px;
+	    line-height: 20px;
+	    cursor: pointer;
+	    transition: 0.3s;
+	}
+	.closebtn:hover {
+	    color: black;
+	}
+</style>
 </head>  
 <body>  
 	<!-- MENU / HEADER-->
@@ -110,6 +131,11 @@
 	</div>
 
 <!-- MENU / <HEADER--></HEADER-->
+	<div class="alert">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+			Donor ID or password error.
+	</div>
+
 	<div id="form-style">
 		<h2>Donor Verification</h2>   
 	<form name="insert" action="request-login.php" method="POST" >  

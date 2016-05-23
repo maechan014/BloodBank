@@ -13,8 +13,8 @@ session_start();
 
 	$date = pg_fetch_result(pg_query("SELECT now()::timestamp"), 0);
 
-	$query = "INSERT INTO Request (idno, dateneeded, recipientname, status, date, bloodtype, bloodrh)
-			VALUES ('$idnumber', '$_POST[dateneeded]', '$_POST[recipientname]', 'false', '$date', '$_POST[bloodtype]', '$_POST[bloodrh]')";
+	$query = "INSERT INTO Request (idno, dateneeded, recipientname, status, date, bloodtype, bloodrh, illness)
+			VALUES ('$idnumber', '$_POST[dateneeded]', '$_POST[recipientname]', 'false', '$date', '$_POST[bloodtype]', '$_POST[bloodrh]', '$_POST[illness]')";
 	$result = pg_query($query);
 
 	
