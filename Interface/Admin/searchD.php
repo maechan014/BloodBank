@@ -17,19 +17,10 @@ $clients = pg_query($db, $sql);
    <title>Donor Information</title>  
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-   <style>  
-      li {
-         listt-style: none;
-      }
-      table{
-         background: #FFF;
-      }
-      #content{
-         position: absolute;
-         top: 100px;
+   <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+        <style>
 
-      }
-   </style>  
+        </style>
    </head>  
    <body>
                <!-- MENU / HEADER-->
@@ -54,8 +45,10 @@ $clients = pg_query($db, $sql);
          </div>
 
          <!-- MENU / HEADER-->
-      <h1>Client Information</h1>
-         <table width="600" border="2" cellspacing="1" cellpadding="1">
+      <div id="content">
+          <div id="form-style">
+            <h1>Client Information</h1>
+          <table width="600" border="2" cellspacing="1" cellpadding="1">
             <tr>
                <th>ID Number</th>
                <th>First Name</th>
@@ -89,6 +82,8 @@ $clients = pg_query($db, $sql);
    ?> 
 
 </table>
+          </div>
+      </div>
 
 </body>
 </html>

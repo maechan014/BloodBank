@@ -8,7 +8,22 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link href="default.css" rel="stylesheet" type="text/css" media="all" />
     <link href="admin-search.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
     <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+    <style>
+         <style>
+            #form-style label{
+                font-size: 15px;
+                padding-left: 0;
+                margin-top: 0;
+                width: 150px;
+            }
+            #form-style{
+                margin: 0 auto;
+                width: 250px;
+            }
+        </style>
+    </style>
 
     </head>
     <body>
@@ -17,7 +32,7 @@
             <div id="header" class="container">
                 <div id="logo">
                     <h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
-                    <span>Donate now!</span> 
+                    <span>Donate now!</span> w
                 </div>
                 <div id="menu">
                    <ul>
@@ -36,36 +51,25 @@
     <!-- MENU / HEADER-->
 
     <div id = "content">
-         <form name = "add" action="viewWithdrawal.php"  method = "post">
         <div id="form-style">
-        <ul id = "keywords">
-            <center>
-            <h1>Search Withdrawal by Blood Type</h1>
-            </center>
-            <center>
-            <p>
-
-            <font color="red" face="Verdana" size=3>Blood Type:</font> 
-            <select name="bloodtype">
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="AB">AB</option>
-                        <option value="O">O</option>
-                    </select>
-            <br>
-            <font color="red" face="Verdana" size=3>Blood RH:</font> 
-            <select name="bloodrh">
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                    </select>
-            <br><br>
-            <input type="submit" name="submit" value="Search"><t><t>
-
-            </p>
-        </ul>
+            <form name = "add" action="viewWithdrawal.php"  method = "post">
+                 <h1>SEARCH</h1>
+                        <li><label>Blood Type:</label>
+                        <select name="bloodtype">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                        </li>
+                        <li><label>Blood RH:</label>
+                        <select name="bloodrh">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                        </select></li>
+                        <li><input type="submit" name="submit" value="Search"></li>
+            </form>
         </div>
-        </form>
     </div>
 </body> 
-</center>
 </html>

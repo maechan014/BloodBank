@@ -44,7 +44,7 @@
    <div id = "content">
       <div id="form-style">
          <ul id = "keywords">
-         <li><h1>Illness Statistics</h1></li>
+         <li><h1>ILLNESS STATISTICS</h1></li>
 
          <table width="600" border="2" cellspacing="3" cellpadding="3">
             <tr>
@@ -63,7 +63,7 @@
             echo "<tr>";
             echo "<td>" . $records['illness'] . "</td>";
             echo "<td>" . $records['count'] . "</td>";
-            echo "<br>";
+            echo "</tr>";
          }
 
          pg_close($db);

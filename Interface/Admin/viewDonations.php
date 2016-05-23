@@ -15,29 +15,17 @@ EOF;
 <html> 
     <head>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-       <title>Blood Bank</title>
-       <meta name="keywords" content="" />
-       <meta name="description" content="" />
+       <title>View Donations</title>
        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
        <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-      <style> 
-      #content{
-         background: #c72121;
-         padding: 0em 7em;
-      }
-      table{
-         position: absolute;
-         top: 150px;
-         background: #FFF;
-         margin: 0 auto;
-      }     
-      #content h1{
-         margin: 0 auto;
-         position: relative;
-         top: 10px;
-         color: #FFF;
-      }
-   </style>
+       <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+       <style>
+          #form-style{
+            width: 900px;
+          }
+       </style>
+
+      
     </head>
     <body> 
         <!-- MENU/HEADER -->
@@ -65,7 +53,8 @@ EOF;
 
         <!-- CONTENT -->
             <div id="content">
-              <h1>Donation Log</h1>
+                  <div id="form-style">
+                     <h1>DONATION LOG</h1>
               <table border="1" cellspacing="1" cellpadding="1"> 
                   <tr> 
                        <th>Tracking Number</th>
@@ -126,6 +115,7 @@ EOF;
                pg_close($db);
                     ?> 
                     </table>
+                  </div>
             </div>
     </body> 
 </html>

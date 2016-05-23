@@ -1,73 +1,74 @@
 <html> 
-    <head title="Search Blood Type">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Search</title>
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+        <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="admin-search.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+        <style>
+            #form-style label{
+                font-size: 15px;
+                padding-left: 0;
+                margin-top: 0;
+                width: 150px;
+            }
+            #form-style{
+                margin: 0 auto;
+                width: 250px;
+            }
+        </style>
 
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="admin-search.css" rel="stylesheet" type="text/css" media="all" />
-<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-
-</head>
-<body>
-    <!-- MENU / HEADER-->
-    <div id="header-wrapper">
-        <div id="header" class="container">
-            <div id="logo">
-                <h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
-                <span>Donate now!</span> 
-            </div>
-            <div id="menu">
-                <ul>
-                    <li><a href="admin-homepage.html" title="Home">Home</a></li>
-                    <li><a href="admin-addDonor.html" title="Add">Add</a></li>
-                    <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
-                    <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
-                    <li><a href="admin-search.html" title="Search">Search</a></li>
-                    <li><a href="index.html" title="Logout">Logout</a><li>
-                </ul>
-                
+    </head>
+    <body>
+        <!-- MENU / HEADER-->
+        <div id="header-wrapper">
+            <div id="header" class="container">
+                <div id="logo">
+                    <h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
+                    <span>Donate now!</span> 
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li><a href="admin-homepage.html" title="Home">Home</a></li>
+                        <li><a href="admin-addDonor.html" title="Add">Add</a></li>
+                        <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
+                        <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
+                        <li><a href="admin-search.html" title="Search">Search</a></li>
+                        <li><a href="index.html" title="Logout">Logout</a><li>
+                    </ul>
+                    
+                </div>
             </div>
         </div>
-    </div>
 
-<!-- MENU / HEADER-->
+    <!-- MENU / HEADER-->
 
-<!-- BODY -->
-<div id= "content">
-    <form name = "add" action="searchBloodtype.php" method = "post">
+    <!-- BODY -->
+    <div id= "content">
         <div id="form-style">
-        <center>
-        <ul id = "keywords">
-            <li><h1>Search</h1></li>
-            </center>
-            <center>
-            <body>
-            <p>
-
-            <font color="red" face="Verdana" size=3>Blood Type:</font> 
-            <select name="bloodtype">
+            <form name = "add" action="searchBloodtype.php" method = "post">
+                    
+                    <h1>SEARCH</h1>
+                    <li><label>Blood Type:</label>
+                    <select name="bloodtype">
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="AB">AB</option>
                         <option value="O">O</option>
                     </select>
-            <br>
-            <font color="red" face="Verdana" size=3>Blood RH:</font> 
-            <select name="bloodrh">
+                    </li>
+                    <li><label>Blood RH:</label>
+                    <select name="bloodrh">
                         <option value="+">+</option>
                         <option value="-">-</option>
-                    </select>
-            <br><br>
-            <input type="submit" name="submit" value="Search"><t><t>
+                    </select></li>
+                    <li><input type="submit" name="submit" value="Search"></li>
+                
+            </form>
+        </div>
+    </div>
 
-            </p>
-        <ul>
-</div>
-</form>
-</div>
-</body> 
-</center>
+    </body> 
 </html>

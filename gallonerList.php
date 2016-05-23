@@ -7,7 +7,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 <!DOCTYPE html>  
    <head> 
-   <title>View Request</title>  
+   <title>Galloner's List</title>  
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
    <style>  
       li {

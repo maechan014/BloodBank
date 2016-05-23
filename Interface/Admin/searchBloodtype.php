@@ -34,12 +34,13 @@ EOF;
             </div>
             <div id="menu">
                 <ul>
-                    <li><a href="admin-homepage.html" accesskey="1" title="Home">Home</a></li>
-                    <li><a href="admin-addPage.html" accesskey="2" title="Add">Add</a></li>
-                    <li><a href="admin-viewPage.html" accesskey="6" title="View">View</a></li>
-                    <li><a href="admin-search.html" accesskey="6" title="View">Search</a><li>
+                  <li><a href="admin-homepage.html"  class="currentpage" title="Home">Home</a></li>
+                  <li><a href="admin-addDonor.html" title="Add">Add</a></li>
+                  <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
+                  <li><a href="admin-viewPage.html" title="View">View</a></li>
+                  <li><a href="admin-search.html" title="Search">Search</a></li>
+                  <li><a href="index.html" title="Logout">Logout</a><li>
                 </ul>
-                
             </div>
         </div>
     </div>
@@ -92,7 +93,6 @@ EOF;
                echo "<td>" . $records['date'] . "</td>";
                echo "<td>" . $records['withdrawalstatus'] . "</td>";
                echo "</tr>";
-               echo "<br>";
             }
 
             if(!$clients2){
@@ -113,7 +113,6 @@ EOF;
                echo "<td>" . $records['date'] . "</td>";
                echo "<td>" . $records['withdrawalstatus'] . "</td>";
                echo "</tr>";
-               echo "<br>";
             }
             pg_close($db);
          $result = pg_query($query);   

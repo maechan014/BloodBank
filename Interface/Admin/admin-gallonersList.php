@@ -9,29 +9,13 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Blood Bank</title>
+<title>Galloner's List</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<style> 
-      #content{
-         background: #c72121;
-         padding: 0em 7em;
-      }
-      table{
-         position: absolute;
-         top: 150px;
-         background: #FFF;
-         margin: 0 auto;
-      }     
-      #content h1{
-         margin: 0 auto;
-         position: relative;
-         top: 10px;
-         color: #FFF;
-      }
-   </style>
+<link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+
 </head>
 
 <body>
@@ -63,10 +47,9 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 <!-- BODY -->
 <div id="content"> 
-      
-
-      <h1>Galloner's List</h1>
-		  <table width="600" border="2" cellspacing="5" cellpadding="3">
+      <div id="form-style">
+          <h1>GALLONER'S LIST</h1>
+        <table width="600" border="2" cellspacing="5" cellpadding="3">
       <tr>
          <th>ID No</th>
          <th>First Name</th>
@@ -105,6 +88,9 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
 
 </table>
 
+      </div> 
+
+     
 </div>
 <!-- BODY -->
 
