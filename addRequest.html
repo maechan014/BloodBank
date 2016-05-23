@@ -5,15 +5,33 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
 </head>  
 <body>  
+
+	<!-- MENU / HEADER-->
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
+			<span>Donate now!</span> 
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="admin-viewPage.html" title="View">View</a></li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+<!-- MENU / HEADER-->
 	<h2>Enter Client Information</h2>   
 	<form name="insert" action="addRequest.php" method="POST" >  
-		First Name: <input type="text" name="fname"><br>
-		Middle Name: <input type="text" name="mname"><br>
-		Last Name: <input type="text" name="lname"><br>
-		Blood Type: <input type="text" name="bloodtype"><br>
-		Blood RH: <input type="text" name="bloodrh"><br> 
-		Date Needed: <input type="date" name = "dateneeded"><br>
-		Recepient Name: <input type= "text" name = "recipientname"><br>
+		<li><label>First Name:</label><input type="text" name="fname"></li>
+		<li><label>Middle Name: </label><input type="text" name="mname"></li>
+		<li><label>Last Name: </label><input type="text" name="lname"></li>
+		<li><label>Blood Type: </label><input type="text" name="bloodtype"></li>
+		<li><label>Blood RH: </label><input type="text" name="bloodrh"></li>
+		<li><label>Date Needed: </label><input type="date" name = "dateneeded"></li>
+		<li><label>Recipient Name: </label><input type= "text" name = "recipientname"></li>
 		<input type="submit"/>
 	</form>
 </body>  
