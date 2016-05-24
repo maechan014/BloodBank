@@ -1,6 +1,47 @@
 <html>
-<head>Error. Date of Donation is wrong. Must be before now.</head>
+<head>
+	<title>Error Page</title>
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+	<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+	<style>
+		#error{
+			background: #FFF;
+			padding: 3px;
+			position: relative;
+			top: 250px;
+			left: 50%;
+			margin: auto 0;
+			color: #c72121;
+		}
+	</style>
+</head>
+
 <body>
-<a href="#" onclick="history.go(-1)">Go Back</a>
+	<!-- MENU / HEADER-->
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
+				<span>Donate now!</span> 
+			</div>
+		
+			<div id="menu">
+				<ul>
+					<li><a href="admin-homepage.html"  title="Home">Home</a></li>
+					<li><a href="admin-addDonor.html" class="currentpage" title="Add">Add</a></li>
+					<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
+					<li><a href="admin-viewPage.html" title="View">View</a></li>
+					<li><a href="admin-search.html" title="Search">Search</a></li>
+					<li><a href="index.html" title="Logout">Logout</a><li>
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+	<!-- MENU / HEADER-->
+	<div id="content"> 
+		<a href="#" onclick="history.go(-1)" id="error">Go Back</a>
+	</div>
+	
 </body>
 </html>
