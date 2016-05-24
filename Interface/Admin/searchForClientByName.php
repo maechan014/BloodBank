@@ -1,20 +1,17 @@
 <?php
 $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
+$name = (string)$_POST['name'];
 
-   $sql =<<<EOF
-      SELECT * FROM donor_view;
-EOF;
-
-   $donors = pg_query($db, $sql);
 ?>
 
-<html>
-<head>
-   <title>Blood Bank</title>
+<!DOCTYPE html>  
+   <head> 
+   <title>Client Information</title>  
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
    <link href="viewClient.css" rel="stylesheet" type="text/css" media="all" />
    <style>
-      #search{
+       #search{
          background: #FFF;
          position: absolute;
          top: 151px;
@@ -41,10 +38,10 @@ EOF;
          cursor: pointer;
       }
    </style>
-</head>
-
+    
+   </head>  
 <body>
-<!-- MENU / HEADER-->
+     <!-- MENU / HEADER-->
       <div id="header-wrapper">
          <div id="header" class="container">
             <div id="logo">
@@ -68,15 +65,15 @@ EOF;
 
 <!-- MENU / HEADER-->
 
-<!-- BODY -->
-    <div id="content"> 
-          <div id="search"> 
+
+    <div id="content">
+        <div id="search"> 
             <form name="add" action="searchForClientByID.php" method="POST">
                <div class="search-form">
                   <ul class="keywords">
                      <h3>Search by ID Number</h3>
                      <li><label>ID Number:</label><input type = "number" name= "idnumber">
-                     <input type="submit" name="submit" value="Search"></li>
+                      <input type="submit" name="submit" value="Search"></li></center>
                   </ul>
                </div>
             </form>
@@ -84,46 +81,54 @@ EOF;
             <form name="add" action="searchForClientByName.php" method="POST">
                <div class="search-form">
                   <ul class="keywords">
-                     <h3>Search by Name (First or Last)</h3>
-                     <li><label>Name : </label><input type = "name" name= "name">
-                     <input type="submit" name="submit" value="Search"></li>
+                     <h3>Search by Name</h3>
+                     <li><label>Name (First/Last): </label><input type = "name" name= "name">
+                      <input type="submit" name="submit" value="Search"></li></center>
                   </ul>
                </div>
             </form>
-         </div>
-         <div id="form-style">
-            <h1>DONOR LIST</h1>
-            <table width="600" border="2" cellspacing="1" cellpadding="1">
-               <tr>
-                  <th>ID Number</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
-                  <th>Last Name</th>
-               </tr>
+        </div>
+       <div id="form-style">
+          <h1>Client Information</h1>
+          <table width="600" border="2" cellspacing="1" cellpadding="1">
+          <tr>
+             <th>Client ID</th> 
+             <th>First Name</th> 
+             <th>Middle Name</th>
+             <th>Last Name</th>
+             <th>Phone</th>
+             <th>Donor</th>
+          </tr>
+      <?php
 
-               <?php
-                  if(!$donors){
-                     echo pg_last_error($db);
-                     exit;
-                  } 
-                  while($records = pg_fetch_assoc($donors)){
-                     echo "<tr>";
-                     echo "<td>";
-                        echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ".$records['idno']." </a>";
-                     echo "</td>";
-                     echo "<td>" . $records['fname'] . "</td>";
-                     echo "<td>" . $records['mname'] . "</td>";
-                     echo "<td>" . $records['lname'] . "</td>";
-                     echo "</tr>";
-                  }
-               pg_close($db);
-               $result = pg_query($query);   
-               ?>
-          </table>
-         </div>
-               
+        $query = "SELECT * FROM Client where fname='$name' or mname='$name' or lname='$name'"; 
+        $res = pg_query($db, $query);
+          if(!$res){
+            echo pg_last_error($db);
+            exit;
+          }
+
+          while($records = pg_fetch_assoc($res)){
+              echo "<tr>";
+              echo "<td>" . $records['idno'] . "</td>";
+              echo "<td>" . $records['fname'] . "</td>";
+              echo "<td>" . $records['mname'] . "</td>";
+              echo "<td>" . $records['lname'] . "</td>";
+              echo "<td>" . $records['phone'] . "</td>";
+              echo "<td>" . $records['client_type'] . "</td>"
+
+              // if($records['client_type'] == 't'){
+              //   echo "<td>";
+              //     echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". DONOR PROFILE ." </a>";
+              //  echo "</td>"; 
+              // }       
+              echo "</tr>";
+
+         }
+       pg_close($db);
+      ?>
+      </table>
       </div>
-<!-- BODY -->
-
+    </div>
 </body>
 </html>

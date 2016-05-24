@@ -16,11 +16,9 @@
 *************************
 */
 #form-style{
-	position: relative;
-	top: 50px;
-	left: 0;
-	right: 0;
-	bottom: 0;
+    position: absolute;
+    left: 200px;
+    top: 150px;
 	margin: auto;
 	width: 610px;
     min-height: 100px;

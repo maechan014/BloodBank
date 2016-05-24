@@ -17,14 +17,8 @@ $clients = pg_query($db, $sql);
    <title>Donor Information</title>  
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-   <link href="bloodtype.css" rel="stylesheet" type="text/css" media="all" />
+   <link href="viewClient.css" rel="stylesheet" type="text/css" media="all" />
     <style>
-      #form-style{
-         position: absolute;
-         left: -200px;
-         top: 150px;
-         min-height: 100px;
-      }
       #search{
          background: #FFF;
          position: absolute;
@@ -36,10 +30,20 @@ $clients = pg_query($db, $sql);
          font-size: 15px;
       }
       #search label{
-         font-size: 11px;
+         font-size: 13px;
+         padding-left: 5px;
       }
       #search li{
          display: block;
+      }
+      #search input[type=button], #search input[type=submit]{
+         background: #c72121;
+         color: #FFF;
+         border: none;
+         padding: 1px 1px 1px 1px;
+      }
+      #search input[type=button]:hover, #search input[type=submit]:hover{
+         cursor: pointer;
       }
    </style>
     
@@ -69,26 +73,28 @@ $clients = pg_query($db, $sql);
          <!-- MENU / HEADER-->
       <div id="content">
         <div id="search"> 
-            <form name="add" action="searchD.php" method="POST">
+            <form name="add" action="searchForClientByID.php" method="POST">
                <div class="search-form">
                   <ul class="keywords">
                      <h3>Search by ID Number</h3>
-                     <li><label>ID Number:</label><input type = "number" name= "idnumber"></li>
-                     <center><li><input type="submit" name="submit" value="Search"></li></center>
+                     <li><label>ID Number:</label><input type = "number" name= "idnumber">
+                      <input type="submit" name="submit" value="Search"></li></center>
                   </ul>
                </div>
             </form>
             <hr>
-            <form name="add" action="searchName.php" method="POST">
+            <form name="add" action="searchForClientByName.php" method="POST">
                <div class="search-form">
                   <ul class="keywords">
                      <h3>Search by Name</h3>
-                     <li><label>Name (First/Last): </label><input type = "name" name= "name"></li>
-                     <center><li><input type="submit" name="submit" value="Search"></li></center>
+                     <li><label>Name (First/Last): </label><input type = "name" name= "name">
+                      <input type="submit" name="submit" value="Search"></li></center>
                   </ul>
                </div>
             </form>
         </div>
+
+
         <div id="form-style">
           <h1>Client Information</h1>
               <table width="600" border="2" cellspacing="1" cellpadding="1">
@@ -98,6 +104,7 @@ $clients = pg_query($db, $sql);
                    <th>Middle Name</th>
                    <th>Last Name</th>
                    <th>Phone</th>
+                   <th>Donor</th>
                 </tr>
               
           <?php
@@ -108,13 +115,18 @@ $clients = pg_query($db, $sql);
             }
             while($records = pg_fetch_assoc($clients)){
               echo "<tr>";
-              echo "<td>";
-                  echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". $records['idno'] ." </a>";
-              echo "</td>";
+              echo "<td>" . $records['idno'] . "</td>";
               echo "<td>" . $records['fname'] . "</td>";
               echo "<td>" . $records['mname'] . "</td>";
               echo "<td>" . $records['lname'] . "</td>";
               echo "<td>" . $records['phone'] . "</td>";
+              echo "<td>" . $records['client_type'] . "</td>"
+
+              if($records['client_type'] == 't'){
+                echo "<td>";
+                  echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". DONOR PROFILE ." </a>";
+                echo "</td>"; 
+              }       
               echo "</tr>";
            }
        ?> 
