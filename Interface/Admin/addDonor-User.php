@@ -8,11 +8,11 @@
 	}
 
 	$now = time();
-    $datedonated = strtotime("$_POST[date]");
-    $datediff = $now - $datedonated;
+    $dateOfDonation = strtotime("$_POST[date]");
+    $datediff = $now - $dateOfDonation;
 
 	if($datediff < 0){
-			header("Location: errorDatePage.html");
+			header("Location: errorPage.html");
 			exit();
 		}
 

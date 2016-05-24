@@ -122,11 +122,11 @@ $clients = pg_query($db, $sql);
               echo "<td>" . $records['phone'] . "</td>";
               echo "<td>" . $records['client_type'] . "</td>"
 
-              if($records['client_type'] == 't'){
-                echo "<td>";
-                  echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". DONOR PROFILE ." </a>";
-                echo "</td>"; 
-              }       
+              // if($records['client_type'] == 't'){
+              //   echo "<td>";
+              //     echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". DONOR PROFILE ." </a>";
+              //   echo "</td>"; 
+              // }       
               echo "</tr>";
            }
        ?> 

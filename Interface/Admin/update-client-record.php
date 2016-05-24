@@ -19,7 +19,8 @@
         <?php  
         $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
         $id = (int)$_POST['idno'];
-        $query = "UPDATE CLIENT set fname='$_POST[fname_update]', lname='$_POST[lname_update]' where idno='$id'"; 
+        $query = "UPDATE CLIENT set fname='$_POST[fname_update]', mname='$_POST[mname_update]', lname='$_POST[lname_update]',
+                phone='$_POST[phone_update]' where idno='$id'"; 
     
         $result = pg_query($db, $query); 
         if (!$result) { 
@@ -40,10 +41,8 @@
             htmlspecialchars($myrow['mname']), 
             htmlspecialchars($myrow['lname']))
             ; 
-        }
-        header("Location: updated-successfully.html");
+        } 
         ?> 
         </table>
-
     </body> 
 </html>
