@@ -4,6 +4,15 @@ session_start();
 
 	echo $type ? 'true' : 'false';
 
+	 $now = time(); // or your date as well
+     $your_date = strtotime("$_POST[dateneeded]");
+     $datediff = $now - $your_date;
+
+	if($datediff >= 0){
+			header("Location: errorDateneededPage.html");
+			exit();
+		}
+
 	//add to client relation
 	$addclient = "INSERT INTO client (fname, mname, lname, client_type)
 			VALUES ('$_POST[fname]', '$_POST[mname]', '$_POST[lname]', 'false')";
@@ -19,7 +28,7 @@ session_start();
 
 	
 	if($result){
-		header("Location: addRequest-success.html");
+		header("Location: admin-approveRequest.php");
 		exit();
 	}
 	else{
