@@ -1,0 +1,68 @@
+// i add sa inyong database. In sequence na ni siya.
+
+CREATE table Trans_Log
+(Date date, Time time, User_name varchar(20), Action varchar (20),
+table_name varchar(10), Detail text, primary key (Date, Time))
+
+*** FUNCTION
+
+CREATE or REPLACE function translog_func()
+returns trigger as $$
+begin insert into trans_log values
+(current_date, current_time, current_user, tg_op,
+tg_table_name, current_query());
+return new;
+end;
+$$ language plpgsql;
+
+
+****INSERT/ADD
+
+create trigger client_add after insert on Client
+for each row execute procedure translog_func();
+
+create trigger donor_add after insert on Donor
+for each row execute procedure translog_func();
+
+create trigger blood_add after insert on Blood
+for each row execute procedure translog_func();
+
+create trigger request_add after insert on Request
+for each row execute procedure translog_func();
+
+create trigger illness_add after insert on Donor_Illness
+for each row execute procedure translog_func();
+
+**** DELETE
+
+create trigger client_delete after delete on Client
+for each row execute procedure translog_func();
+
+create trigger donor_delete after delete on Donor
+for each row execute procedure translog_func();
+
+create trigger blood_delete after delete on Blood
+for each row execute procedure translog_func();
+
+create trigger request_delete after delete on Request
+for each row execute procedure translog_func();
+
+create trigger illness_delete after delete on Donor_Illness
+for each row execute procedure translog_func();
+
+**** UPDATE/EDIT
+
+create trigger client_update after update on Client
+for each row execute procedure translog_func();
+
+create trigger donor_update after update on Donor
+for each row execute procedure translog_func();
+
+create trigger blood_update after update on Blood
+for each row execute procedure translog_func();
+
+create trigger request_update after update on Request
+for each row execute procedure translog_func();
+
+create trigger illness_update after update on Donor_Illness
+for each row execute procedure translog_func();
