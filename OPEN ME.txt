@@ -109,7 +109,7 @@ BEGIN
     UPDATE donor set gallons=calc_gallon(amountdonated, 0) where idno=New.idno;
     RETURN NEW;  
 END;  
-$$
+$$a
 LANGUAGE PLPGSQL;
 
 CREATE FUNCTION addAmount(val1 numeric, val2 numeric) RETURNS numeric AS $$
