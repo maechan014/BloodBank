@@ -1,4 +1,4 @@
-
+f
 ------------------------------------------------------------------------------------------------------
 DATA CHECKING
 *kulang pa ni, edit lang if naa pay dapat i check sa mga data inputs. if okay na, butangi lang ug 'DONE' or something 
@@ -68,7 +68,7 @@ ALTER TABLE BLOOD
 drop column idno;
 
 ALTER TABLE BLOOD
-add column idno;
+add column idno bigint;
 
 ALTER TABLE BLOOD
 add constraint id_blood
@@ -80,15 +80,13 @@ ALTER TABLE REQUEST
 drop column idno;
 
 ALTER TABLE REQUEST
-add column idno;
+add column idno bigint;
 
 ALTER TABLE REQUEST
 add constraint idno_request
 foreign key(idno)
 references client(idno)
 on delete set null;
-
-SELECT LPAD (idno::text, 10, '0'), * FROM CLIENT
 
 -----------------------------------------------------------
 New Changes to DB
