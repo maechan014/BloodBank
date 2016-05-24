@@ -108,7 +108,7 @@
 
 
 	if($result){
-		header("Location: viewDonor.php");
+		header("Location: addDonorSuccess.php");
 		exit();
 	}
 	else{

@@ -1,3 +1,10 @@
+<?php
+	$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
+	$sql = "SELECT * FROM Request";
+
+ 	$clients = pg_query($db, $sql);
+?>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,7 +30,7 @@
 				<li><a href="admin-addDonor.html" title="Add">Add</a></li>
 				<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
 				<li><a href="admin-viewPage.html" title="View">View</a></li>
-				<li><a href="admin-search.html" title="Search">Search</a></li>
+				<!-- <li><a href="admin-search.html" title="Search">Search</a></li> -->
 				<li><a href="index.html" title="Logout">Logout</a><li>
 			</ul>
 			
@@ -34,10 +41,18 @@
 <!-- MENU / HEADER-->
 
 <!-- BODY -->
-<div id="content"> 
-	<div id="style1">
-				
-	</div>	
+<div id="content">
+	<div id="">
+		
+		<?php
+			
+
+			$pass = 
+			$username = 
+
+		?>
+		
+	</div> 
 
 </div>
 <!-- BODY -->

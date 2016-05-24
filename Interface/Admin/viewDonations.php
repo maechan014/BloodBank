@@ -42,7 +42,7 @@ EOF;
                 <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                 <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
                 <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
-                <li><a href="admin-search.html" title="Search">Search</a></li>
+                <!-- <li><a href="admin-search.html" title="Search">Search</a></li> -->
                 <li><a href="index.html" title="Logout">Logout</a><li>
               </ul>
                
