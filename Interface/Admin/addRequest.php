@@ -4,6 +4,15 @@ session_start();
 
 	echo $type ? 'true' : 'false';
 
+	 $now = time();
+     $dateneeded = strtotime("$_POST[dateneeded]");
+     $datediff = $now - $dateneeded;
+
+	if($datediff > 0){
+			header("Location: errorDateneededPage.html");
+			exit();
+		}
+
 	//add to client relation
 	$addclient = "INSERT INTO client (fname, mname, lname, client_type)
 			VALUES ('$_POST[fname]', '$_POST[mname]', '$_POST[lname]', 'false')";
@@ -13,13 +22,13 @@ session_start();
 
 	$date = pg_fetch_result(pg_query("SELECT now()::timestamp"), 0);
 
-	$query = "INSERT INTO Request (idno, dateneeded, recipientname, status, date, bloodtype, bloodrh)
-			VALUES ('$idnumber', '$_POST[dateneeded]', '$_POST[recipientname]', 'false', '$date', '$_POST[bloodtype]', '$_POST[bloodrh]')";
+	$query = "INSERT INTO Request (idno, dateneeded, recipientname, status, date, bloodtype, bloodrh, illness)
+			VALUES ('$idnumber', '$_POST[dateneeded]', '$_POST[recipientname]', 'false', '$date', '$_POST[bloodtype]', '$_POST[bloodrh]', '$_POST[illness]')";
 	$result = pg_query($query);
 
 	
 	if($result){
-		header("Location: Interface/Admin/admin-homepage.html");
+		header("Location: viewRequest.php");
 		exit();
 	}
 	else{

@@ -4,11 +4,11 @@ session_start();
 
 	echo $type ? 'true' : 'false';
 
-	 $now = time(); // or your date as well
-     $your_date = strtotime("$_POST[dateneeded]");
-     $datediff = $now - $your_date;
+	 $now = time();
+     $dateneeded = strtotime("$_POST[dateneeded]");
+     $datediff = $now - $dateneeded;
 
-	if($datediff >= 0){
+	if($datediff > 0){
 			header("Location: errorDateneededPage.html");
 			exit();
 		}

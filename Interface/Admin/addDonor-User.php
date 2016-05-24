@@ -1,6 +1,21 @@
 <?php
 	$db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres password=admin");
 
+	$age = pg_fetch_result(pg_query("SELECT EXTRACT (year from age('$_POST[birthday]'::date))"), 0);
+	if($age < 18){
+		header("Location: errorAgePage.html");
+		exit();
+	}
+
+	$now = time();
+    $datedonated = strtotime("$_POST[date]");
+    $datediff = $now - $datedonated;
+
+	if($datediff < 0){
+			header("Location: errorDatePage.html");
+			exit();
+		}
+
 	// //add client
 	$clienttype = 'true';
 	$clientQuery = "INSERT INTO Client (fname, mname, lname, client_type, phone)
