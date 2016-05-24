@@ -115,7 +115,7 @@ $clients = pg_query($db, $sql);
             while($records = pg_fetch_assoc($clients)){
               echo "<tr>";
               echo "<td>";
-                  echo "<a href='UPDATE-C.php?action=view&id=".$records['idno']."'> ". $records['idno'] ." </a>";
+                  echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". $records['idno'] ." </a>";
               echo "</td>";
               echo "<td>" . $records['fname'] . "</td>";
               echo "<td>" . $records['mname'] . "</td>";

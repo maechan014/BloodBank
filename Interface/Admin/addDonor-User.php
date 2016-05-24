@@ -35,7 +35,7 @@
 
 	$usersResult = pg_query($usersQuery);
 
-	$age = pg_fetch_result(pg_query("SELECT EXTRACT (year from age('$_POST[birthday]'::date))"), 0);
+	//$age = pg_fetch_result(pg_query("SELECT EXTRACT (year from age('$_POST[birthday]'::date))"), 0);
 
 	$rh = '-';
 	if($_POST[bloodrh] == "+"){

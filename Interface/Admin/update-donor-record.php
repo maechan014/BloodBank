@@ -34,7 +34,7 @@
         $result2 = pg_query($db, $query); 
 
         if($result and $result2){
-            header("Location: viewDonor.php");
+            header("Location: updated-successfully.html");
             exit();
         }
         else{
