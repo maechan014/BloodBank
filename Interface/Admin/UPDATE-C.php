@@ -137,7 +137,7 @@
 
 					<li><label>ID Number: </label><input type="text" name="idno" value="<?=$id?>" disabled></li>
 		            <li><label>First Name : </label><input type="text" name="fname_update" type="text" value="<?=$fname?>"></li>
-		            <li><label>Middle Name: </label><input type="text" name="mname_update" size="20" length="30"></li>
+		            <li><label>Middle Name: </label><input type="text" name="mname_update" size="20" length="30" value="<?=$mname?>"></li>
 		            <li><label>Last Name: </label><input type="text" name="lname_update" size="20" length="30" value="<?=$lname?>"></li>
 		            <li><label>Phone: </label><input type="text" name="phone_update" size="20" length="30" value="<?=$phone?>"></li>
 		            <li><input type="submit" name="submit" value="Update It"></li>

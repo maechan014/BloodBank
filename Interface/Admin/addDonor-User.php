@@ -8,11 +8,11 @@
 	}
 
 	$now = time();
-    $datedonated = strtotime("$_POST[date]");
-    $datediff = $now - $datedonated;
+    $dateOfDonation = strtotime("$_POST[date]");
+    $datediff = $now - $dateOfDonation;
 
 	if($datediff < 0){
-			header("Location: errorDatePage.html");
+			header("Location: errorPage.html");
 			exit();
 		}
 
@@ -35,7 +35,7 @@
 
 	$usersResult = pg_query($usersQuery);
 
-	$age = pg_fetch_result(pg_query("SELECT EXTRACT (year from age('$_POST[birthday]'::date))"), 0);
+	//$age = pg_fetch_result(pg_query("SELECT EXTRACT (year from age('$_POST[birthday]'::date))"), 0);
 
 	$rh = '-';
 	if($_POST[bloodrh] == "+"){
