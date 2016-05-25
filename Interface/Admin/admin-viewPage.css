@@ -17,22 +17,23 @@
 *************************
 */
 
-#viewPage-menu li, #reports li{
+#viewPage-menu li, #reports li, #bloodInv li{
     color: #212121;
     background: #ECECEC;
     border: 1px solid #FFF;
     height: 45px;
+    list-style: none;
 }
 
-#viewPage-menu a{
+#viewPage-menu a, #bloodInv a{
     text-decoration: none;
 }
 
-#viewPage-menu a:hover, #addPage-menu a:hover{
+#viewPage-menu a:hover, #addPage-menu a:hover, #bloodInv a:hover{
     text-decoration: underline;
 }
 
-#viewPage-menu{
+#viewPage-menu, #bloodInv{
     margin: auto;
     position: relative;
     top: 50px;
@@ -45,12 +46,16 @@
     border: 1px solid #FFF;
 }
 
-#reports{
+#reports, #dropdown-Inv{
     position: relative;
     top: -9999px;
 }
 
-#viewPage-menu li:hover #reports {
+#viewPage-menu li:hover #reports, #bloodInv li:hover #dropdown-Inv {
     position: relative;
     top: 0;
+}
+
+#dropdown-Inv{
+    z-index: 9999;
 }

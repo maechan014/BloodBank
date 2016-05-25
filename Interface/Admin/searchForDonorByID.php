@@ -73,7 +73,7 @@ $clients = pg_query($db, $sql);
          <!-- MENU / HEADER-->
       <div id="content">
         <div id="search"> 
-            <form name="add" action="searchForClientByID.php" method="POST">
+            <form name="add" action="searchForDonorByID.php" method="POST">
                <div class="search-form">
                   <ul class="keywords">
                      <h3>Search by ID Number</h3>
@@ -83,7 +83,7 @@ $clients = pg_query($db, $sql);
                </div>
             </form>
             <hr>
-            <form name="add" action="searchForClientByName.php" method="POST">
+            <form name="add" action="searchForDonorByName.php" method="POST">
                <div class="search-form">
                   <ul class="keywords">
                     <h3>Search by Name (First or Last)</h3>

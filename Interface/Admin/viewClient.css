@@ -60,10 +60,6 @@
     margin-right: 156px;
 }
 
-#form-style input[type=text]:focus, 
-#form-style input[type=date]:focus, 
-#form-style input[type=number]:focus{
-}
 
 #form-style input[type=submit], #form-style input[type=button]{
     background: #c72121;

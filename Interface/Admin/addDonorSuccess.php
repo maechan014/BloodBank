@@ -13,6 +13,16 @@
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<style>
+	#card{
+		position: relative;
+		top: 150px;
+		background: #FFF;
+		width: 350px;
+		height: 100px;
+		margin: auto 0;
+	}
+</style>
 </head>
 
 <body>
@@ -30,7 +40,6 @@
 				<li><a href="admin-addDonor.html" title="Add">Add</a></li>
 				<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
 				<li><a href="admin-viewPage.html" title="View">View</a></li>
-				<!-- <li><a href="admin-search.html" title="Search">Search</a></li> -->
 				<li><a href="index.html" title="Logout">Logout</a><li>
 			</ul>
 			
@@ -42,14 +51,18 @@
 
 <!-- BODY -->
 <div id="content">
-	<div id="">
+	<div id="card">
 		
 		<?php
+			echo "Name: ";
+			echo $name = "Name";
+			echo "<br>";
+			echo "Username: ";
+			echo $username = "Username";
+			echo "<br>";
+			echo "Password: ";
+			echo $pass = " Password";
 			
-
-			$pass = 
-			$username = 
-
 		?>
 		
 	</div> 

@@ -61,13 +61,22 @@
 	#form-style input[type=submit]:hover, #form-style input[type=button]:hover{
 	    cursor: pointer;
 	}
-
+	#form-style a{
+		text-decoration: none;
+		color: #FFF;
+	}
 	.required{
 		color: red;
 		padding-left: 2px;
 	}
 	.hr-1{
 		border-top: 3px double black;
+	}
+	#deleteButton{
+		width: 200px;
+	}
+	#deleteButton a{
+		font-size: 13px;
 	}
 	</style>
 </head>
@@ -82,11 +91,11 @@
 		
 			<div id="menu">
 				<ul>
-					<li><a href="admin-homepage.html"  class="currentpage" title="Home">Home</a></li>
+					<li><a href="admin-homepage.html" title="Home">Home</a></li>
 					<li><a href="admin-addDonor.html" title="Add">Add</a></li>
 					<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
-					<li><a href="admin-viewPage.html" title="View">View</a></li>
-					<li><a href="admin-search.html" title="Search">Search</a></li>
+					<li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
+				<!-- 	<li><a href="admin-search.html" title="Search">Search</a></li> -->
 					<li><a href="index.html" title="Logout">Logout</a><li>
 				</ul>
 				
@@ -121,12 +130,12 @@
 
 		<div id="content">
 			<div id="form-style">
-				<p>ID to Update: <input type="text" name="idno" value="<?=$id?>" disabled> </p>
+				<p>ID to Update:<input type="text" name="idno" value="<?=$id?>" disabled> </p>
 	            <p>First Name : <input name="fname_update" type="text" value="<?=$fname?>"></p>
 	            <p>Middle Name: <input type="text" name="mname_update" size="20" length="30" value="<?=$mname?>"></p>
 	            <p>Last Name: <input type="text" name="lname_update" size="20" length="30" value="<?=$lname?>"></p>
 	           	<p>Phone: <input type="text" name="phone_update" size="20" length="30" value="<?=$phone?>"> </p>
-	            <input type="submit" name="submit" value="Update It">
+	            <input type="submit" name="submit" value="UPDATE">
 				<br>
 				<br>
 	            <div id="deleteButton">
@@ -137,7 +146,7 @@
 				<br>
 		        <div id="addDonationButton">
 		        	<form method="POST" action="addDonation.php">
-						<input type="submit" name="submit" value="Add Donation">
+						<input type="submit" name="submit" value="ADD DONATION">
 		        	</form>
 		        </div>
 	            <br>
