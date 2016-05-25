@@ -55,7 +55,7 @@ $name = (string)$_POST['name'];
                   <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                   <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
                   <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
-                  <li><a href="admin-search.html" title="Search">Search</a></li>
+                  <!-- <li><a href="admin-search.html" title="Search">Search</a></li> -->
                   <li><a href="index.html" title="Logout">Logout</a><li>
                </ul>
                
@@ -92,11 +92,11 @@ $name = (string)$_POST['name'];
           <h1>CLIENT INFORMATION</h1>
           <table width="600" border="2" cellspacing="1" cellpadding="1">
           <tr>
-             <td>Client ID</td> 
-             <td>First Name</td> 
-             <td>Middle Name</td> 
-             <td>Last Name</td>
-             <td>Phone</td>
+             <th>Client ID</th> 
+             <th>First Name</th> 
+             <th>Middle Name</th> 
+             <th>Last Name</th>
+             <th>Phone</th>
           </tr>
       <?php
 

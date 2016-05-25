@@ -60,7 +60,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
                         <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                         <li><a href="admin-approveRequest.php" class="currentpage" title="Requests">Requests</a></li>
                         <li><a href="admin-viewPage.html" title="View">View</a></li>
-                        <li><a href="admin-search.html" title="Search">Search</a></li>
+                        <!-- <li><a href="admin-search.html" title="Search">Search</a></li> -->
                         <li><a href="index.html" title="Logout">Logout</a><li>
                      </ul>
             			

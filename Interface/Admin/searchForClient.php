@@ -58,7 +58,7 @@ $clients = pg_query($db, $sql);
                       <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                       <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
                       <li><a href="admin-viewPage.html" title="View">View</a></li>
-                      <li><a href="admin-search.html" class="currentpage" title="Search">Search</a></li>
+                      <!-- <li><a href="admin-search.html" class="currentpage" title="Search">Search</a></li> -->
                       <li><a href="index.html" title="Logout">Logout</a><li>
                   </ul>
                   

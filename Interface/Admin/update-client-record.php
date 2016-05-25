@@ -42,6 +42,7 @@
             htmlspecialchars($myrow['lname']))
             ; 
         } 
+        header("Location: updated-successfully.html")
         ?> 
         </table>
     </body> 

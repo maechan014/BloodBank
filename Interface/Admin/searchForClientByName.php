@@ -10,8 +10,8 @@ $name = (string)$_POST['name'];
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
    <link href="viewClient.css" rel="stylesheet" type="text/css" media="all" />
-   <style>
-       #search{
+  <style>
+      #search{
          background: #FFF;
          position: absolute;
          top: 151px;
@@ -38,6 +38,7 @@ $name = (string)$_POST['name'];
          cursor: pointer;
       }
    </style>
+   </style>
     
    </head>  
 <body>
@@ -55,7 +56,7 @@ $name = (string)$_POST['name'];
                   <li><a href="admin-addDonor.html" title="Add">Add</a></li>
                   <li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
                   <li><a href="admin-viewPage.html" class="currentpage" title="View">View</a></li>
-                  <li><a href="admin-search.html" title="Search">Search</a></li>
+                  <!-- <li><a href="admin-search.html" title="Search">Search</a></li> -->
                   <li><a href="index.html" title="Logout">Logout</a><li>
                </ul>
                
@@ -92,11 +93,11 @@ $name = (string)$_POST['name'];
           <h1>CLIENT INFORMATION</h1>
           <table width="600" border="2" cellspacing="1" cellpadding="1">
           <tr>
-             <td>Client ID</td> 
-             <td>First Name</td> 
-             <td>Middle Name</td> 
-             <td>Last Name</td>
-             <td>Phone</td>
+             <th>Client ID</th> 
+             <th>First Name</th> 
+             <th>Middle Name</th> 
+             <th>Last Name</th>
+             <th>Phone</th>
           </tr>
       <?php
 
@@ -109,7 +110,9 @@ $name = (string)$_POST['name'];
 
           while($records = pg_fetch_assoc($res)){
             echo "<tr>";
-            echo "<td>" . $records['idno'] . "</td>";
+            echo "<td>";
+              echo "<a href='UPDATE-C.php?action=view&id=".$records['idno']."'> ". $records['idno'] ." </a>";
+            echo "</td>";
             echo "<td>" . $records['fname'] . "</td>";
             echo "<td>" . $records['mname'] . "</td>";
             echo "<td>" . $records['lname'] . "</td>";
