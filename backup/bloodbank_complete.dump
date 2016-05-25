@@ -1,0 +1,1116 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: bloodbank; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE bloodbank WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
+
+
+ALTER DATABASE bloodbank OWNER TO postgres;
+
+\connect bloodbank
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: addamount(numeric, numeric); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION addamount(val1 numeric, val2 numeric) RETURNS numeric
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+RETURN val1 + val2;
+END; $$;
+
+
+ALTER FUNCTION public.addamount(val1 numeric, val2 numeric) OWNER TO postgres;
+
+--
+-- Name: calc_gallon(numeric, numeric); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION calc_gallon(val1 numeric, total numeric) RETURNS numeric
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+total:= val1 / 3785.41;
+RETURN total;
+END; $$;
+
+
+ALTER FUNCTION public.calc_gallon(val1 numeric, total numeric) OWNER TO postgres;
+
+--
+-- Name: client_delete_log(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION client_delete_log() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$  
+BEGIN  
+         INSERT INTO delete_client_log
+      VALUES (Old.idno, Old.fname, Old.mname, Old.lname);
+   
+    RETURN NEW;  
+END;  
+$$;
+
+
+ALTER FUNCTION public.client_delete_log() OWNER TO postgres;
+
+--
+-- Name: client_insert_log(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION client_insert_log() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$  
+BEGIN  
+         INSERT INTO insert_client_log
+      VALUES (New.idno, New.fname, New.mname, New.lname, New.client_type);
+   
+    RETURN NEW;  
+END;  
+$$;
+
+
+ALTER FUNCTION public.client_insert_log() OWNER TO postgres;
+
+--
+-- Name: totalrecords(numeric, numeric); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION totalrecords(new_amt numeric, old_amt numeric) RETURNS numeric
+    LANGUAGE plpgsql
+    AS $$
+declare
+total_amt numeric;
+BEGIN
+total_amt := new_amt + old_amt;
+   UPDATE DONOR SET amount='total_amt' where donor.idno=blood.idno;
+return NEW;
+END;
+$$;
+
+
+ALTER FUNCTION public.totalrecords(new_amt numeric, old_amt numeric) OWNER TO postgres;
+
+--
+-- Name: translog_func(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION translog_func() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+begin
+insert into trans_log values
+(current_date, current_time, current_user, TG_OP,
+tg_table_name, current_query());
+return new;
+end;
+$$;
+
+
+ALTER FUNCTION public.translog_func() OWNER TO postgres;
+
+--
+-- Name: update_amount(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION update_amount() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$  
+BEGIN
+    UPDATE donor set amountdonated=addAmount(amountdonated, New.amount) where idno=New.idno;
+    UPDATE donor set gallons=calc_gallon(amountdonated, 0) where idno=New.idno;
+    RETURN NEW;  
+END;  
+$$;
+
+
+ALTER FUNCTION public.update_amount() OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: blood; Type: TABLE; Schema: public; Owner: requester
+--
+
+CREATE TABLE blood (
+    trackingno bigint NOT NULL,
+    bloodtype character varying(2) NOT NULL,
+    bloodrh character varying(3) NOT NULL,
+    amount numeric,
+    "time" time without time zone,
+    date date,
+    withdrawalstatus boolean,
+    idno integer,
+    CONSTRAINT date_check CHECK ((date < now()))
+);
+
+
+ALTER TABLE blood OWNER TO requester;
+
+--
+-- Name: blood_trackingno_seq; Type: SEQUENCE; Schema: public; Owner: requester
+--
+
+CREATE SEQUENCE blood_trackingno_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blood_trackingno_seq OWNER TO requester;
+
+--
+-- Name: blood_trackingno_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: requester
+--
+
+ALTER SEQUENCE blood_trackingno_seq OWNED BY blood.trackingno;
+
+
+--
+-- Name: client; Type: TABLE; Schema: public; Owner: requester
+--
+
+CREATE TABLE client (
+    idno bigint NOT NULL,
+    fname character varying(20) NOT NULL,
+    mname character varying(20),
+    lname character varying(20) NOT NULL,
+    client_type boolean NOT NULL,
+    phone character varying(13)
+);
+
+
+ALTER TABLE client OWNER TO requester;
+
+--
+-- Name: bloodtype_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW bloodtype_view AS
+ SELECT blood.trackingno,
+    client.idno,
+    client.fname,
+    client.mname,
+    client.lname,
+    blood.bloodtype,
+    blood.bloodrh,
+    blood.amount,
+    blood."time",
+    blood.date,
+    blood.withdrawalstatus
+   FROM (blood
+     JOIN client USING (idno));
+
+
+ALTER TABLE bloodtype_view OWNER TO postgres;
+
+--
+-- Name: client_idno_seq; Type: SEQUENCE; Schema: public; Owner: requester
+--
+
+CREATE SEQUENCE client_idno_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE client_idno_seq OWNER TO requester;
+
+--
+-- Name: client_idno_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: requester
+--
+
+ALTER SEQUENCE client_idno_seq OWNED BY client.idno;
+
+
+--
+-- Name: donor; Type: TABLE; Schema: public; Owner: donor
+--
+
+CREATE TABLE donor (
+    idno bigint NOT NULL,
+    houseno integer,
+    street character varying(20),
+    barangay character varying(20) NOT NULL,
+    citymun character varying(20) NOT NULL,
+    province character varying(20) NOT NULL,
+    zipcode integer NOT NULL,
+    ethnicity character varying(20),
+    bloodrh character varying(3) NOT NULL,
+    bloodtype character varying(2) NOT NULL,
+    birthday date NOT NULL,
+    age integer,
+    weight numeric NOT NULL,
+    height numeric NOT NULL,
+    gallons numeric(5,2),
+    amountdonated numeric,
+    CONSTRAINT age_check CHECK (((birthday < now()) AND (age >= 18))),
+    CONSTRAINT height_weight_check CHECK (((height > (0)::numeric) AND (weight > (0)::numeric)))
+);
+
+
+ALTER TABLE donor OWNER TO donor;
+
+--
+-- Name: donor_illness; Type: TABLE; Schema: public; Owner: donor
+--
+
+CREATE TABLE donor_illness (
+    idno integer NOT NULL,
+    illness character varying(20) NOT NULL
+);
+
+
+ALTER TABLE donor_illness OWNER TO donor;
+
+--
+-- Name: donor_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW donor_view AS
+ SELECT client.idno,
+    client.fname,
+    client.mname,
+    client.lname,
+    client.phone,
+    donor.birthday,
+    donor.age,
+    donor.weight,
+    donor.height,
+    donor.ethnicity,
+    donor.houseno,
+    donor.street,
+    donor.barangay,
+    donor.citymun,
+    donor.province,
+    donor.zipcode,
+    donor.bloodtype,
+    donor.bloodrh,
+    donor.gallons,
+    donor.amountdonated
+   FROM (client
+     JOIN donor USING (idno));
+
+
+ALTER TABLE donor_view OWNER TO postgres;
+
+--
+-- Name: donorillness_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW donorillness_view AS
+ SELECT client.idno,
+    client.fname,
+    client.mname,
+    client.lname,
+    donor_illness.illness
+   FROM (client
+     JOIN donor_illness USING (idno));
+
+
+ALTER TABLE donorillness_view OWNER TO postgres;
+
+--
+-- Name: request; Type: TABLE; Schema: public; Owner: requester
+--
+
+CREATE TABLE request (
+    requestno bigint NOT NULL,
+    status boolean,
+    date date,
+    "time" time without time zone,
+    dateneeded date NOT NULL,
+    recipientname character varying(100),
+    bloodrh character varying(1),
+    bloodtype character varying(2),
+    idno integer,
+    illness character varying(30)
+);
+
+
+ALTER TABLE request OWNER TO requester;
+
+--
+-- Name: request_requestno_seq; Type: SEQUENCE; Schema: public; Owner: requester
+--
+
+CREATE SEQUENCE request_requestno_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE request_requestno_seq OWNER TO requester;
+
+--
+-- Name: request_requestno_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: requester
+--
+
+ALTER SEQUENCE request_requestno_seq OWNED BY request.requestno;
+
+
+--
+-- Name: request_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW request_view AS
+ SELECT request.requestno,
+    client.idno,
+    client.fname,
+    client.mname,
+    client.lname,
+    request.bloodtype,
+    request.bloodrh,
+    request.date,
+    request."time",
+    request.dateneeded,
+    request.recipientname,
+    request.status
+   FROM (request
+     JOIN client USING (idno));
+
+
+ALTER TABLE request_view OWNER TO postgres;
+
+--
+-- Name: trans_log; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE trans_log (
+    date date NOT NULL,
+    "time" time without time zone NOT NULL,
+    user_name character varying(20),
+    action character varying(10),
+    table_name character varying(10),
+    detail text
+);
+
+
+ALTER TABLE trans_log OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: requester
+--
+
+CREATE TABLE users (
+    username character varying(20) NOT NULL,
+    password character varying(20),
+    usertype character varying(1),
+    idno bigint
+);
+
+
+ALTER TABLE users OWNER TO requester;
+
+--
+-- Name: withdrawal_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW withdrawal_view AS
+ SELECT blood.trackingno,
+    client.idno,
+    blood.bloodtype,
+    blood.bloodrh,
+    blood.amount,
+    blood.date,
+    blood."time",
+    client.fname,
+    client.mname,
+    client.lname
+   FROM (blood
+     JOIN client USING (idno))
+  WHERE (blood.withdrawalstatus = true);
+
+
+ALTER TABLE withdrawal_view OWNER TO postgres;
+
+--
+-- Name: trackingno; Type: DEFAULT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY blood ALTER COLUMN trackingno SET DEFAULT nextval('blood_trackingno_seq'::regclass);
+
+
+--
+-- Name: idno; Type: DEFAULT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY client ALTER COLUMN idno SET DEFAULT nextval('client_idno_seq'::regclass);
+
+
+--
+-- Name: requestno; Type: DEFAULT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY request ALTER COLUMN requestno SET DEFAULT nextval('request_requestno_seq'::regclass);
+
+
+--
+-- Data for Name: blood; Type: TABLE DATA; Schema: public; Owner: requester
+--
+
+COPY blood (trackingno, bloodtype, bloodrh, amount, "time", date, withdrawalstatus, idno) FROM stdin;
+223	B	+	250	13:22:11	2016-01-01	f	\N
+123	A	-	200	11:30:11	2016-01-09	f	\N
+244	O	+	200	12:30:11	2016-04-10	f	\N
+4	A		350	14:33:00	2016-04-15	f	\N
+5	A		350	14:33:00	2016-04-15	f	\N
+6	B	+	350	13:39:00	2016-03-15	f	70
+7	A	-	350	15:40:00	2016-05-10	f	71
+8	AB	-	350	10:12:00	2016-01-23	f	71
+9	O	+	350	13:33:00	2016-02-02	f	71
+10	B	+	350	10:21:00	2016-04-05	f	71
+11	B	+	350	10:21:00	2016-04-05	f	71
+12	O	+	350	13:33:00	2016-02-02	f	71
+13	A	-	450	12:23:00	2016-01-23	f	71
+14	A	-	350	16:14:00	2016-02-23	f	78
+15	A	+	350	13:12:00	2016-05-19	f	78
+16	A	+	350	13:12:00	2016-05-19	f	80
+3561	A	+	350	13:11:11	2016-03-04	f	80
+567	A	+	450	13:22:10	2016-01-01	f	80
+20	A	+	350	13:12:00	2016-01-01	f	85
+23	A	+	350	13:01:00	2016-01-01	f	88
+28	A	+	450	10:10:00	2016-01-01	f	93
+29	A	+	450	10:10:00	2016-01-01	f	94
+30	A	+	350	10:10:00	2016-01-01	f	\N
+31			450	15:03:00	2016-01-01	f	80
+32			350	15:03:00	2016-02-02	f	80
+34			450	11:12:00	2015-09-09	f	64
+35			350	15:43:00	2016-02-02	f	64
+36			350	11:11:00	2015-09-09	f	67
+37			450	12:12:00	2015-12-12	f	67
+38			350	23:11:00	2016-01-01	f	67
+39			350	09:09:00	2016-01-01	f	67
+40	B	+	450	09:09:00	2016-03-02	f	67
+42	A	+	350	10:10:00	2016-04-04	f	48
+46	O	-	350	10:10:00	2016-01-01	f	102
+44	O	-	350	10:10:00	2016-01-01	f	\N
+1	O	 	150	04:15:00	2016-01-24	f	\N
+2	O	 	350	16:50:00	2016-01-22	f	\N
+\.
+
+
+--
+-- Name: blood_trackingno_seq; Type: SEQUENCE SET; Schema: public; Owner: requester
+--
+
+SELECT pg_catalog.setval('blood_trackingno_seq', 48, true);
+
+
+--
+-- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: requester
+--
+
+COPY client (idno, fname, mname, lname, client_type, phone) FROM stdin;
+102	Yehlen	Grace	Alterado	t	09291237459
+22	Charie Mae	Daguplo	Manayaga	t	09291237456
+27	Reyman	Daguplo	Manayaga	t	09291237456
+28	Reyman	Daguplo	Manayaga	t	09291237456
+33	Charmaine	Cayuna	Acha	t	09291237459
+35	Charmaine	Cayuna	Acha	t	09291237459
+36	Charmaine	Cayuna	Acha	t	09291237459
+37	Charmaine	Cayuna	Acha	t	09291231023
+39	Charmaine	Cayuna	Acha	t	09291231023
+43	Jackie Lou	Cayuna	Acha	t	09291231023
+48	Angelina		Jolie	t	09291237459
+50	Emily	Jean	Stone	t	09291237459
+59	Daiki	Wa-il	Mamura	t	09291237459
+64	Daichi	Wa-il	Mamura	t	09291231023
+67	Starra	Jane	Furton	t	09291231023
+70	Darren	Jane	Furton	t	09291231023
+71	Veneranda	Cayuna	Acha	t	09291237459
+78	Faye	Redona	Lomente	t	09291231023
+82	Emmalyn	Cayuna	Acha	t	092325671222
+85	Anne	Curtis	Smith	t	09291237459
+88	Scarlette		Johansson	t	09291237459
+89	Christopher	Robert	Evans	t	09291231023
+90	Christopher	Robert	Evans	t	09291231023
+91	Christopher	Robert	Evans	t	09291231023
+93	Christopher	Robert	Evans	t	09291231023
+94	Scott	Robert	Evans	t	09291231023
+103	Asa Maxwell Thornton	Farr	Butterfield	t	09291237459
+80	Jannielyn	Acha	Turner	t	09234543123
+96				t	
+97	Jessah	Marie	Duran	f	\N
+98	Jessah	Marie	Duran	f	\N
+99	Yehlen	Grace	Alterado	t	09291237459
+101	Yehlen	Grace	Alterado	t	09291237459
+112	Charlotte	Daguplo	Manayaga	t	09353965704
+114	Charlotte	Daguplo	Manayaga	t	09353965704
+115	Jay	Ambot	Talaguit	t	09063456123
+\.
+
+
+--
+-- Name: client_idno_seq; Type: SEQUENCE SET; Schema: public; Owner: requester
+--
+
+SELECT pg_catalog.setval('client_idno_seq', 115, true);
+
+
+--
+-- Data for Name: donor; Type: TABLE DATA; Schema: public; Owner: donor
+--
+
+COPY donor (idno, houseno, street, barangay, citymun, province, zipcode, ethnicity, bloodrh, bloodtype, birthday, age, weight, height, gallons, amountdonated) FROM stdin;
+22	19	Gorordo	Lahug	Cebu	Cebu	6000	Filipino	+	O	1997-01-14	19	52	159	\N	700
+50	89	Carbon	Ermita	Cebu	Cebu	6000	American	+	A	1980-01-31	36	55	167	\N	700
+70	12	Gorordo	Lahug	Cebu	Cebu	6000	Filipino	+	B	1995-01-21	21	51	135	\N	700
+59	34	B. Rodgriguez	Guadalupe	Cebu	Cebu	6000	Japanese	+	O	1994-08-09	21	52	170	\N	700
+71	24	Nitrogen	Tungkil	Minglanilla	Cebu	60000	Filipino	-	A	1961-01-18	55	58	158	\N	800
+78	12	Salinas Drive	Lahug	Cebu	Cebu	6000	Filipino	-	A	1996-02-02	20	56	154	\N	700
+82	24	Nitrogen	Tungkil	Minglanilla	Cebu	6000	Filipino	-	AB	1997-12-14	18	56	157	\N	700
+85	8	Bohol St.	Mabolo	Cebu City	Cebu	6000	Australian	+	A	1990-01-02	26	53	162	0.18	700
+64	24	Sampaguita	Tungkil	Minglanilla	Cebu	6046	Japanese	+	AB	1990-09-12	25	56	160	0.42	1600
+88	1	F. Cabahug	Mabolo	Cebu	Cebu	6000	American	+	A	1987-11-22	28	57	160	0.18	700
+93	8	Lala	Mabolo	Cebu	Cebu	6000	American	+	A	1981-01-01	35	67	176	0.24	900
+94	8	Lala	Mabolo	Cebu	Cebu	6000	American	+	A	1981-01-01	35	67	176	0.12	450
+80	34	Lorega	Lorega	Cebu	Cebu	6000	Irish	+	A	1983-06-19	32	65	183	0.40	1500
+67	12	Gorordo	Lahug	Cebu	Cebu	6000	Filipino	+	B	1995-01-21	21	51	135	0.70	2650
+48	89	Carbon	Ermita	Cebu	Cebu	6000	American	+	A	1980-01-31	36	55	167	0.42	1600
+102	12	Dunno	Busay	Cebu	Cebu	6000	Filipino	-	O	1998-03-03	18	60	157	0.09	350
+\.
+
+
+--
+-- Data for Name: donor_illness; Type: TABLE DATA; Schema: public; Owner: donor
+--
+
+COPY donor_illness (idno, illness) FROM stdin;
+39	 Diabetes
+43	 Diabetes
+48	 
+50	 Diabetes
+59	 Hypertension
+64	 Hypertension
+67	 
+70	 
+71	 Hypertension
+71	Arthritis
+71	 Asthma
+78	 Asthma
+78	 Diabetes
+80	 Diabetes
+82	 Asthma
+85	 
+88	 
+89	 Diabetes
+90	 Diabetes
+91	 Diabetes
+93	 
+94	 
+99	 Hyperacidity
+101	 Hyperacidity
+102	 Hyperacidity
+103	 Asthma
+\.
+
+
+--
+-- Data for Name: request; Type: TABLE DATA; Schema: public; Owner: requester
+--
+
+COPY request (requestno, status, date, "time", dateneeded, recipientname, bloodrh, bloodtype, idno, illness) FROM stdin;
+1	f	2016-05-03	13:00:00	2016-05-10	Paul Rudd	+	AB	\N	\N
+4	f	2016-05-22	\N	2016-06-30	Jaijai	+	A	97	\N
+5	f	2016-05-22	\N	2016-06-30	Jaijai	+	A	98	\N
+3	t	2016-05-20	\N	2016-05-21	Ton Saludadez	+	B	\N	\N
+\.
+
+
+--
+-- Name: request_requestno_seq; Type: SEQUENCE SET; Schema: public; Owner: requester
+--
+
+SELECT pg_catalog.setval('request_requestno_seq', 5, true);
+
+
+--
+-- Data for Name: trans_log; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY trans_log (date, "time", user_name, action, table_name, detail) FROM stdin;
+2016-05-25	03:27:08.773118	postgres	INSERT	client	insert into client\n(fname, mname, lname, client_type, phone)\nvalues\n('Charlotte', 'Daguplo', 'Manayaga', 'TRUE', '09353965704');
+2016-05-25	03:29:35.180838	postgres	INSERT	donor	insert into donor values\n('112', '134', 'San Juan 2', 'Lapasan', 'CDO', 'MisOr',\n'9000', 'Korean', '+', 'O', '1997-01-14',\n'19', '54', '154', null, '700');
+2016-05-25	03:37:06.198142	postgres	DELETE	donor	delete from donor where idno = '112';
+2016-05-25	04:21:22.42549	postgres	UPDATE	request	update request set status = 'True' where requestno = '3';
+2016-05-25	05:02:47.423248	admin	INSERT	client	insert into client\n(fname, mname, lname, client_type, phone)\nvalues\n('Charlotte', 'Daguplo', 'Manayaga', 'TRUE', '09353965704');
+2016-05-25	06:19:50.616889	postgres	INSERT	client	INSERT INTO Client (fname, mname, lname, client_type, phone)\r\n\t\t\t\t\tVALUES ('Jay', 'Ambot', 'Talaguit', 'true', '09063456123')
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: requester
+--
+
+COPY users (username, password, usertype, idno) FROM stdin;
+\.
+
+
+--
+-- Name: blood_pkey; Type: CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY blood
+    ADD CONSTRAINT blood_pkey PRIMARY KEY (trackingno);
+
+
+--
+-- Name: client_pkey; Type: CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY client
+    ADD CONSTRAINT client_pkey PRIMARY KEY (idno);
+
+
+--
+-- Name: donor_illness_pkey; Type: CONSTRAINT; Schema: public; Owner: donor
+--
+
+ALTER TABLE ONLY donor_illness
+    ADD CONSTRAINT donor_illness_pkey PRIMARY KEY (idno, illness);
+
+
+--
+-- Name: donor_pkey; Type: CONSTRAINT; Schema: public; Owner: donor
+--
+
+ALTER TABLE ONLY donor
+    ADD CONSTRAINT donor_pkey PRIMARY KEY (idno);
+
+
+--
+-- Name: request_pkey; Type: CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY request
+    ADD CONSTRAINT request_pkey PRIMARY KEY (requestno);
+
+
+--
+-- Name: trans_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY trans_log
+    ADD CONSTRAINT trans_log_pkey PRIMARY KEY (date, "time");
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (username);
+
+
+--
+-- Name: blood_add; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER blood_add AFTER INSERT ON blood FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: blood_delete; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER blood_delete AFTER DELETE ON blood FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: blood_update; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER blood_update AFTER UPDATE ON blood FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: client_add; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER client_add AFTER INSERT ON client FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: client_delete; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER client_delete AFTER DELETE ON client FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: client_update; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER client_update AFTER UPDATE ON client FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: donor_add; Type: TRIGGER; Schema: public; Owner: donor
+--
+
+CREATE TRIGGER donor_add AFTER INSERT ON donor FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: donor_delete; Type: TRIGGER; Schema: public; Owner: donor
+--
+
+CREATE TRIGGER donor_delete AFTER DELETE ON donor FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: donor_update; Type: TRIGGER; Schema: public; Owner: donor
+--
+
+CREATE TRIGGER donor_update AFTER UPDATE ON donor FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: illness_add; Type: TRIGGER; Schema: public; Owner: donor
+--
+
+CREATE TRIGGER illness_add AFTER INSERT ON donor_illness FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: illness_delete; Type: TRIGGER; Schema: public; Owner: donor
+--
+
+CREATE TRIGGER illness_delete AFTER DELETE ON donor_illness FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: illness_update; Type: TRIGGER; Schema: public; Owner: donor
+--
+
+CREATE TRIGGER illness_update AFTER UPDATE ON donor_illness FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: request_add; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER request_add AFTER INSERT ON request FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: request_delete; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER request_delete AFTER DELETE ON request FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: request_update; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER request_update AFTER UPDATE ON request FOR EACH ROW EXECUTE PROCEDURE translog_func();
+
+
+--
+-- Name: update_amt_gallon; Type: TRIGGER; Schema: public; Owner: requester
+--
+
+CREATE TRIGGER update_amt_gallon AFTER INSERT ON blood FOR EACH ROW EXECUTE PROCEDURE update_amount();
+
+
+--
+-- Name: fk_idno; Type: FK CONSTRAINT; Schema: public; Owner: donor
+--
+
+ALTER TABLE ONLY donor
+    ADD CONSTRAINT fk_idno FOREIGN KEY (idno) REFERENCES client(idno) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: fk_illness; Type: FK CONSTRAINT; Schema: public; Owner: donor
+--
+
+ALTER TABLE ONLY donor_illness
+    ADD CONSTRAINT fk_illness FOREIGN KEY (idno) REFERENCES client(idno) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: id_blood; Type: FK CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY blood
+    ADD CONSTRAINT id_blood FOREIGN KEY (idno) REFERENCES donor(idno) ON DELETE SET NULL;
+
+
+--
+-- Name: idno_request; Type: FK CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY request
+    ADD CONSTRAINT idno_request FOREIGN KEY (idno) REFERENCES client(idno) ON DELETE SET NULL;
+
+
+--
+-- Name: users_idno_fkey; Type: FK CONSTRAINT; Schema: public; Owner: requester
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_idno_fkey FOREIGN KEY (idno) REFERENCES client(idno);
+
+
+--
+-- Name: addblood; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY addblood ON blood FOR ALL TO admin;
+
+
+--
+-- Name: addclient; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY addclient ON client FOR ALL TO admin;
+
+
+--
+-- Name: adddonor; Type: POLICY; Schema: public; Owner: donor
+--
+
+CREATE POLICY adddonor ON donor FOR ALL TO admin;
+
+
+--
+-- Name: adddonorillness; Type: POLICY; Schema: public; Owner: donor
+--
+
+CREATE POLICY adddonorillness ON donor_illness FOR ALL TO admin;
+
+
+--
+-- Name: blood; Type: ROW SECURITY; Schema: public; Owner: requester
+--
+
+ALTER TABLE blood ENABLE ROW LEVEL SECURITY;
+
+--
+-- Name: client; Type: ROW SECURITY; Schema: public; Owner: requester
+--
+
+ALTER TABLE client ENABLE ROW LEVEL SECURITY;
+
+--
+-- Name: deleterequests; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY deleterequests ON request FOR DELETE TO admin;
+
+
+--
+-- Name: donor_illness; Type: ROW SECURITY; Schema: public; Owner: donor
+--
+
+ALTER TABLE donor_illness ENABLE ROW LEVEL SECURITY;
+
+--
+-- Name: donorpolicyread; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY donorpolicyread ON request FOR SELECT TO PUBLIC USING (true);
+
+
+--
+-- Name: request; Type: ROW SECURITY; Schema: public; Owner: requester
+--
+
+ALTER TABLE request ENABLE ROW LEVEL SECURITY;
+
+--
+-- Name: updaterequests; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY updaterequests ON request FOR UPDATE TO admin;
+
+
+--
+-- Name: users; Type: ROW SECURITY; Schema: public; Owner: requester
+--
+
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+
+--
+-- Name: viewall; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY viewall ON users FOR SELECT TO requester;
+
+
+--
+-- Name: viewrequests; Type: POLICY; Schema: public; Owner: requester
+--
+
+CREATE POLICY viewrequests ON request FOR SELECT TO admin;
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- Name: blood; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL ON TABLE blood FROM PUBLIC;
+REVOKE ALL ON TABLE blood FROM requester;
+GRANT SELECT,REFERENCES,TRIGGER,TRUNCATE ON TABLE blood TO requester;
+
+
+--
+-- Name: client; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL ON TABLE client FROM PUBLIC;
+REVOKE ALL ON TABLE client FROM requester;
+GRANT SELECT,REFERENCES,TRIGGER,TRUNCATE ON TABLE client TO requester;
+GRANT ALL ON TABLE client TO admin;
+
+
+--
+-- Name: donor; Type: ACL; Schema: public; Owner: donor
+--
+
+REVOKE ALL ON TABLE donor FROM PUBLIC;
+REVOKE ALL ON TABLE donor FROM donor;
+GRANT SELECT,REFERENCES,TRIGGER,TRUNCATE ON TABLE donor TO donor;
+GRANT ALL ON TABLE donor TO admin;
+
+
+--
+-- Name: donor_illness; Type: ACL; Schema: public; Owner: donor
+--
+
+REVOKE ALL ON TABLE donor_illness FROM PUBLIC;
+REVOKE ALL ON TABLE donor_illness FROM donor;
+GRANT SELECT,REFERENCES,TRIGGER,TRUNCATE ON TABLE donor_illness TO donor;
+GRANT ALL ON TABLE donor_illness TO admin;
+
+
+--
+-- Name: request; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL ON TABLE request FROM PUBLIC;
+REVOKE ALL ON TABLE request FROM requester;
+GRANT SELECT,INSERT,REFERENCES,TRIGGER,TRUNCATE ON TABLE request TO requester;
+
+
+--
+-- Name: trans_log; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE trans_log FROM PUBLIC;
+REVOKE ALL ON TABLE trans_log FROM postgres;
+GRANT ALL ON TABLE trans_log TO postgres;
+GRANT ALL ON TABLE trans_log TO admin;
+
+
+--
+-- Name: users; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL ON TABLE users FROM PUBLIC;
+REVOKE ALL ON TABLE users FROM requester;
+GRANT ALL ON TABLE users TO requester;
+
+
+--
+-- Name: users.username; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL(username) ON TABLE users FROM PUBLIC;
+REVOKE ALL(username) ON TABLE users FROM requester;
+GRANT SELECT(username) ON TABLE users TO requester;
+
+
+--
+-- Name: users.password; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL(password) ON TABLE users FROM PUBLIC;
+REVOKE ALL(password) ON TABLE users FROM requester;
+GRANT SELECT(password) ON TABLE users TO requester;
+
+
+--
+-- Name: users.usertype; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL(usertype) ON TABLE users FROM PUBLIC;
+REVOKE ALL(usertype) ON TABLE users FROM requester;
+GRANT SELECT(usertype) ON TABLE users TO requester;
+
+
+--
+-- Name: users.idno; Type: ACL; Schema: public; Owner: requester
+--
+
+REVOKE ALL(idno) ON TABLE users FROM PUBLIC;
+REVOKE ALL(idno) ON TABLE users FROM requester;
+GRANT SELECT(idno) ON TABLE users TO requester;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
