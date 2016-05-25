@@ -14,7 +14,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
    <link href="viewClient.css" rel="stylesheet" type="text/css" media="all" />
-   
+
    <style>
       #form-style table{
           position: relative;
@@ -22,20 +22,41 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
           background: #FFF;
       }     
       #content h1{
-          position: relative;
-          top: 10px;
-          left: 20px;
-          color: black;
-          margin: 0 0 0 0;
+        position: relative;
+        top: 30px;
+        left: 0;
+        margin: 0 0 0 0;
+        width: 50px;
+        color: #FFF;
       }
       #form-style input[type=submit], #style1 input[type=button]{
           position: relative;
           left: 450px;
+          background: #FFF;
+          color: #c72121;
       }
       #form-style{
           margin: 0 auto;
           width: 660px;
+          background: none;
       }
+      #blood-inv{
+        position: relative;
+        top: 120px;
+        left: 800px;
+      }
+      #blood-inv table{
+        background: #FFF;
+        width: 200px;
+      }
+      #blood-inv h2{
+        color: #FFF;
+      }
+     /* #blood-inv{
+        width: 300px;
+        min-height: 100px;
+        background: #FFF;
+      }*/
    </style>
 </head>
 
@@ -108,6 +129,38 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
                ?>
                </table>
          </div> 
+
+         <div id="blood-inv">
+            <h2>Blood Statistics</h2>
+              <table width="600" border="2" cellspacing="3" cellpadding="3">
+                  <tr>
+                     <th>Blood Type</th>
+                     <th>Blood RH</th>
+                     <th>Count</th>
+                  </tr>
+             
+          <!-- Displays the query result-->
+                <?php
+                   if(!$withdrawal){
+                      echo pg_last_error($db);
+                      exit;
+                   }
+                   
+                   while($records = pg_fetch_array($withdrawal)){
+                      echo "<tr>";
+                      echo "<td>" . $records['bloodtype'] . "</td>";
+                      echo "<td>" . $records['bloodrh'] . "</td>";
+                      echo "<td>" . $records['count'] . "</td>";
+                      
+                   }
+
+
+                   pg_close($db);
+                ?>
+
+
+               </table>
+         </div>  
       </div>
       <!-- BODY -->
 </body>
