@@ -1,0 +1,228 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Add Donor</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<!-- <link href="admin-addDonor.css" rel="stylesheet" type="text/css" media="all" /> -->
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<style>
+	/*
+	*************************
+		* CONTENT
+	*************************
+	*/
+
+	#content{
+		background: #c72121;
+		min-height: 800px;
+		padding: 0em 7em;
+	}
+
+	/*
+	*************************
+		* CONTENT STYLE
+	*************************
+	*/
+	#form-style{
+		position: relative;
+		top: 50px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		width: 500px;
+		min-height: 750px;
+	    padding: 10px 10px 10px 20px;
+	    font: 12px "Roboto", "Lucida Grande", sans-serif;
+	    font-weight: 3px;
+	    border: 1px solid #c72121;
+
+	    color: black;
+	    background: #FFF;
+
+	}
+
+	#form-style h1{
+	    text-align: center;
+	}
+
+	#form-style h1, h2{
+		 color: black;
+	}
+
+	#form-style li {
+	    padding: 0;
+	    display: block;
+	    list-style: none;
+	    margin: 10px 0 0 0;
+	}
+
+	#form-style label{
+		width:150px;
+	    margin-top: 3px;
+	    display:inline-block;
+	    float:left;
+	    padding-left:3px;
+	}
+
+	#form-style input {
+	    width: 230px; 
+	}
+
+	#form-style input[type=text]:focus, 
+	#form-style input[type=date]:focus, 
+	#form-style input[type=number]:focus{
+	}
+
+	#form-style input[type=submit], #form-style input[type=button]{
+		margin-left: 153px;
+	    background: #c72121;
+	    padding: 8px 15px 8px 15px;
+	    border: none;
+	    color: #FFF;
+	}
+	#form-style input[type=submit]:hover, #form-style input[type=button]:hover{
+	    cursor: pointer;
+	}
+
+	.required{
+		color: red;
+		padding-left: 2px;
+	}
+	.hr-1{
+		border-top: 3px double black;
+	}
+	.alert {
+	    padding: 10px;
+	    background-color: #f44336;
+	    color: white;
+	    font-size: 16px;
+	}
+
+	.closebtn {
+	    margin-left: 15px;
+	    color: white;
+	    font-weight: bold;
+	    float: right;
+	    font-size: 22px;
+	    line-height: 20px;
+	    cursor: pointer;
+	    transition: 0.3s;
+	}
+	.closebtn:hover {
+	    color: black;
+	}
+
+</style>
+</head>
+
+
+
+<body>
+<!-- MENU / HEADER-->
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="admin-homepage.html" title="Blood Bank">Blood Bank</a></h1>
+			<span>Donate now!</span> 
+		</div>
+	
+
+
+		<div id="menu">
+			<ul>
+				<li><a href="admin-homepage.html"   title="Home">Home</a></li>
+				<li><a href="admin-addDonor.html" class="currentpage" title="Add">Add</a></li>
+				<li><a href="admin-approveRequest.php" title="Requests">Requests</a></li>
+				<li><a href="admin-viewPage.html" title="View">View</a></li>
+				<li><a href="index.html" title="Logout">Logout</a><li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+<!-- MENU / HEADER-->
+
+<!-- BODY -->
+<div id="content"> 
+	<form name="add" action="addDonor-User.php" method="POST">
+		<div id="form-style">
+			<h1>DONOR INFORMATION</h2>  
+				<hr>
+				<h2>Personal Information</h1>
+				<hr class="hr-1">
+				<ul id="personalInfo">
+					<div id="fullname">
+						<li><label>First Name: </label> <input type = "text" name= "fname" required><span class="required">*</span></li> 
+						<li><label>Middle Name: </label><input type = "text" name= "mname"></li>
+						<li><label>Last Name: </label><input type = "text" name= "lname" required><span class="required">*</span></li> 
+					</div>
+					<li><label>Phone: </label><input type = "text" name= "phone" required><span class="required">*</span></li>
+					<li><label>Birthday: </label><input type = "date" name= "birthday" required><span class="required">*</span></li>
+					<li><label>Ethinicity: </label><input type ="text" name= "ethnicity"><span class="required">*</span></li>
+
+				</ul>
+				<h2>Address</h2>
+
+				<hr class="hr-1">
+					<ul id="address">
+						<li><label>House No.: </label><input type= "number" name = "houseno"></li>
+						<li><label>Street: </label><input type ="text" name= "street"></li>
+						<li><label>Barangay: </label></label><input type ="text" name= "barangay" required><span class="required">*</span></li> 
+						<li><label>City/Municipality: </label><input type ="text" name= "citymun" required><span class="required">*</span></li>
+						<li><label>Province: </label><input type ="text" name= "province" required><span class="required">*</span></li>
+						<li><label>Zip Code: </label><input type ="number" name= "zipcode" required><span class="required">*</span></li>
+					</ul>
+				
+				<h2>
+				<h2>Body Metrics</h2>
+				<hr class="hr-1">
+					<ul id="body-metrics">
+						<li><label>Height (in cm): </label><input type= "number" name= "height" min="0" required><span class="required">*</span></li> 
+						<li><label>Weight (in kg): </label><input type= "number" name= "weight" min ="50"required><span class="required">*</span></li>
+						<li><label>Blood Type: </label>
+							<select name="bloodtype">
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="AB">AB</option>
+								<option value="O">O</option>
+							</select>
+						<span class="required">*</span></li>
+						<li><label>Blood RH: </label>
+							<select name="bloodrh">
+								<option value="+">+</option>
+								<option value="-">-</option>
+							</select>
+							<span class="required">*</span></li>
+					</ul>
+
+					<li><label>Donor Illness (history): </label><textarea rows="3" cols="35" name ="illness"> </textarea></li>
+					<br>
+			<hr>
+			<h1>DONATION INFORMATION</h1>  
+			<hr>
+			<ul id="donation">
+			<li><label>Date of Donation: </label><input type="date" name="date" required/><span class="required">*</span></li>
+			<li><label>Time of Donation: </label><input type="time" name="time" required/><span class="required">*</span></li>  
+			<li><label>Amount (in cc): </label>
+				<select name="amount">
+						<option value="350">350 cc</option>
+						<option value="450">450 cc</option>
+				</select>
+				<span class="required">*</span></li>
+			</li>
+			<hr>
+
+			<li><input type="submit" name="submit" /></li>
+		</div>
+	</form>
+</div>
+<!-- BODY -->
+
+</body>
+</html>

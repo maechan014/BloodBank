@@ -12,7 +12,7 @@
     $datediff = $now - $dateOfDonation;
 
 	if($datediff < 0){
-			header("Location: errorPage.html");
+			header("Location: errorDatePage.html");
 			exit();
 		}
 

@@ -64,3 +64,21 @@ alter table donor_illness owner to donor;
 
 alter table blood owner to requester;
 
+----------------------------------------------------
+
+set role requester;
+
+revoke insert, update, delete on client from requester;
+
+revoke insert, update, delete on blood from requester;
+
+revoke update, delete on request from requester;
+
+revoke insert, update, delete on users from requester;
+
+set role donor;
+
+revoke insert, update, delete on donor from donor;
+
+revoke insert, update, delete on donor_illness from donor;
+
