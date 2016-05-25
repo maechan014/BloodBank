@@ -1,0 +1,10 @@
+C:\Windows\system32>cd C:/postgresql/bin
+
+*** sa command prompt ni siya i implement
+
+*** to back up
+C:\PostgreSQL\bin>pg_dump -U postgres -C -f C:\Bitnami\wappstack-5.6.20-1\apache2\htdocs\BloodBank\backup\bloodbank_complete.dump bloodbank
+
+
+*** to restore
+C:\PostgreSQL\bin>psql -U postgres < C:\Bitnami\wappstack-5.6.20-1\apache2\htdocs\BloodBank\backup\bloodbank_complete.dump
