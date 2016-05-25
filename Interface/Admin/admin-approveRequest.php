@@ -14,6 +14,7 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
    <link href="viewClient.css" rel="stylesheet" type="text/css" media="all" />
+   
    <style>
       #form-style table{
           position: relative;
@@ -23,7 +24,9 @@ $db = pg_connect("host=localhost port=5432 dbname=bloodbank user=postgres passwo
       #content h1{
           position: relative;
           top: 10px;
+          left: 20px;
           color: black;
+          margin: 0 0 0 0;
       }
       #form-style input[type=submit], #style1 input[type=button]{
           position: relative;

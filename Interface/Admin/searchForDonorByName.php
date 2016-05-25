@@ -6,7 +6,7 @@ $name = (string)$_POST['name'];
 
 <!DOCTYPE html>  
    <head> 
-   <title>Client Information</title>  
+   <title>Donor Information</title>  
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
    <link href="viewClient.css" rel="stylesheet" type="text/css" media="all" />
@@ -89,7 +89,7 @@ $name = (string)$_POST['name'];
             </form>
         </div>
        <div id="form-style">
-          <h1>CLIENT INFORMATION</h1>
+          <h1>DONOR INFORMATION</h1>
           <table width="600" border="2" cellspacing="1" cellpadding="1">
           <tr>
              <th>Client ID</th> 
@@ -100,7 +100,7 @@ $name = (string)$_POST['name'];
           </tr>
       <?php
 
-        $query = "SELECT * FROM Client where fname='$name' or mname='$name' or lname='$name'"; 
+        $query = "SELECT * FROM donor_view where fname='$name' or mname='$name' or lname='$name'"; 
         $res = pg_query($db, $query);
           if(!$res){
             echo pg_last_error($db);
@@ -109,7 +109,9 @@ $name = (string)$_POST['name'];
 
           while($records = pg_fetch_assoc($res)){
             echo "<tr>";
-            echo "<td>" . $records['idno'] . "</td>";
+            echo "<td>";
+              echo "<a href='UPDATE-D.php?action=view&id=".$records['idno']."'> ". $records['idno'] ." </a>";
+            echo "</td>";
             echo "<td>" . $records['fname'] . "</td>";
             echo "<td>" . $records['mname'] . "</td>";
             echo "<td>" . $records['lname'] . "</td>";

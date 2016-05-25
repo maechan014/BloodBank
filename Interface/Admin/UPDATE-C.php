@@ -76,7 +76,8 @@
 		width: 200px;
 	}
 	#deleteButton a{
-		font-size: 13px;
+		font-size: 15px;
+		padding-left: 50px;
 	}
 	</style>
 </head>
